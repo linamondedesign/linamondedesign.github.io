@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>resello</title>
+    <title>resello — 게임기 중고거래 플랫폼</title>
     <meta name="description" content="리셀로 플랫폼 상세 케이스 스터디" />
 
     <link rel="stylesheet" href="css/style.css" />
@@ -33,150 +33,109 @@
       /* =============================================
          📌 히어로 섹션 — 큰 타이틀 배경 영역
          ============================================= */
-/* =============================================
-   📌 히어로 섹션 — 스타일 라이트 그라데이션
-   ============================================= */
-.de-hero {
-  /* ✅ 위: 진한 파란색 → 아래: 완전 투명 */
+      .de-hero {
+        background: linear-gradient(
+          135deg,
+          rgba(0, 0, 0, 0.95) 0%,
+          rgba(96, 121, 255, 0.85) 100%
+        ),
+        url('./assets/jpeg/detail_1_cover.jpg') center / cover no-repeat;
+        padding: 18rem 0 12rem 0;
+        color: #fff;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+      }
 
-  padding: 18rem 0 12rem 0;
-  color: #111;
-  text-align: center;
-  position: relative;
-  overflow: hidden;
-}
- 
-/* ✅ 배경에 은은한 빛 번짐 효과  */
-.de-hero::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  /* background:
-    radial-gradient(ellipse 80% 60% at 50% 0%,   rgba(180, 195, 255, 0.5) 0%, transparent 70%),
-    radial-gradient(ellipse 50% 40% at 80% 80%,  rgba(160, 210, 255, 0.3) 0%, transparent 60%),
-    radial-gradient(ellipse 40% 30% at 10% 70%,  rgba(200, 180, 255, 0.25) 0%, transparent 60%); */
-  pointer-events: none;
-  z-index: 0;
-}
+      /* 히어로 배경에 살짝 움직이는 느낌 */
+      .de-hero::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(
+          ellipse at 60% 40%,
+          rgba(96, 121, 255, 0.3) 0%,
+          transparent 70%
+        );
+        pointer-events: none;
+      }
 
-/* ✅ 콘텐츠가 배경 위로 오게 */
-.de-hero .de-container {
-  position: relative;
-  z-index: 1;
-}
+      .de-hero__tag {
+        display: inline-block;
+        background: rgba(255,255,255,0.15);
+        border: 1px solid rgba(255,255,255,0.3);
+        color: #fff;
+        font-size: 1.3rem;
+        font-weight: 600;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        padding: 0.6rem 1.8rem;
+        border-radius: 50px;
+        margin-bottom: 2.5rem;
+      }
 
-/* ✅ 작은 태그 라벨 — 테두리 스타일 */
-.de-hero__tag {
-  display: inline-block;
-  background: rgba(96, 121, 255, 0.08);
-  border: 1.5px solid rgba(96, 121, 255, 0.25);
-  color: #6079FF;                    /* ✅ 포인트 컬러 텍스트 */
-  font-size: 1.3rem;
-  font-weight: 700;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  padding: 0.7rem 2rem;
-  border-radius: 50px;
-  margin-bottom: 3rem;
-  margin-top: 10rem;
-}
+      .de-hero__title {
+        font-size: 7rem;
+        font-weight: 900;
+        letter-spacing: 2px;
+        line-height: 1.1;
+        margin-bottom: 2rem;
+        text-transform: uppercase;
+      }
 
-/* ✅ 메인 타이틀 — 어두운 색 + 포인트 컬러 강조 */
-.de-hero__title {
-  font-size: 7rem;
-  font-weight: 900;
-  letter-spacing: -1px;
-  line-height: 1.1;
-  margin-bottom: 2rem;
-  color: #111;                       /* ✅ 기본은 진한 검정 */
+      @media only screen and (max-width: 56.25em) {
+        .de-hero__title { font-size: 5rem; }
+      }
 
-  /* ✅ 포인트 색상 그라데이션 텍스트 효과 */
-  background: linear-gradient(135deg, #3a4fd0 0%, #6079FF 50%, #7b92ff 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
+      @media only screen and (max-width: 37.5em) {
+        .de-hero__title { font-size: 3.5rem; }
+        .de-hero { padding: 14rem 0 9rem 0; }
+      }
 
-@media only screen and (max-width: 56.25em) {
-  .de-hero__title { font-size: 5rem; }
-}
+      .de-hero__sub {
+        font-size: 2rem;
+        font-weight: 400;
+        color: rgba(255,255,255,0.75);
+        max-width: 60rem;
+        margin: 0 auto 4rem auto;
+        line-height: 1.7;
+      }
 
-@media only screen and (max-width: 37.5em) {
-  .de-hero__title { font-size: 3.5rem; }
-  .de-hero { padding: 14rem 0 9rem 0; }
-}
+      @media only screen and (max-width: 37.5em) {
+        .de-hero__sub { font-size: 1.7rem; }
+      }
 
-/* ✅ 서브 설명 — 부드러운 회색 */
-.de-hero__sub {
-  font-size: 2rem;
-  font-weight: 400;
-  color: #555;                       /* ✅ 밝은 배경이니 텍스트는 진한 회색 */
-  max-width: 60rem;
-  margin: 0 auto 4rem auto;
-  line-height: 1.7;
-}
+      /* 히어로 하단 메타 정보 (역할 / 연도 / 플랫폼) */
+      .de-hero__meta {
+        display: flex;
+        justify-content: center;
+        gap: 4rem;
+        flex-wrap: wrap;
+        margin-top: 5rem;
+        padding-top: 4rem;
+        border-top: 1px solid rgba(255,255,255,0.2);
+      }
 
-@media only screen and (max-width: 37.5em) {
-  .de-hero__sub { font-size: 1.7rem; }
-}
+      .de-hero__meta-item {
+        text-align: center;
+      }
 
-/* ✅ 뒤로 가기 버튼 — 포인트 컬러 */
-/* .de-back-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.8rem;
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: #6079FF;
-  background: rgba(96, 121, 255, 0.08);
-  border: 1.5px solid rgba(96, 121, 255, 0.2);
-  border-radius: 50px;
-  cursor: pointer;
-  text-decoration: none;
-  letter-spacing: 0.5px;
-  padding: 0.8rem 2rem;
-  transition: all 0.25s ease;
-  margin-bottom: 5rem;
-  margin-top: -1rem;
-} */
+      .de-hero__meta-label {
+        display: block;
+        font-size: 1.1rem;
+        font-weight: 600;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: rgba(255,255,255,0.5);
+        margin-bottom: 0.5rem;
+      }
 
-/* .de-back-btn:hover {
-  background: rgba(96, 121, 255, 0.15);
-  gap: 1.5rem;
-} */
-
-/* ✅ 하단 메타 정보 */
-.de-hero__meta {
-  display: flex;
-  justify-content: center;
-  gap: 4rem;
-  flex-wrap: wrap;
-  margin-top: 12rem;
-  padding-top: 4rem;
-  border-top: 1.5px solid rgba(96, 121, 255, 0.15); /* ✅ 연보라 구분선 */
-}
-
-.de-hero__meta-item {
-  text-align: center;
-}
-
-.de-hero__meta-label {
-  display: block;
-  font-size: 1.1rem;
-  font-weight: 700;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: #aab;                       /* ✅ 라벨은 부드러운 중간 색 */
-  margin-bottom: 0.6rem;
-}
-
-.de-hero__meta-value {
-  display: block;
-  font-size: 1.6rem;
-  font-weight: 700;
-  color: #333;                       /* ✅ 값은 진하게 */
-}
-
+      .de-hero__meta-value {
+        display: block;
+        font-size: 1.6rem;
+        font-weight: 700;
+        color: #fff;
+      }
 
       /* =============================================
          📌 메인 콘텐츠 영역 공통
@@ -238,10 +197,10 @@
         width: 100%;
         border-radius: 20px;
         overflow: hidden;
-        /* box-shadow: 0 30px 80px rgba(0,0,0,0.12); */
+        box-shadow: 0 30px 80px rgba(0,0,0,0.12);
         margin-bottom: 3rem;
         /* 이미지가 없을 때 보이는 placeholder */
-        background: none;
+        background: linear-gradient(135deg, #e8eaff 0%, #c5cbff 100%);
         aspect-ratio: 16 / 9;
         display: flex;
         align-items: center;
@@ -679,14 +638,14 @@
 
         <!-- 서브 설명 -->
         <p class="de-hero__sub">
-          게임기 중고거래 플랫폼 <br> 사용자의 Pain Point를 해결하는
+          게임기 중고거래 플랫폼 런칭 UI — 사용자의 Pain Point를 해결하는
           직관적인 거래 경험 설계
         </p>
 
         <!-- 뒤로 가기 버튼 -->
-        <!-- <a href="./project-1.html" class="de-back-btn">
+        <a href="./project-1.html" class="de-back-btn">
           ← 목록으로 돌아가기
-        </a> -->
+        </a>
 
         <!-- 메타 정보 (역할 / 연도 / 플랫폼) -->
         <div class="de-hero__meta">
@@ -700,12 +659,12 @@
           </div>
           <div class="de-hero__meta-item">
             <span class="de-hero__meta-label">플랫폼</span>
-            <span class="de-hero__meta-value">Mobile</span>
+            <span class="de-hero__meta-value">Mobile / Web</span>
           </div>
-          <!-- <div class="de-hero__meta-item">
+          <div class="de-hero__meta-item">
             <span class="de-hero__meta-label">작업기간</span>
             <span class="de-hero__meta-value">2023</span>
-          </div> -->
+          </div>
         </div>
 
       </div>
@@ -721,7 +680,7 @@
         <!-- 대표 이미지 — 실제 이미지 경로로 바꿔주세요! -->
         <div class="de-showcase">
           <img
-            src="./assets/jpeg/detail_1_main.png"
+            src="./assets/jpeg/project-mockup-example.jpeg"
             alt="리셀로 메인 화면 쇼케이스"
           />
           <!-- 이미지가 없으면 아래 placeholder 가 보여요 -->
