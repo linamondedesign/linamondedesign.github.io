@@ -1,0 +1,998 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>리셀로 — 게임기 중고거래 플랫폼</title>
+    <meta name="description" content="리셀로 플랫폼 상세 케이스 스터디" />
+
+    <link rel="stylesheet" href="css/style.css" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700;900&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- ✅ 이 페이지만의 추가 스타일 (style.css 는 건드리지 않아요!) -->
+    <style>
+
+      /* =============================================
+         📌 페이지 전환 애니메이션 (부드럽게 나타나기)
+         ============================================= */
+      body {
+        animation: fadeInPage 0.6s ease forwards;
+      }
+      @keyframes fadeInPage {
+        from { opacity: 0; transform: translateY(20px); }
+        to   { opacity: 1; transform: translateY(0); }
+      }
+
+      /* =============================================
+         📌 히어로 섹션 — 큰 타이틀 배경 영역
+         ============================================= */
+      .de-hero {
+        background: linear-gradient(
+          135deg,
+          rgba(30, 30, 50, 0.95) 0%,
+          rgba(60, 80, 180, 0.85) 100%
+        ),
+        url('./assets/jpeg/banner_main_1.png') center / cover no-repeat;
+        padding: 18rem 0 12rem 0;
+        color: #fff;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+      }
+
+      /* 히어로 배경에 살짝 움직이는 느낌 */
+      .de-hero::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(
+          ellipse at 60% 40%,
+          rgba(96, 121, 255, 0.3) 0%,
+          transparent 70%
+        );
+        pointer-events: none;
+      }
+
+      .de-hero__tag {
+        display: inline-block;
+        background: rgba(255,255,255,0.15);
+        border: 1px solid rgba(255,255,255,0.3);
+        color: #fff;
+        font-size: 1.3rem;
+        font-weight: 600;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        padding: 0.6rem 1.8rem;
+        border-radius: 50px;
+        margin-bottom: 2.5rem;
+      }
+
+      .de-hero__title {
+        font-size: 7rem;
+        font-weight: 900;
+        letter-spacing: 2px;
+        line-height: 1.1;
+        margin-bottom: 2rem;
+        text-transform: uppercase;
+      }
+
+      @media only screen and (max-width: 56.25em) {
+        .de-hero__title { font-size: 5rem; }
+      }
+
+      @media only screen and (max-width: 37.5em) {
+        .de-hero__title { font-size: 3.5rem; }
+        .de-hero { padding: 14rem 0 9rem 0; }
+      }
+
+      .de-hero__sub {
+        font-size: 2rem;
+        font-weight: 400;
+        color: rgba(255,255,255,0.75);
+        max-width: 60rem;
+        margin: 0 auto 4rem auto;
+        line-height: 1.7;
+      }
+
+      @media only screen and (max-width: 37.5em) {
+        .de-hero__sub { font-size: 1.7rem; }
+      }
+
+      /* 히어로 하단 메타 정보 (역할 / 연도 / 플랫폼) */
+      .de-hero__meta {
+        display: flex;
+        justify-content: center;
+        gap: 4rem;
+        flex-wrap: wrap;
+        margin-top: 5rem;
+        padding-top: 4rem;
+        border-top: 1px solid rgba(255,255,255,0.2);
+      }
+
+      .de-hero__meta-item {
+        text-align: center;
+      }
+
+      .de-hero__meta-label {
+        display: block;
+        font-size: 1.1rem;
+        font-weight: 600;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: rgba(255,255,255,0.5);
+        margin-bottom: 0.5rem;
+      }
+
+      .de-hero__meta-value {
+        display: block;
+        font-size: 1.6rem;
+        font-weight: 700;
+        color: #fff;
+      }
+
+      /* =============================================
+         📌 메인 콘텐츠 영역 공통
+         ============================================= */
+      .de-section {
+        padding: 10rem 0;
+      }
+
+      .de-section--gray {
+        background: #f7f7f9;
+      }
+
+      .de-container {
+        max-width: 110rem;
+        width: 92%;
+        margin: 0 auto;
+      }
+
+      /* =============================================
+         📌 섹션 타이틀 스타일
+         ============================================= */
+      .de-section-label {
+        display: inline-block;
+        font-size: 1.2rem;
+        font-weight: 700;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: #6079FF;
+        margin-bottom: 1.5rem;
+      }
+
+      .de-section-title {
+        font-size: 3.8rem;
+        font-weight: 900;
+        color: #111;
+        line-height: 1.2;
+        margin-bottom: 2.5rem;
+      }
+
+      @media only screen and (max-width: 56.25em) {
+        .de-section-title { font-size: 3rem; }
+      }
+
+      @media only screen and (max-width: 37.5em) {
+        .de-section-title { font-size: 2.5rem; }
+      }
+
+      .de-section-desc {
+        font-size: 1.8rem;
+        color: #666;
+        line-height: 1.8;
+        max-width: 70rem;
+      }
+
+      /* =============================================
+         📌 대표 이미지 (풀너비 쇼케이스)
+         ============================================= */
+      .de-showcase {
+        width: 100%;
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 30px 80px rgba(0,0,0,0.12);
+        margin-bottom: 3rem;
+        /* 이미지가 없을 때 보이는 placeholder */
+        background: linear-gradient(135deg, #e8eaff 0%, #c5cbff 100%);
+        aspect-ratio: 16 / 9;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .de-showcase img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        transition: transform 0.6s ease;
+      }
+
+      .de-showcase:hover img {
+        transform: scale(1.02);
+      }
+
+      /* 이미지 placeholder 텍스트 */
+      .de-showcase__placeholder {
+        color: #8090ff;
+        font-size: 1.6rem;
+        font-weight: 600;
+        letter-spacing: 1px;
+        text-align: center;
+      }
+
+      /* =============================================
+         📌 2단 그리드 레이아웃 (개요 + 역할)
+         ============================================= */
+      .de-overview-grid {
+        display: grid;
+        grid-template-columns: 1.4fr 1fr;
+        gap: 8rem;
+        align-items: start;
+      }
+
+      @media only screen and (max-width: 56.25em) {
+        .de-overview-grid {
+          grid-template-columns: 1fr;
+          gap: 5rem;
+        }
+      }
+
+      /* =============================================
+         📌 역할/기여 카드 리스트
+         ============================================= */
+      .de-role-card {
+        background: #fff;
+        border-radius: 16px;
+        padding: 3rem;
+        box-shadow: 0 4px 30px rgba(0,0,0,0.07);
+        border: 1px solid #eee;
+      }
+
+      .de-role-card__title {
+        font-size: 1.3rem;
+        font-weight: 700;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: #6079FF;
+        margin-bottom: 2rem;
+        padding-bottom: 1.5rem;
+        border-bottom: 2px solid #f0f0f0;
+      }
+
+      .de-role-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      .de-role-list li {
+        font-size: 1.6rem;
+        color: #444;
+        padding: 1rem 0;
+        border-bottom: 1px solid #f5f5f5;
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        font-weight: 600;
+      }
+
+      .de-role-list li:last-child {
+        border-bottom: none;
+      }
+
+      .de-role-list li::before {
+        content: '→';
+        color: #6079FF;
+        font-weight: 900;
+        flex-shrink: 0;
+      }
+
+      /* =============================================
+         📌 프로세스 단계 섹션
+         ============================================= */
+      .de-process-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 2.5rem;
+        margin-top: 6rem;
+      }
+
+      @media only screen and (max-width: 56.25em) {
+        .de-process-grid {
+          grid-template-columns: repeat(2, 1fr);
+          gap: 2rem;
+        }
+      }
+
+      @media only screen and (max-width: 37.5em) {
+        .de-process-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .de-process-card {
+        background: #fff;
+        border-radius: 16px;
+        padding: 3rem 2.5rem;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+        border: 1px solid #eee;
+        position: relative;
+        overflow: hidden;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .de-process-card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 16px 40px rgba(96,121,255,0.15);
+      }
+
+      .de-process-card__num {
+        font-size: 5rem;
+        font-weight: 900;
+        color: #f0f2ff;
+        line-height: 1;
+        margin-bottom: 1.5rem;
+        font-family: 'Source Sans Pro', sans-serif;
+      }
+
+      .de-process-card__title {
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: #111;
+        margin-bottom: 1rem;
+      }
+
+      .de-process-card__desc {
+        font-size: 1.5rem;
+        color: #777;
+        line-height: 1.7;
+      }
+
+      /* =============================================
+         📌 이미지 갤러리 그리드 (스크롤 갤러리)
+         ============================================= */
+      .de-gallery {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.5rem;
+        margin-top: 4rem;
+      }
+
+      @media only screen and (max-width: 56.25em) {
+        .de-gallery { grid-template-columns: repeat(2, 1fr); }
+      }
+
+      @media only screen and (max-width: 37.5em) {
+        .de-gallery { grid-template-columns: 1fr; }
+      }
+
+      .de-gallery__item {
+        border-radius: 14px;
+        overflow: hidden;
+        aspect-ratio: 4 / 3;
+        background: linear-gradient(135deg, #e8eaff 0%, #c5cbff 100%);
+        position: relative;
+        cursor: pointer;
+      }
+
+      .de-gallery__item::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: rgba(0,0,0,0);
+        transition: background 0.3s ease;
+      }
+
+      .de-gallery__item:hover::after {
+        background: rgba(96, 121, 255, 0.25);
+      }
+
+      .de-gallery__item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        transition: transform 0.5s ease;
+      }
+
+      .de-gallery__item:hover img {
+        transform: scale(1.08);
+      }
+
+      /* 이미지 없을 때 placeholder */
+      .de-gallery__placeholder {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #8090ff;
+        font-size: 1.4rem;
+        font-weight: 600;
+        letter-spacing: 1px;
+      }
+
+      /* =============================================
+         📌 핵심 결과 / 수치 섹션
+         ============================================= */
+      .de-result-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 3rem;
+        margin-top: 5rem;
+      }
+
+      @media only screen and (max-width: 56.25em) {
+        .de-result-grid { grid-template-columns: repeat(2, 1fr); }
+      }
+
+      @media only screen and (max-width: 37.5em) {
+        .de-result-grid { grid-template-columns: 1fr; }
+      }
+
+      .de-result-card {
+        text-align: center;
+        padding: 4rem 2rem;
+        background: #fff;
+        border-radius: 20px;
+        box-shadow: 0 4px 24px rgba(0,0,0,0.07);
+        border: 1px solid #eee;
+        transition: transform 0.3s ease;
+      }
+
+      .de-result-card:hover {
+        transform: translateY(-4px);
+      }
+
+      .de-result-card__num {
+        display: block;
+        font-size: 5rem;
+        font-weight: 900;
+        color: #6079FF;
+        line-height: 1;
+        margin-bottom: 1rem;
+      }
+
+      .de-result-card__label {
+        display: block;
+        font-size: 1.5rem;
+        color: #777;
+        font-weight: 600;
+        line-height: 1.5;
+      }
+
+      /* =============================================
+         📌 태그 리스트
+         ============================================= */
+      .de-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        margin-top: 2.5rem;
+      }
+
+      .de-tag {
+        padding: 0.8rem 2rem;
+        background: rgba(96, 121, 255, 0.08);
+        color: #6079FF;
+        border-radius: 50px;
+        font-size: 1.4rem;
+        font-weight: 700;
+        border: 1px solid rgba(96, 121, 255, 0.2);
+        transition: background 0.3s ease;
+      }
+
+      .de-tag:hover {
+        background: rgba(96, 121, 255, 0.15);
+      }
+
+      /* =============================================
+         📌 하단 CTA 버튼 영역
+         ============================================= */
+      .de-cta {
+        background: linear-gradient(
+          135deg,
+          #3a4fd0 0%,
+          #6079FF 100%
+        );
+        padding: 10rem 0;
+        text-align: center;
+        color: #fff;
+      }
+
+      .de-cta__title {
+        font-size: 4rem;
+        font-weight: 900;
+        margin-bottom: 1.5rem;
+      }
+
+      @media only screen and (max-width: 37.5em) {
+        .de-cta__title { font-size: 3rem; }
+      }
+
+      .de-cta__desc {
+        font-size: 1.8rem;
+        color: rgba(255,255,255,0.75);
+        margin-bottom: 4rem;
+      }
+
+      .de-cta__btns {
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+        flex-wrap: wrap;
+      }
+
+      /* 뒤로 가기 버튼 */
+      .de-back-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.8rem;
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: #6079FF;
+        background: none;
+        border: none;
+        cursor: pointer;
+        text-decoration: none;
+        letter-spacing: 0.5px;
+        padding: 1rem 0;
+        transition: gap 0.2s ease;
+        margin-bottom: 6rem;
+        margin-top: -2rem;
+      }
+
+      .de-back-btn:hover {
+        gap: 1.5rem;
+      }
+
+      /* =============================================
+         📌 구분선
+         ============================================= */
+      .de-divider {
+        width: 100%;
+        height: 1px;
+        background: #eee;
+        margin: 0;
+      }
+
+    </style>
+  </head>
+  <body>
+
+    <!-- ===================== 헤더 (기존과 동일) ===================== -->
+    <header class="header">
+      <div class="header__content">
+        <div class="header__logo-container">
+          <div class="header__logo-img-cont">
+            <img
+              src="./assets/png/john-doe.png"
+              alt="Logo Image"
+              class="header__logo-img"
+            />
+          </div>
+          <span class="header__logo-sub">Sumin</span>
+        </div>
+        <div class="header__main">
+          <ul class="header__links">
+            <li class="header__link-wrapper">
+              <a href="./index.html" class="header__link"> Home </a>
+            </li>
+            <li class="header__link-wrapper">
+              <a href="./index.html#about" class="header__link">About</a>
+            </li>
+            <li class="header__link-wrapper">
+              <a href="./index.html#projects" class="header__link">Projects</a>
+            </li>
+            <li class="header__link-wrapper">
+              <a href="./index.html#contact" class="header__link">Contact</a>
+            </li>
+          </ul>
+          <div class="header__main-ham-menu-cont">
+            <img
+              src="./assets/svg/ham-menu.svg"
+              alt="hamburger menu"
+              class="header__main-ham-menu"
+            />
+            <img
+              src="./assets/svg/ham-menu-close.svg"
+              alt="hamburger menu close"
+              class="header__main-ham-menu-close d-none"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="header__sm-menu">
+        <div class="header__sm-menu-content">
+          <ul class="header__sm-menu-links">
+            <li class="header__sm-menu-link"><a href="./index.html">Home</a></li>
+            <li class="header__sm-menu-link"><a href="./index.html#about">About</a></li>
+            <li class="header__sm-menu-link"><a href="./index.html#projects">Projects</a></li>
+            <li class="header__sm-menu-link"><a href="./index.html#contact">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+    </header>
+    <!-- ===================== 헤더 끝 ===================== -->
+
+
+    <!-- =====================================================
+         🎯 1. 히어로 섹션 — 프로젝트 이름 + 요약
+         ===================================================== -->
+    <section class="de-hero">
+      <div class="de-container">
+
+        <!-- 작은 태그 라벨 -->
+        <div class="de-hero__tag">Platform &amp; UI/UX Design</div>
+
+        <!-- 메인 타이틀 -->
+        <h1 class="de-hero__title">리셀로</h1>
+
+        <!-- 서브 설명 -->
+        <p class="de-hero__sub">
+          게임기 중고거래 플랫폼 런칭 UI — 사용자의 Pain Point를 해결하는
+          직관적인 거래 경험 설계
+        </p>
+
+        <!-- 뒤로 가기 버튼 -->
+        <a href="./project-1.html" class="de-back-btn">
+          ← 목록으로 돌아가기
+        </a>
+
+        <!-- 메타 정보 (역할 / 연도 / 플랫폼) -->
+        <div class="de-hero__meta">
+          <div class="de-hero__meta-item">
+            <span class="de-hero__meta-label">역할</span>
+            <span class="de-hero__meta-value">UI/UX Design</span>
+          </div>
+          <div class="de-hero__meta-item">
+            <span class="de-hero__meta-label">유형</span>
+            <span class="de-hero__meta-value">런칭 프로젝트</span>
+          </div>
+          <div class="de-hero__meta-item">
+            <span class="de-hero__meta-label">플랫폼</span>
+            <span class="de-hero__meta-value">Mobile / Web</span>
+          </div>
+          <div class="de-hero__meta-item">
+            <span class="de-hero__meta-label">작업기간</span>
+            <span class="de-hero__meta-value">2023</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- =====================================================
+         🖼️ 2. 대표 쇼케이스 이미지 (풀너비)
+         ===================================================== -->
+    <section style="padding: 8rem 0; background: #fff;">
+      <div class="de-container">
+
+        <!-- 대표 이미지 — 실제 이미지 경로로 바꿔주세요! -->
+        <div class="de-showcase">
+          <img
+            src="./assets/jpeg/project-mockup-example.jpeg"
+            alt="리셀로 메인 화면 쇼케이스"
+          />
+          <!-- 이미지가 없으면 아래 placeholder 가 보여요 -->
+        </div>
+
+        <!-- 이미지 캡션 -->
+        <p style="text-align:center; font-size:1.4rem; color:#999; margin-top:1.5rem; font-weight:600; letter-spacing:1px;">
+          리셀로 — 메인 화면 UI 쇼케이스
+        </p>
+
+      </div>
+    </section>
+
+    <div class="de-divider"></div>
+
+
+    <!-- =====================================================
+         📋 3. 프로젝트 개요 + 역할 카드 (2단 그리드)
+         ===================================================== -->
+    <section class="de-section">
+      <div class="de-container">
+        <div class="de-overview-grid">
+
+          <!-- 왼쪽: 개요 텍스트 -->
+          <div>
+            <span class="de-section-label">Project Overview</span>
+            <h2 class="de-section-title">
+              게임기 중고거래의<br>새로운 기준을 만들다
+            </h2>
+            <p class="de-section-desc">
+              리셀로(Resello)는 국내 게임기 중고 거래 시장의 신뢰 문제와
+              복잡한 거래 과정을 해결하기 위해 런칭된 플랫폼입니다.
+              사용자가 겪는 핵심 Pain Point를 포착하고, 간결하고
+              직관적인 UI를 통해 거래의 처음부터 끝까지 명확한 경험을
+              제공하는 것이 목표였습니다.
+            </p>
+            <p class="de-section-desc" style="margin-top:2rem;">
+              제품 상태 검수 시스템, 안전 결제 흐름, 판매자-구매자 간
+              실시간 채팅 UI 등 핵심 기능의 UI/UX를 처음부터 설계하고
+              디자인 시스템으로 구축했습니다.
+            </p>
+
+            <!-- 태그 -->
+            <div class="de-tags">
+              <span class="de-tag">#UI/UX</span>
+              <span class="de-tag">#런칭</span>
+              <span class="de-tag">#플랫폼</span>
+              <span class="de-tag">#중고거래</span>
+              <span class="de-tag">#디자인시스템</span>
+              <span class="de-tag">#모바일</span>
+            </div>
+          </div>
+
+          <!-- 오른쪽: 역할 카드 -->
+          <div>
+            <div class="de-role-card">
+              <div class="de-role-card__title">담당 역할</div>
+              <ul class="de-role-list">
+                <li>서비스 기획 참여</li>
+                <li>전체 UI 디자인 (런칭)</li>
+                <li>디자인 시스템 구축</li>
+                <li>반응형 웹 퍼블리싱</li>
+                <li>사용성 테스트 참여</li>
+              </ul>
+            </div>
+
+            <div class="de-role-card" style="margin-top:2rem;">
+              <div class="de-role-card__title">사용 툴</div>
+              <ul class="de-role-list">
+                <li>Figma</li>
+                <li>Adobe Illustrator</li>
+                <li>HTML / CSS</li>
+                <li>Zeplin</li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <div class="de-divider"></div>
+
+
+    <!-- =====================================================
+         ⚙️ 4. 디자인 프로세스 단계 (4단계 카드)
+         ===================================================== -->
+    <section class="de-section de-section--gray">
+      <div class="de-container">
+
+        <span class="de-section-label">Design Process</span>
+        <h2 class="de-section-title">어떻게 만들었나요?</h2>
+        <p class="de-section-desc">
+          사용자 리서치부터 최종 디자인 납품까지, 단계별 프로세스로 진행했습니다.
+        </p>
+
+        <div class="de-process-grid">
+
+          <!-- 단계 1 -->
+          <div class="de-process-card">
+            <div class="de-process-card__num">01</div>
+            <div class="de-process-card__title">Research</div>
+            <div class="de-process-card__desc">
+              경쟁사 분석 및 타겟 사용자 인터뷰를 통해 핵심 Pain Point를 도출했습니다.
+            </div>
+          </div>
+
+          <!-- 단계 2 -->
+          <div class="de-process-card">
+            <div class="de-process-card__num">02</div>
+            <div class="de-process-card__title">Wireframe</div>
+            <div class="de-process-card__desc">
+              정보 구조 설계 및 Low-fi 와이어프레임으로 전체 플로우를 검증했습니다.
+            </div>
+          </div>
+
+          <!-- 단계 3 -->
+          <div class="de-process-card">
+            <div class="de-process-card__num">03</div>
+            <div class="de-process-card__title">UI Design</div>
+            <div class="de-process-card__desc">
+              디자인 시스템 기반의 High-fi UI 디자인과 인터랙션 프로토타입을 제작했습니다.
+            </div>
+          </div>
+
+          <!-- 단계 4 -->
+          <div class="de-process-card">
+            <div class="de-process-card__num">04</div>
+            <div class="de-process-card__title">Launch</div>
+            <div class="de-process-card__desc">
+              개발팀과 협업하여 디자인 QA 및 런칭을 완료했습니다.
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <div class="de-divider"></div>
+
+
+    <!-- =====================================================
+         🖼️ 5. 화면 갤러리 (스크린샷 모음)
+         ===================================================== -->
+    <section class="de-section">
+      <div class="de-container">
+
+        <span class="de-section-label">Screen Gallery</span>
+        <h2 class="de-section-title">주요 화면 디자인</h2>
+
+        <div class="de-gallery">
+
+          <!-- 갤러리 이미지 01 -->
+          <div class="de-gallery__item">
+            <img
+              src="./assets/jpeg/banner_main_1.png"
+              alt="리셀로 메인 화면"
+            />
+            <!-- 이미지 없을 때 보이는 텍스트 -->
+            <div class="de-gallery__placeholder">메인 화면</div>
+          </div>
+
+          <!-- 갤러리 이미지 02 -->
+          <div class="de-gallery__item">
+            <img
+              src="./assets/jpeg/banner_main_1.png"
+              alt="리셀로 상품 목록"
+            />
+            <div class="de-gallery__placeholder">상품 목록</div>
+          </div>
+
+          <!-- 갤러리 이미지 03 -->
+          <div class="de-gallery__item">
+            <img
+              src="./assets/jpeg/banner_main_1.png"
+              alt="리셀로 상품 상세"
+            />
+            <div class="de-gallery__placeholder">상품 상세</div>
+          </div>
+
+          <!-- 갤러리 이미지 04 -->
+          <div class="de-gallery__item">
+            <img
+              src="./assets/jpeg/banner_main_1.png"
+              alt="리셀로 결제 화면"
+            />
+            <div class="de-gallery__placeholder">결제 화면</div>
+          </div>
+
+          <!-- 갤러리 이미지 05 -->
+          <div class="de-gallery__item">
+            <img
+              src="./assets/jpeg/banner_main_1.png"
+              alt="리셀로 채팅 화면"
+            />
+            <div class="de-gallery__placeholder">채팅 화면</div>
+          </div>
+
+          <!-- 갤러리 이미지 06 -->
+          <div class="de-gallery__item">
+            <img
+              src="./assets/jpeg/banner_main_1.png"
+              alt="리셀로 마이페이지"
+            />
+            <div class="de-gallery__placeholder">마이페이지</div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <div class="de-divider"></div>
+
+
+    <!-- =====================================================
+         📊 6. 핵심 성과 수치
+         ===================================================== -->
+    <section class="de-section de-section--gray">
+      <div class="de-container">
+
+        <span class="de-section-label">Key Results</span>
+        <h2 class="de-section-title">프로젝트 성과</h2>
+
+        <div class="de-result-grid">
+
+          <div class="de-result-card">
+            <span class="de-result-card__num">98%</span>
+            <span class="de-result-card__label">디자인 QA<br>통과율</span>
+          </div>
+
+          <div class="de-result-card">
+            <span class="de-result-card__num">3개월</span>
+            <span class="de-result-card__label">런칭까지<br>소요 기간</span>
+          </div>
+
+          <div class="de-result-card">
+            <span class="de-result-card__num">40+</span>
+            <span class="de-result-card__label">디자인된<br>화면 수</span>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <div class="de-divider"></div>
+
+
+    <!-- =====================================================
+         🔗 7. 하단 CTA — 링크 버튼
+         ===================================================== -->
+    <section class="de-cta">
+      <div class="de-container">
+
+        <h2 class="de-cta__title">직접 확인해보세요</h2>
+        <p class="de-cta__desc">실제 서비스 또는 상세 자료를 확인하실 수 있습니다.</p>
+
+        <div class="de-cta__btns">
+          <a href="#" class="btn btn--bg" target="_blank"
+            style="background:#fff; color:#6079FF;">
+            Live Link
+          </a>
+          <a href="./project-1.html" class="btn btn--bg"
+            style="background:rgba(255,255,255,0.15); color:#fff;
+                   border: 2px solid rgba(255,255,255,0.4); box-shadow:none;">
+            ← 목록으로
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ===================== 푸터 (기존과 동일) ===================== -->
+    <footer class="main-footer">
+      <div class="main-container">
+        <div class="main-footer__upper">
+          <div class="main-footer__row main-footer__row-1">
+            <h2 class="heading heading-sm main-footer__heading-sm">
+              <span>Social</span>
+            </h2>
+            <div class="main-footer__social-cont">
+              <a target="_blank" rel="noreferrer" href="#">
+                <img class="main-footer__icon" src="./assets/png/linkedin-ico.png" alt="icon" />
+              </a>
+              <a target="_blank" rel="noreferrer" href="#">
+                <img class="main-footer__icon" src="./assets/png/github-ico.png" alt="icon" />
+              </a>
+              <a target="_blank" rel="noreferrer" href="#">
+                <img class="main-footer__icon" src="./assets/png/twitter-ico.png" alt="icon" />
+              </a>
+              <a target="_blank" rel="noreferrer" href="#">
+                <img class="main-footer__icon" src="./assets/png/yt-ico.png" alt="icon" />
+              </a>
+              <a target="_blank" rel="noreferrer" href="#">
+                <img class="main-footer__icon main-footer__icon--mr-none" src="./assets/png/insta-ico.png" alt="icon" />
+              </a>
+            </div>
+          </div>
+          <div class="main-footer__row main-footer__row-2">
+            <h4 class="heading heading-sm text-lt">Sumin</h4>
+            <p class="main-footer__short-desc">
+              사용자가 겪는 사소한 불편함을 포착하여 명확한 디자인 솔루션을 도출합니다.
+            </p>
+          </div>
+        </div>
+        <div class="main-footer__lower">
+          &copy; Copyright 2024. Sumin Portfolio
+        </div>
+      </div>
+    </footer>
+    <!-- ===================== 푸터 끝 ===================== -->
+
+    <script src="./index.js"></script>
+  </body>
+</html>

@@ -786,18 +786,45 @@ textarea {
 /* ====================================
    ✅ 배너 텍스트 — 정가운데
    ==================================== */
+/* ✅ 배너 텍스트 감싸는 영역 — 정가운데 */
 .banner-item__text {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  z-index: 2;                /* ✅ 덮개(1)보다 위 → 글자 항상 보임 */
+  z-index: 2;
   width: 90%;
   text-align: center;
-  font-size: 1.3rem;
-  line-height: 1.4;
   padding: 0.5rem 1rem;
+  display: flex;              /* ✅ 타이틀/서브타이틀 위아래로 배치 */
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;                /* ✅ 타이틀과 서브타이틀 사이 간격 */
 }
+
+/* ✅ 타이틀 (리셀로) — 크고 굵게 */
+.banner-item__title {
+  display: block;
+  font-size: 2rem;            /* 👈 크기: 더 크게 */
+  font-weight: 600;           /* 👈 굵기: 가장 굵게 */
+  letter-spacing: 1px;
+  color: #fff;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+  line-height: 1.2;
+}
+
+/* ✅ 서브타이틀 (게임기 중고거래 플랫폼) — 작고 얇게 */
+.banner-item__subtitle {
+  display: block;
+  font-size: 1.2rem;          /* 👈 크기: 더 작게 */
+  font-weight: 400;           /* 👈 굵기: 보통 */
+  letter-spacing: 0.3px;
+  color: rgba(255, 255, 255, 0.85);
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
+  line-height: 1.4;
+}
+
+
 
 /* 6. 19번째 배너 혼자 남았을 때 가운데로 */
 .banner-item:last-child:nth-child(3n+1) {
@@ -813,4 +840,6 @@ textarea {
     grid-column: auto;
   }
 }
-```__
+
+
+
