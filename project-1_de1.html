@@ -37,14 +37,19 @@
    📌 히어로 섹션 — 스타일 라이트 그라데이션
    ============================================= */
 .de-hero {
+  /* ✅ 위: 진한 파란색 → 아래: 완전 투명 */
 
-
+ 
   padding: 18rem 0 12rem 0;
   color: #111;
   text-align: center;
   position: relative;
   overflow: hidden;
 }
+ 
+ 
+ 
+ 
 
 /* ✅ 배경에 은은한 빛 번짐 효과  */
 .de-hero::before {
@@ -237,7 +242,7 @@
         width: 100%;
         border-radius: 20px;
         overflow: hidden;
-        box-shadow: 0 30px 80px rgba(0,0,0,0.12);
+        /* box-shadow: 0 30px 80px rgba(0,0,0,0.12); */
         margin-bottom: 3rem;
         /* 이미지가 없을 때 보이는 placeholder */
         background: none;
