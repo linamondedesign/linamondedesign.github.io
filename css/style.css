@@ -263,6 +263,7 @@ textarea {
       margin-bottom: 3rem; }
       @media only screen and (max-width: 37.5em) {
         .about__content-title {
+          
           font-size: 2.4rem; } }
     .about__content-details-para {
       font-size: 1.8rem;
@@ -500,7 +501,7 @@ textarea {
   z-index: 1000;
   background: #000;
   background: #fff;
-  box-shadow: 0 10px 100px rgba(96, 121, 255, 0.1); }
+  box-shadow: 0 10px 100px rgba(96, 121, 255, 0.2); }
   
   .header__content {
     display: flex;
@@ -663,7 +664,12 @@ textarea {
 
 .skills {
   display: flex;
-  flex-wrap: wrap; }
+  flex-wrap: wrap;
+   margin-bottom: 3rem;
+}
+
+
+
   .skills__skill {
     padding: 1rem 2rem;
     margin-bottom: 1.5rem;
@@ -774,7 +780,7 @@ textarea {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.5);  /* ✅ 평소: 검정 50% */
+  background: rgba(0, 0, 0, 0.2);  /* ✅ 평소: 검정 50% */
   transition: background 0.5s ease; /* 서서히 바뀌는 효과 */
   z-index: 1;                       /* 이미지 위, 글자 아래 */
   border-radius: 14px;
@@ -850,3 +856,39 @@ textarea {
                'Segoe UI', sans-serif !important;
 }
 
+
+
+
+  /* =============================================
+     📌 About 섹션 — 프로필 이미지
+     ============================================= */
+
+  /* 이미지 감싸는 컨테이너 */
+  .about__profile-img-cont {
+    margin-top: 3rem;          /* 텍스트와 이미지 사이 간격 */
+    margin-bottom: 1rem;       /* 이미지와 버튼 사이 간격 */
+  }
+
+  /* 실제 이미지 */
+  .about__profile-img {
+    width: 30rem;              /* 이미지 너비 (원하는 크기로 조절!) */
+    height: 30rem;             /* 이미지 높이 */
+    border-radius: 50%;        /* ✅ 원형으로 만들기 */
+    object-fit: cover;         /* 이미지 비율 유지하며 채우기 */
+    display: block;            /* 블록 요소로 설정 */
+    margin-top: 12rem;
+
+  }
+
+    /* ✅ 파란 배경 유지 + 그림자
+    box-shadow: 0 8px 30px rgba(96, 121, 255, 0.25);
+    border: 3px solid rgba(96, 121, 255, 0.2); */
+
+    /* ✅ 호버 시 살짝 커지는 효과
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  } */
+/* 
+  .about__profile-img:hover {
+    transform: scale(1.04);
+    box-shadow: 0 12px 40px rgba(96, 121, 255, 0.35);
+  } */
