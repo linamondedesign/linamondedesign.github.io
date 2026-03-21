@@ -37,7 +37,8 @@ body {
   box-sizing: border-box;
   position: relative;
   line-height: 1.5;
-  font-family: sans-serif;
+    font-family: 'Pretendard', -apple-system, BlinkMacSystemFont,
+               'Segoe UI', sans-serif;
   overflow-x: hidden;
   overflow-y: scroll;
   font-family: 'Source Sans Pro', sans-serif; }
@@ -499,7 +500,8 @@ textarea {
   z-index: 1000;
   background: #000;
   background: #fff;
-  box-shadow: 0 10px 100px rgba(0, 0, 0, 0.1); }
+  box-shadow: 0 10px 100px rgba(96, 121, 255, 0.1); }
+  
   .header__content {
     display: flex;
     align-items: center;
@@ -841,4 +843,10 @@ textarea {
   }
 }
 
+
+/* ✅ 전체 폰트 일괄 Pretendard 적용 */
+*, *::before, *::after {
+  font-family: 'Pretendard', -apple-system, BlinkMacSystemFont,
+               'Segoe UI', sans-serif !important;
+}
 

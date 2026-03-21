@@ -31,10 +31,6 @@
         to   { opacity: 1; transform: translateY(0); }
       }
 
-
-
-
-
       /* =============================================
          📌 히어로 섹션 — 큰 타이틀 배경 영역
          ============================================= */
@@ -57,18 +53,15 @@
    ============================================= */
 /* 스크롤 이미지를 감싸는 영역 */
 .de-hero__scrolling-wrapper {
-  position: relative;
-  
-  /* ⭐ 이 3줄이 핵심! 컨테이너 너비 제한을 탈출! */
-  width: 100vw;                        /* 화면 전체 너비 */
-  margin-left: calc(-50vw + 50%);      /* 가운데서 왼쪽으로 밀어서 맞추기 */
+  position: absolute; /* 히어로 섹션에 겹치도록 절대 위치 */
+  top: 0;
   left: 0;
- 
-  height: 50rem;         /* 이미지 높이 (원하는 값으로 조절 가능) */
-  overflow: hidden;
-  margin-top: 10rem;      /* 서브타이틀과 간격 */
-  margin-bottom: 0;
-  z-index: 2;
+  width: 100%;
+  height: 100%; /* 히어로 섹션 전체 높이를 덮도록 */
+  overflow: hidden; /* 영역 밖으로 나가는 이미지는 숨김 */
+  z-index: 0; /* 텍스트보다 뒤에 오도록 설정 */
+  /* opacity: 0.2; mallpie.kr 처럼 은은하게 보이도록 투명도 조절 */
+  /* filter: grayscale(100%) brightness(1.2); 흑백으로 만들고 약간 밝게 */
 }
 
 /* 실제로 이미지가 움직이는 트랙 */
@@ -105,16 +98,28 @@
 
  
 /* ✅ 배경에 은은한 빛 번짐 효과  */
-/* ✅ 배경 오버레이 — 투명도 낮춰서 텍스트 선명하게! */
 .de-hero::before {
   content: '';
   position: absolute;
   inset: 0;
-
+     /* background: linear-gradient(
+          180deg,
+          rgba(96, 121, 255, 0.8),
+          rgba(96, 121, 255, 0.8),
+          rgba(255, 255, 255, 0.8) 100%
+        ); */
+     background: linear-gradient(
+          180deg,
+          rgba(244, 244, 255, 0.9),
+          rgba(255, 255, 255, 0.8) 100%
+        );
+  /* background:
+    radial-gradient(ellipse 80% 60% at 50% 0%,   rgba(180, 195, 255, 0.5) 0%, transparent 70%),
+    radial-gradient(ellipse 50% 40% at 80% 80%,  rgba(160, 210, 255, 0.3) 0%, transparent 60%),
+    radial-gradient(ellipse 40% 30% at 10% 70%,  rgba(200, 180, 255, 0.25) 0%, transparent 60%); */
   pointer-events: none;
   z-index: 0;
 }
-
 
 /* ✅ 콘텐츠가 배경 위로 오게 */
 .de-hero .de-container {
@@ -128,22 +133,22 @@
   background: rgba(96, 121, 255, 0.08);
   border: 1.5px solid rgba(96, 121, 255, 0.25);
   color: #6079FF;                    /* ✅ 포인트 컬러 텍스트 */
-  font-size: 1.6rem;
+  font-size: 1.3rem;
   font-weight: 700;
   letter-spacing: 2px;
   text-transform: uppercase;
   padding: 0.7rem 2rem;
   border-radius: 50px;
   margin-bottom: 3rem;
-  margin-top: 14rem;
+  margin-top: 10rem;
 }
 
 /* ✅ 메인 타이틀 — 어두운 색 + 포인트 컬러 강조 */
 .de-hero__title {
-  font-size: 9rem;
-  font-weight: 800;
+  font-size: 7rem;
+  font-weight: 900;
   letter-spacing: -1px;
-  line-height: 1.4;
+  line-height: 1.1;
   margin-bottom: 2rem;
   color: #111;                       /* ✅ 기본은 진한 검정 */
 
@@ -185,16 +190,10 @@
   justify-content: center;
   gap: 4rem;
   flex-wrap: wrap;
-  margin-top: 5rem;
+  margin-top: 3rem;
   padding-top: 4rem;
-  border-top: 1.5px solid rgba(96, 121, 255, 0.15);
- 
-  /* ✅ 아래 2줄 추가 — 보라색 선 너비 고정! */
-  max-width: 110rem;
-  margin-left: auto;
-  margin-right: auto;
+  border-top: 1.5px solid rgba(96, 121, 255, 0.15); /* ✅ 연보라 구분선 */
 }
-
 
 .de-hero__meta-item {
   text-align: center;
@@ -250,7 +249,7 @@
 
       .de-section-title {
         font-size: 3.8rem;
-        font-weight: 800;
+        font-weight: 900;
         color: #111;
         line-height: 1.2;
         margin-bottom: 2.5rem;
@@ -372,7 +371,7 @@
       .de-role-list li::before {
         content: '→';
         color: #6079FF;
-        font-weight: 800;
+        font-weight: 900;
         flex-shrink: 0;
       }
 
@@ -417,7 +416,7 @@
 
       .de-process-card__num {
         font-size: 5rem;
-        font-weight: 800;
+        font-weight: 900;
         color: #f0f2ff;
         line-height: 1;
         margin-bottom: 1.5rem;
@@ -459,7 +458,7 @@
         border-radius: 14px;
         overflow: hidden;
         aspect-ratio: 4 / 3;
-  
+        background: linear-gradient(135deg, #e8eaff 0%, #c5cbff 100%);
         position: relative;
         cursor: pointer;
       }
@@ -468,12 +467,12 @@
         content: '';
         position: absolute;
         inset: 0;
-
+        background: rgba(0,0,0,0);
         transition: background 0.3s ease;
       }
 
       .de-gallery__item:hover::after {
-
+        background: rgba(96, 121, 255, 0.25);
       }
 
       .de-gallery__item img {
@@ -495,16 +494,11 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        color: #fff;
-        font-size: 2.4rem;
+        color: #8090ff;
+        font-size: 1.4rem;
         font-weight: 600;
         letter-spacing: 1px;
-        
       }
-
-
-
-
 
       /* =============================================
          📌 핵심 결과 / 수치 섹션
@@ -541,7 +535,7 @@
       .de-result-card__num {
         display: block;
         font-size: 5rem;
-        font-weight: 800;
+        font-weight: 900;
         color: #6079FF;
         line-height: 1;
         margin-bottom: 1rem;
@@ -594,43 +588,9 @@
         color: #fff;
       }
 
-
-
-/* =============================================
-   📌 CTA 섹션 — 이미지 영역
-   ============================================= */
- 
-/* 이미지를 감싸는 래퍼 */
-.de-cta__image-wrap {
-  margin-top: 5rem;             /* 설명 텍스트와 간격 */
-  /* border-radius: 20px;          모서리 둥글게 */
-  overflow: hidden;             /* 둥근 모서리 적용 */
- /* 깊이감 있는 그림자 */
-  max-width: 90rem;             /* 너무 넓어지지 않도록 제한 */
-  margin-left: auto;            /* 가운데 정렬 */
-  margin-right: auto;           /* 가운데 정렬 */
- 
-  /* ✅ 호버 시 살짝 떠오르는 효과 */
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
-}
- 
-.de-cta__image-wrap:hover {
-  transform: translateY(-8px);
-  
-}
- 
-/* 실제 이미지 */
-.de-cta__image {
-  width: 100%;
-  height: auto;
-  display: block;
-}
-
-
-
       .de-cta__title {
         font-size: 4rem;
-        font-weight: 800;
+        font-weight: 900;
         margin-bottom: 1.5rem;
       }
 
@@ -683,129 +643,6 @@
         background: #eee;
         margin: 0;
       }
-
-
-
-/* =============================================
-   📌 모바일 미리보기 섹션 — 전체 스테이지
-   ============================================= */
-
-/* 목업을 가운데 정렬하는 컨테이너 */
-.de-preview__stage {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 7rem;
-  padding-bottom: 4rem;
-}
-
-/* =============================================
-   📌 모바일 목업 프레임 (CSS로 만든 폰 외형)
-   ============================================= */
-.de-mockup {
-  position: relative;
-  width: 28rem;                        /* 폰 너비 */
-  height: 58rem;                       /* 폰 높이 */
-  background: #1a1a2e;                 /* 폰 본체 색상 (진한 네이비) */
-  border-radius: 4.5rem;               /* 모서리 둥글게 */
-  padding: 1.8rem 1.4rem;              /* 내부 여백 (화면 주변 베젤) */
-  box-shadow:
-    0 0 0 1.5px #2a2a4a,               /* 내부 테두리 */
-    0 0 0 3px #111,                    /* 외부 테두리 */
-    0 40px 80px rgba(0,0,0,0.35),      /* 깊이감 있는 그림자 */
-    0 10px 30px rgba(96,121,255,0.2);  /* 파란빛 글로우 */
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-/* 상단 노치 (카메라/스피커 영역) */
-.de-mockup__notch {
-  width: 10rem;
-  height: 2.2rem;
-  background: #0f0f1e;
-  border-radius: 0 0 2rem 2rem;
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 10;
-}
-
-/* =============================================
-   📌 화면 영역 — 이미지가 스크롤되는 창문
-   ============================================= */
-.de-mockup__screen {
-  width: 100%;
-  flex: 1;                             /* 남은 공간 모두 차지 */
-  border-radius: 3.2rem;               /* 화면 모서리 */
-  overflow: hidden;                    /* 이미지가 화면 밖으로 나가지 않도록! */
-  background: #fff;
-  margin-top: 1rem;
-  margin-bottom: 0.5rem;
-  position: relative;
-}
-
-/* 이미지가 실제로 움직이는 트랙 */
-.de-mockup__scroll-track {
-  width: 100%;
-  animation: mobileScrollDown 12s linear infinite;
-                                       /* ← 속도를 조절하려면 12s 값을 바꾸세요 */
-}
-
-/* 스크롤 이미지 자체 */
-.de-mockup__scroll-track img {
-  width: 100%;
-  height: auto;
-  display: block;
-}
-
-/* 위에서 아래로 스크롤하는 핵심 애니메이션 */
-@keyframes mobileScrollDown {
-  0% {
-    transform: translateY(0);           /* 이미지 맨 위에서 시작 */
-  }
-  85% {
-    transform: translateY(calc(-100% + 54rem));
-                                        /* 이미지 맨 아래까지 내려감 */
-                                        /* 54rem = .de-mockup__screen 의 실제 높이 */
-  }
-  100% {
-    transform: translateY(calc(-100% + 54rem));
-                                        /* 마지막 위치에서 잠깐 멈춤 */
-  }
-}
-
-/* 하단 홈 바 (아이폰 스타일) */
-.de-mockup__home-bar {
-  width: 10rem;
-  height: 0.5rem;
-  background: rgba(255,255,255,0.25);
-  border-radius: 10px;
-  margin-top: auto;
-  flex-shrink: 0;
-}
-
-/* =============================================
-   📌 반응형 — 작은 화면에서 목업 크기 조절
-   ============================================= */
-@media only screen and (max-width: 37.5em) {
-  .de-mockup {
-    width: 22rem;
-    height: 46rem;
-  }
-
-  @keyframes mobileScrollDown {
-    0%   { transform: translateY(0); }
-    85%  { transform: translateY(calc(-100% + 42rem)); }
-    100% { transform: translateY(calc(-100% + 42rem)); }
-  }
-}
-
-
-
-
-
 
     </style>
   </head>
@@ -867,63 +704,105 @@
     <!-- ===================== 헤더 끝 ===================== -->
 
 
-<!-- 🎯 히어로 섹션 -->
-<section class="de-hero">
-  <div class="de-container">
+    <!-- =====================================================
+         🎯 1. 히어로 섹션 — 프로젝트 이름 + 요약
+         ===================================================== -->
+    <section class="de-hero">
+      <div class="de-container">
 
-    <!-- ① 태그 라벨 -->
-    <div class="de-hero__tag">Platform &amp; UI/UX Design</div>
-
-    <!-- ② 메인 타이틀 -->
-    <h1 class="de-hero__title">리셀로</h1>
-
-    <!-- ③ 서브 설명 -->
-    <p class="de-hero__sub">
-      게임기 중고거래 플랫폼 <br>
-      사용자의 Pain Point를 해결하는 직관적인 거래 경험 설계
-    </p>
-
-    <!-- ④ ✅ 스크롤 이미지 — 서브 설명 바로 아래 -->
-    <div class="de-hero__scrolling-wrapper">
-      <div class="de-hero__scrolling-track">
-        <img src="./assets/png/de1_main_bn01.png" alt="" class="de-hero__scrolling-item" />
-        <img src="./assets/png/de1_main_bn02.png" alt="" class="de-hero__scrolling-item" />
-        <img src="./assets/png/de1_main_bn03.png" alt="" class="de-hero__scrolling-item" />
-        <img src="./assets/png/de1_main_bn04.png" alt="" class="de-hero__scrolling-item" />
-        <img src="./assets/png/de1_main_bn05.png" alt="" class="de-hero__scrolling-item" />
-        <img src="./assets/png/de1_main_bn06.png" alt="" class="de-hero__scrolling-item" />
-        <img src="./assets/png/de1_main_bn07.png" alt="" class="de-hero__scrolling-item" />
-        <img src="./assets/png/de1_main_bn08.png" alt="" class="de-hero__scrolling-item" />
-        <img src="./assets/png/de1_main_bn09.png" alt="" class="de-hero__scrolling-item" />
-        <img src="./assets/png/de1_main_bn10.png" alt="" class="de-hero__scrolling-item" />
-
-      </div>
-      </div>
+        <section class="de-hero">
+  <!-- ✅ 자동 스크롤 이미지 영역 추가 -->
+  <div class="de-hero__scrolling-wrapper">
+    <div class="de-hero__scrolling-track">
+      <!-- bn1.png 이미지를 여러 번 반복해서 넣어주세요.
+           이미지가 많을수록 끊김 없이 자연스럽게 이어집니다. -->
+      <img src="./assets/jpeg/bn1.jpg" alt="Scrolling Image" class="de-hero__scrolling-item" />
+      <img src="./assets/jpeg/bn1.jpg" alt="Scrolling Image" class="de-hero__scrolling-item" />
+      <img src="./assets/jpeg/bn1.jpg" alt="Scrolling Image" class="de-hero__scrolling-item" />
+      <img src="./assets/jpeg/bn1.jpg" alt="Scrolling Image" class="de-hero__scrolling-item" />
+      <img src="./assets/jpeg/bn1.jpg" alt="Scrolling Image" class="de-hero__scrolling-item" />
+      <img src="./assets/jpeg/bn1.jpg" alt="Scrolling Image" class="de-hero__scrolling-item" />
+      <!-- seamless loop를 위해 한 번 더 복사해서 붙여넣으세요 -->
+      <img src="./assets/jpeg/bn1.jpg" alt="Scrolling Image" class="de-hero__scrolling-item" />
+      <img src="./assets/jpeg/bn1.jpg" alt="Scrolling Image" class="de-hero__scrolling-item" />
+      <img src="./assets/jpeg/bn1.jpg" alt="Scrolling Image" class="de-hero__scrolling-item" />
+      <img src="./assets/jpeg/bn1.jpg" alt="Scrolling Image" class="de-hero__scrolling-item" />
+      <img src="./assets/jpeg/bn1.jpg" alt="Scrolling Image" class="de-hero__scrolling-item" />
+      <img src="./assets/jpeg/bn1.jpg" alt="Scrolling Image" class="de-hero__scrolling-item" />
     </div>
+  </div>
 
-    <!-- ⑤ 메타 정보 -->
-    <!-- <div class="de-hero__meta">
-      <div class="de-hero__meta-item">
-        <span class="de-hero__meta-label">역할</span>
-        <span class="de-hero__meta-value">UI/UX Design</span>
-      </div>
-      <div class="de-hero__meta-item">
-        <span class="de-hero__meta-label">유형</span>
-        <span class="de-hero__meta-value">런칭 프로젝트</span>
-      </div>
-      <div class="de-hero__meta-item">
-        <span class="de-hero__meta-label">플랫폼</span>
-        <span class="de-hero__meta-value">Mobile</span>
-      </div>
-    </div> -->
-
+  <div class="de-container">
+    <!-- 기존 히어로 섹션 내용 -->
+    <!-- 작은 태그 라벨 -->
+    <div class="de-hero__tag">Platform &amp; UI/UX Design</div>
+    <!-- ... 나머지 내용 ... -->
   </div>
 </section>
 
+        
+        <!-- 작은 태그 라벨 -->
+        <div class="de-hero__tag">Platform &amp; UI/UX Design</div>
+
+        <!-- 메인 타이틀 -->
+        <h1 class="de-hero__title">리셀로</h1>
+
+        <!-- 서브 설명 -->
+        <p class="de-hero__sub">
+          게임기 중고거래 플랫폼 <br> 사용자의 Pain Point를 해결하는
+          직관적인 거래 경험 설계
+        </p>
+            <!-- =====================================================
+         🖼️ 2. 대표 쇼케이스 이미지 (풀너비)
+         ===================================================== -->
+    <section style="padding: 8rem 0; ">
+      <div class="de-container">
+
+        <!-- 대표 이미지 — 실제 이미지 경로로 바꿔주세요! -->
+        <div class="de-showcase">
+          <img
+            src="./assets/jpeg/detail_1_main.png"
+            alt="리셀로 메인 화면 쇼케이스"
+          />
+          <!-- 이미지가 없으면 아래 placeholder 가 보여요 -->
+        </div>
+
+        <!-- 이미지 캡션 -->
+        <p style="text-align:center; font-size:1.4rem; color:#999; margin-top:1.5rem; font-weight:600; letter-spacing:1px;">
+          리셀로 — 메인 화면 UI 쇼케이스
+        </p>
+
+      </div>
+    </section>
 
 
+        <!-- 뒤로 가기 버튼 -->
+        <!-- <a href="./project-1.html" class="de-back-btn">
+          ← 목록으로 돌아가기
+        </a> -->
 
+        <!-- 메타 정보 (역할 / 연도 / 플랫폼) -->
+        <div class="de-hero__meta">
+          <div class="de-hero__meta-item">
+            <span class="de-hero__meta-label">역할</span>
+            <span class="de-hero__meta-value">UI/UX Design</span>
+          </div>
+          <div class="de-hero__meta-item">
+            <span class="de-hero__meta-label">유형</span>
+            <span class="de-hero__meta-value">런칭 프로젝트</span>
+          </div>
+          <div class="de-hero__meta-item">
+            <span class="de-hero__meta-label">플랫폼</span>
+            <span class="de-hero__meta-value">Mobile</span>
+          </div>
+          <!-- <div class="de-hero__meta-item">
+            <span class="de-hero__meta-label">작업기간</span>
+            <span class="de-hero__meta-value">2023</span>
+          </div> -->
+        </div>
 
+      </div>
+    </section>
 
 
 
@@ -973,9 +852,9 @@
               <div class="de-role-card__title">담당 역할</div>
               <ul class="de-role-list">
                 <li>서비스 기획 참여</li>
-                <li>전체 UI 디자인</li>
+                <li>전체 UI 디자인 (런칭)</li>
                 <li>디자인 시스템 구축</li>
-                <li>반응형 웹 퍼블리싱 참여</li>
+                <li>반응형 웹 퍼블리싱</li>
                 <li>사용성 테스트 참여</li>
               </ul>
             </div>
@@ -984,9 +863,9 @@
               <div class="de-role-card__title">사용 툴</div>
               <ul class="de-role-list">
                 <li>Figma</li>
-                <li>Adobe Photoshop</li>
                 <li>Adobe Illustrator</li>
                 <li>HTML / CSS</li>
+                <li>Zeplin</li>
               </ul>
             </div>
           </div>
@@ -1069,56 +948,56 @@
           <!-- 갤러리 이미지 01 -->
           <div class="de-gallery__item">
             <img
-              src="./assets/jpeg/de1_gallery_bn1.jpg"
+              src="./assets/jpeg/banner_main_1.png"
               alt="리셀로 메인 화면"
             />
             <!-- 이미지 없을 때 보이는 텍스트 -->
-            <div class="de-gallery__placeholder"></div>
+            <div class="de-gallery__placeholder">메인 화면</div>
           </div>
 
           <!-- 갤러리 이미지 02 -->
           <div class="de-gallery__item">
             <img
-              src="./assets/jpeg/de1_gallery_bn2.jpg"
+              src="./assets/jpeg/banner_main_1.png"
               alt="리셀로 상품 목록"
             />
-            <div class="de-gallery__placeholder"></div>
+            <div class="de-gallery__placeholder">상품 목록</div>
           </div>
 
           <!-- 갤러리 이미지 03 -->
           <div class="de-gallery__item">
             <img
-              src="./assets/jpeg/de1_gallery_bn3.jpg"
+              src="./assets/jpeg/banner_main_1.png"
               alt="리셀로 상품 상세"
             />
-            <div class="de-gallery__placeholder"></div>
+            <div class="de-gallery__placeholder">상품 상세</div>
           </div>
 
           <!-- 갤러리 이미지 04 -->
           <div class="de-gallery__item">
             <img
-              src="./assets/jpeg/de1_gallery_bn4.jpg"
+              src="./assets/jpeg/banner_main_1.png"
               alt="리셀로 결제 화면"
             />
-            <div class="de-gallery__placeholder"></div>
+            <div class="de-gallery__placeholder">결제 화면</div>
           </div>
 
           <!-- 갤러리 이미지 05 -->
           <div class="de-gallery__item">
             <img
-              src="./assets/jpeg/de1_gallery_bn5.jpg"
+              src="./assets/jpeg/banner_main_1.png"
               alt="리셀로 채팅 화면"
             />
-            <div class="de-gallery__placeholder"></div>
+            <div class="de-gallery__placeholder">채팅 화면</div>
           </div>
 
           <!-- 갤러리 이미지 06 -->
           <div class="de-gallery__item">
             <img
-              src="./assets/jpeg/de1_gallery_bn6.jpg"
+              src="./assets/jpeg/banner_main_1.png"
               alt="리셀로 마이페이지"
             />
-            <div class="de-gallery__placeholder"></div>
+            <div class="de-gallery__placeholder">마이페이지</div>
           </div>
 
         </div>
@@ -1140,13 +1019,13 @@
         <div class="de-result-grid">
 
           <div class="de-result-card">
-            <span class="de-result-card__num">100%</span>
+            <span class="de-result-card__num">98%</span>
             <span class="de-result-card__label">디자인 QA<br>통과율</span>
           </div>
 
           <div class="de-result-card">
-            <span class="de-result-card__num">100%</span>
-            <span class="de-result-card__label">프로젝트<br>마감 기한 준수</span>
+            <span class="de-result-card__num">3개월</span>
+            <span class="de-result-card__label">런칭까지<br>소요 기간</span>
           </div>
 
           <div class="de-result-card">
@@ -1158,51 +1037,73 @@
       </div>
     </section>
 
-
-
-
     <div class="de-divider"></div>
 
 
-<!-- 🔗 7. 하단 CTA — 링크 버튼 -->
-<section class="de-cta">
-  <div class="de-container">
+    <!-- =====================================================
+         🔗 7. 하단 CTA — 링크 버튼
+         ===================================================== -->
+    <section class="de-cta">
+      <div class="de-container">
 
-    <h2 class="de-cta__title">경험의 차이를 직접 느껴보세요</h2>
-    <p class="de-cta__desc">치열한 고민 끝에 설계된 디자인을 확인하실 수 있습니다.</p>
+        <h2 class="de-cta__title">직접 확인해보세요</h2>
+        <p class="de-cta__desc">실제 서비스 또는 상세 자료를 확인하실 수 있습니다.</p>
 
-    <!-- ✅ 여기에 이미지 추가! -->
-    <div class="de-cta__image-wrap">
-      <img
-        src="./assets/jpeg/detail_1_main.jpg"
-        alt="리셀로 상세 메인 이미지"
-        class="de-cta__image"
-      />
-    </div>
+        <div class="de-cta__btns">
+          <a href="#" class="btn btn--bg" target="_blank"
+            style="background:#fff; color:#6079FF;">
+            Live Link
+          </a>
+          <a href="./project-1.html" class="btn btn--bg"
+            style="background:rgba(255,255,255,0.15); color:#fff;
+                   border: 2px solid rgba(255,255,255,0.4); box-shadow:none;">
+            ← 목록으로
+          </a>
+        </div>
 
-  </div>
-</section>
+      </div>
+    </section>
 
+
+    <!-- ===================== 푸터 (기존과 동일) ===================== -->
     <footer class="main-footer">
       <div class="main-container">
         <div class="main-footer__upper">
           <div class="main-footer__row main-footer__row-1">
-
+            <h2 class="heading heading-sm main-footer__heading-sm">
+              <span>Social</span>
+            </h2>
+            <div class="main-footer__social-cont">
+              <a target="_blank" rel="noreferrer" href="#">
+                <img class="main-footer__icon" src="./assets/png/linkedin-ico.png" alt="icon" />
+              </a>
+              <a target="_blank" rel="noreferrer" href="#">
+                <img class="main-footer__icon" src="./assets/png/github-ico.png" alt="icon" />
+              </a>
+              <a target="_blank" rel="noreferrer" href="#">
+                <img class="main-footer__icon" src="./assets/png/twitter-ico.png" alt="icon" />
+              </a>
+              <a target="_blank" rel="noreferrer" href="#">
+                <img class="main-footer__icon" src="./assets/png/yt-ico.png" alt="icon" />
+              </a>
+              <a target="_blank" rel="noreferrer" href="#">
+                <img class="main-footer__icon main-footer__icon--mr-none" src="./assets/png/insta-ico.png" alt="icon" />
+              </a>
+            </div>
           </div>
           <div class="main-footer__row main-footer__row-2">
             <h4 class="heading heading-sm text-lt">Sumin</h4>
             <p class="main-footer__short-desc">
-              작은 디테일이 모여 큰 감동을 만든다는 믿음으로 픽셀 하나하나에 브랜드의 진심을 담아냅니다.
+              사용자가 겪는 사소한 불편함을 포착하여 명확한 디자인 솔루션을 도출합니다.
             </p>
           </div>
         </div>
-
-        <!-- If you give me some credit or shoutout here by linking to my website, then it will be a big thing for me and will help me a lot :) -->
         <div class="main-footer__lower">
-          &copy; Copyright 2026. Made by Sumin
+          &copy; Copyright 2024. Sumin Portfolio
         </div>
       </div>
     </footer>
+    <!-- ===================== 푸터 끝 ===================== -->
 
     <script src="./index.js"></script>
   </body>
