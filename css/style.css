@@ -647,7 +647,7 @@ textarea {
   border-radius: 50%;
   object-fit: cover;
   display: block;
-  margin-top: 12rem;
+  margin-top: 5rem;
 }
 
 
@@ -853,7 +853,7 @@ textarea {
   font-weight: 400;
   letter-spacing: 0.3px;
   color: #fff;
-  /* text-shadow: 0 1px 4px rgba(0, 0, 0, 0.9); */
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.9);
   line-height: 1.4;
   margin-top: 0.4rem;
 }
