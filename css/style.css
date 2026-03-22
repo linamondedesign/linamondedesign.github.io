@@ -773,7 +773,7 @@ textarea {
   font-size: 1.6rem;
   font-weight: 700;
   text-transform: uppercase;
-  border-radius: 36px;
+  border-radius: 150px;
   overflow: hidden;
   cursor: pointer;
 }
@@ -812,7 +812,7 @@ textarea {
   background: rgba(0, 0, 0, 0);   /* 평소: 투명 */
   transition: background 0.5s ease;
   z-index: 1;
-  border-radius: 36px;
+  border-radius: 150px;
 }
 
 /* ✅ 오류 수정: 주석 없는 한글 텍스트 제거 → 올바른 CSS로 수정 */
