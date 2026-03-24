@@ -8,20 +8,12 @@
     <meta name="description" content="상세페이지 디자인 포트폴리오" />
 
     <link rel="stylesheet" href="css/style.css" />
-    <link
-      rel="stylesheet"
-      as="style"
-      crossorigin
-      href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css"
-    />
+    <link rel="stylesheet" as="style" crossorigin
+      href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
     <style>
-
-      /* =============================================
-          CSS 변수 & 리셋
-         ============================================= */
       :root {
         --primary:     #6079FF;
         --primary-dk:  #3a4fd0;
@@ -40,513 +32,141 @@
         --shadow-blue: 0 16px 40px rgba(96,121,255,0.18);
       }
 
-      /* =============================================
-          페이지 전환 애니메이션
-         ============================================= */
       body {
-        animation: fadeInPage 0.6s ease forwards;
+        animation: fadeInPage 0.6s ease;
       }
       @keyframes fadeInPage {
         from { opacity: 0; transform: translateY(20px); }
         to   { opacity: 1; transform: translateY(0); }
       }
 
-      /* =============================================
-          공통 레이아웃
-         ============================================= */
-      .de-container {
-        max-width: 110rem;
-        width: 92%;
-        margin: 0 auto;
-      }
+      .de-container { max-width: 110rem; width: 92%; margin: 0 auto; }
       .de-section        { padding: 10rem 0; }
       .de-section--gray  { background: var(--bg-gray); }
       .de-divider        { width: 100%; height: 1px; background: #eee; }
 
-      /* =============================================
-          섹션 타이틀 공통
-         ============================================= */
       .de-section-label {
-        display: inline-block;
-        font-size: 1.2rem;
-        font-weight: 600;
-        letter-spacing: 3px;
-        text-transform: uppercase;
-        color: var(--primary);
-        margin-bottom: 1.5rem;
+        display: inline-block; font-size: 1.2rem; font-weight: 600;
+        letter-spacing: 3px; text-transform: uppercase;
+        color: var(--primary); margin-bottom: 1.5rem;
       }
       .de-section-title {
-        font-size: 3.8rem;
-        font-weight: 800;
-        color: var(--txt-dark);
-        line-height: 1.25;
-        margin-bottom: 2.5rem;
+        font-size: 3.8rem; font-weight: 800;
+        color: var(--txt-dark); line-height: 1.25; margin-bottom: 2.5rem;
       }
-      .de-section-desc {
-        font-size: 1.8rem;
-        color: #666;
-        line-height: 1.8;
-        max-width: 70rem;
-      }
-      @media (max-width: 56.25em) {
-        .de-section-title { font-size: 3rem; }
-      }
-      @media (max-width: 37.5em) {
-        .de-section-title { font-size: 2.5rem; }
-        .de-section-desc  { font-size: 1.6rem; }
-      }
+      .de-section-desc { font-size: 1.8rem; color: #666; line-height: 1.8; max-width: 70rem; }
+      @media (max-width: 56.25em) { .de-section-title { font-size: 3rem; } }
+      @media (max-width: 37.5em)  { .de-section-title { font-size: 2.5rem; } .de-section-desc { font-size: 1.6rem; } }
 
-      /* =============================================
-          태그
-         ============================================= */
       .de-tags { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 2.5rem; }
       .de-tag {
-        padding: 0.8rem 2rem;
-        background: var(--primary-bg);
-        color: var(--primary);
-        border-radius: 50px;
-        font-size: 1.4rem;
-        font-weight: 600;
-        border: 1px solid var(--primary-bd);
-        transition: background 0.3s;
+        padding: 0.8rem 2rem; background: var(--primary-bg); color: var(--primary);
+        border-radius: 50px; font-size: 1.4rem; font-weight: 600;
+        border: 1px solid var(--primary-bd); transition: background 0.3s;
       }
       .de-tag:hover { background: rgba(96,121,255,0.15); }
 
-      /* =============================================
-          ① HERO — 수직 타이포그래피 레이아웃
-         ============================================= */
+      /* ① HERO */
       .de-hero {
-        padding: 20rem 0 12rem;
-        position: relative;
-        overflow: hidden;
-        background: linear-gradient(
-          160deg,
-          rgba(96,121,255,0.06) 0%,
-          rgba(255,255,255,0.0) 60%
-        );
+        padding: 20rem 0 12rem; position: relative; overflow: hidden;
+        background: linear-gradient(160deg, rgba(96,121,255,0.06) 0%, rgba(255,255,255,0.0) 60%);
       }
-      /* 배경 대형 수자 장식 */
       .de-hero::before {
-        content: 'Detail';
-        position: absolute;
-        right: -2rem;
-        top: 12rem;
-        font-size: 22rem;
-        font-weight: 800;
-        color: rgba(96,121,255,0.04);
-        letter-spacing: -8px;
-        pointer-events: none;
-        line-height: 1;
-        user-select: none;
+        content: 'Detail'; position: absolute; right: -2rem; top: 12rem;
+        font-size: 22rem; font-weight: 800; color: rgba(96,121,255,0.04);
+        letter-spacing: -8px; pointer-events: none; line-height: 1; user-select: none;
       }
       .de-hero__tag {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.8rem;
-        background: var(--primary-bg);
-        border: 1.5px solid var(--primary-bd);
-        color: var(--primary);
-        font-size: 1.3rem;
-        font-weight: 600;
-        letter-spacing: 2px;
-        text-transform: uppercase;
-        padding: 0.7rem 2rem;
-        border-radius: 50px;
-        margin-bottom: 3.5rem;
+        display: inline-flex; align-items: center; gap: 0.8rem;
+        background: var(--primary-bg); border: 1.5px solid var(--primary-bd);
+        color: var(--primary); font-size: 1.3rem; font-weight: 600;
+        letter-spacing: 2px; text-transform: uppercase; padding: 0.7rem 2rem;
+        border-radius: 50px; margin-bottom: 3.5rem;
       }
       .de-hero__tag::before {
-        content: '';
-        display: inline-block;
-        width: 0.7rem; height: 0.7rem;
-        background: var(--primary);
-        border-radius: 50%;
+        content: ''; display: inline-block; width: 0.7rem; height: 0.7rem;
+        background: var(--primary); border-radius: 50%;
       }
       .de-hero__title {
-        font-size: 10rem;
-        font-weight: 800;
-        letter-spacing: -3px;
-        line-height: 1.05;
-        margin-bottom: 3rem;
+        font-size: 10rem; font-weight: 800; letter-spacing: -3px;
+        line-height: 1.05; margin-bottom: 3rem;
         background: linear-gradient(135deg, var(--primary-dk) 0%, var(--primary) 50%, var(--primary-lt) 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
+        -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
       }
       @media (max-width: 56.25em) { .de-hero__title { font-size: 6rem; } }
       @media (max-width: 37.5em)  { .de-hero__title { font-size: 4rem; letter-spacing: -1px; } }
-
-      .de-hero__sub {
-        font-size: 2rem;
-        font-weight: 400;
-        color: var(--txt-mid);
-        max-width: 65rem;
-        line-height: 1.75;
-        margin-bottom: 5rem;
-      }
-
-      /* 히어로 스탯 배지 */
-      .de-hero__stats {
-        display: flex;
-        gap: 2rem;
-        flex-wrap: wrap;
-        margin-top: 2rem;
-      }
+      .de-hero__sub { font-size: 2rem; font-weight: 400; color: var(--txt-mid); max-width: 65rem; line-height: 1.75; margin-bottom: 5rem; }
+      .de-hero__stats { display: flex; gap: 2rem; flex-wrap: wrap; margin-top: 2rem; }
       .de-hero__stat {
-        background: var(--white);
-        border: 1px solid #eee;
-        border-radius: 14px;
-        padding: 2rem 3rem;
-        box-shadow: var(--shadow-sm);
-        text-align: center;
-        min-width: 14rem;
+        background: var(--white); border: 1px solid #eee; border-radius: 14px;
+        padding: 2rem 3rem; box-shadow: var(--shadow-sm); text-align: center; min-width: 14rem;
       }
-      .de-hero__stat-num {
-        display: block;
-        font-size: 3.2rem;
-        font-weight: 800;
-        color: var(--primary);
-        line-height: 1;
-        margin-bottom: 0.5rem;
-      }
-      .de-hero__stat-label {
-        font-size: 1.3rem;
-        color: var(--txt-light);
-        font-weight: 600;
-      }
-
-      /* 히어로 스크롤 이미지 */
+      .de-hero__stat-num { display: block; font-size: 3.2rem; font-weight: 800; color: var(--primary); line-height: 1; margin-bottom: 0.5rem; }
+      .de-hero__stat-label { font-size: 1.3rem; color: var(--txt-light); font-weight: 600; }
       .de-hero__scrolling-wrapper {
-        position: relative;
-        width: 100vw;
-        margin-left: calc(-50vw + 50%);
-        height: 46rem;
-        overflow: hidden;
-        margin-top: 8rem;
-        z-index: 2;
+        position: relative; width: 100vw; margin-left: calc(-50vw + 50%);
+        height: 46rem; overflow: hidden; margin-top: 8rem; z-index: 2;
       }
-      .de-hero__scrolling-track {
-        display: flex;
-        width: max-content;
-        height: 100%;
-        animation: scrollLeft 28s linear infinite;
-      }
-      .de-hero__scrolling-item {
-        height: 100%;
-        width: auto;
-        object-fit: cover;
-        flex-shrink: 0;
-        padding: 0 0.8rem;
-        border-radius: 12px;
-      }
-      @keyframes scrollLeft {
-        from { transform: translateX(0); }
-        to   { transform: translateX(-50%); }
-      }
+      .de-hero__scrolling-track { display: flex; width: max-content; height: 100%; animation: scrollLeft 28s linear infinite; }
+      .de-hero__scrolling-item { height: 100%; width: auto; object-fit: cover; flex-shrink: 0; padding: 0 0.8rem; border-radius: 12px; }
+      @keyframes scrollLeft { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
-      /* =============================================
-          ② 프로젝트 개요 — 2컬럼
-         ============================================= */
-      .de-overview-grid {
-        display: grid;
-        grid-template-columns: 1.4fr 1fr;
-        gap: 8rem;
-        align-items: start;
-      }
-      @media (max-width: 56.25em) {
-        .de-overview-grid { grid-template-columns: 1fr; gap: 5rem; }
-      }
-
-      /* 역할 카드 */
-      .de-role-card {
-        background: var(--white);
-        border-radius: 16px;
-        padding: 3rem;
-        box-shadow: var(--shadow-sm);
-        border: 1px solid #eee;
-      }
+      /* ② 프로젝트 개요 */
+      .de-overview-grid { display: grid; grid-template-columns: 1.4fr 1fr; gap: 8rem; align-items: start; }
+      @media (max-width: 56.25em) { .de-overview-grid { grid-template-columns: 1fr; gap: 5rem; } }
+      .de-role-card { background: var(--white); border-radius: 16px; padding: 3rem; box-shadow: var(--shadow-sm); border: 1px solid #eee; }
       .de-role-card + .de-role-card { margin-top: 2rem; }
-      .de-role-card__title {
-        font-size: 1.2rem;
-        font-weight: 600;
-        letter-spacing: 2px;
-        text-transform: uppercase;
-        color: var(--primary);
-        margin-bottom: 2rem;
-        padding-bottom: 1.5rem;
-        border-bottom: 2px solid #f0f0f0;
-      }
+      .de-role-card__title { font-size: 1.2rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--primary); margin-bottom: 2rem; padding-bottom: 1.5rem; border-bottom: 2px solid #f0f0f0; }
       .de-role-list { list-style: none; padding: 0; margin: 0; }
-      .de-role-list li {
-        font-size: 1.55rem;
-        color: #444;
-        padding: 1rem 0;
-        border-bottom: 1px solid #f5f5f5;
-        display: flex;
-        align-items: flex-start;
-        gap: 1rem;
-        font-weight: 600;
-        line-height: 1.5;
-      }
+      .de-role-list li { font-size: 1.55rem; color: #444; padding: 1rem 0; border-bottom: 1px solid #f5f5f5; display: flex; align-items: flex-start; gap: 1rem; font-weight: 600; line-height: 1.5; }
       .de-role-list li:last-child { border-bottom: none; }
-      .de-role-list li::before {
-        content: '→';
-        color: var(--primary);
-        font-weight: 800;
-        flex-shrink: 0;
-        margin-top: 0.1rem;
-      }
+      .de-role-list li::before { content: '→'; color: var(--primary); font-weight: 800; flex-shrink: 0; margin-top: 0.1rem; }
 
-      /* =============================================
-          ③ 디자인 철학 — 수평 타임라인 스타일
-         ============================================= */
-      .de-philosophy-grid {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 0;
-        margin-top: 6rem;
-        position: relative;
-      }
-      /* 연결선 */
-      .de-philosophy-grid::before {
-        content: '';
-        position: absolute;
-        top: 3.5rem;
-        left: 12.5%;
-        width: 75%;
-        height: 2px;
-        background: linear-gradient(to right, var(--primary-dk), var(--primary-lt));
-        z-index: 0;
-      }
-      @media (max-width: 56.25em) {
-        .de-philosophy-grid {
-          grid-template-columns: repeat(2, 1fr);
-          gap: 3rem;
-        }
-        .de-philosophy-grid::before { display: none; }
-      }
-      @media (max-width: 37.5em) {
-        .de-philosophy-grid { grid-template-columns: 1fr; }
-      }
+      /* ③ 디자인 철학 */
+      .de-philosophy-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; margin-top: 6rem; position: relative; }
+      .de-philosophy-grid::before { content: ''; position: absolute; top: 3.5rem; left: 12.5%; width: 75%; height: 2px; background: linear-gradient(to right, var(--primary-dk), var(--primary-lt)); z-index: 0; }
+      @media (max-width: 56.25em) { .de-philosophy-grid { grid-template-columns: repeat(2, 1fr); gap: 3rem; } .de-philosophy-grid::before { display: none; } }
+      @media (max-width: 37.5em) { .de-philosophy-grid { grid-template-columns: 1fr; } }
+      .de-philosophy-card { position: relative; z-index: 1; padding: 0 2rem; text-align: center; }
+      .de-philosophy-card__icon { width: 7rem; height: 7rem; background: linear-gradient(135deg, var(--primary-dk), var(--primary)); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 2.5rem; font-size: 2.8rem; box-shadow: 0 8px 24px rgba(96,121,255,0.35); position: relative; }
+      .de-philosophy-card__num { position: absolute; top: -0.8rem; right: -0.5rem; background: var(--white); color: var(--primary); font-size: 1rem; font-weight: 800; width: 2.2rem; height: 2.2rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 2px solid var(--primary); }
+      .de-philosophy-card__title { font-size: 1.7rem; font-weight: 800; color: var(--txt-dark); margin-bottom: 1rem; }
+      .de-philosophy-card__desc { font-size: 1.45rem; color: #777; line-height: 1.7; }
 
-      .de-philosophy-card {
-        position: relative;
-        z-index: 1;
-        padding: 0 2rem;
-        text-align: center;
-      }
-      .de-philosophy-card__icon {
-        width: 7rem;
-        height: 7rem;
-        background: linear-gradient(135deg, var(--primary-dk), var(--primary));
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin: 0 auto 2.5rem;
-        font-size: 2.8rem;
-        box-shadow: 0 8px 24px rgba(96,121,255,0.35);
-        position: relative;
-      }
-      .de-philosophy-card__num {
-        position: absolute;
-        top: -0.8rem;
-        right: -0.5rem;
-        background: var(--white);
-        color: var(--primary);
-        font-size: 1rem;
-        font-weight: 800;
-        width: 2.2rem;
-        height: 2.2rem;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border: 2px solid var(--primary);
-      }
-      .de-philosophy-card__title {
-        font-size: 1.7rem;
-        font-weight: 800;
-        color: var(--txt-dark);
-        margin-bottom: 1rem;
-      }
-      .de-philosophy-card__desc {
-        font-size: 1.45rem;
-        color: #777;
-        line-height: 1.7;
-      }
-
-      /* =============================================
-          ④ 브랜드 포트폴리오 — 인터랙티브 카드 그리드
-         ============================================= */
-      .de-brand-grid {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 2.5rem;
-        margin-top: 6rem;
-      }
-      @media (max-width: 56.25em) {
-        .de-brand-grid { grid-template-columns: repeat(2, 1fr); }
-      }
-      @media (max-width: 37.5em) {
-        .de-brand-grid { grid-template-columns: 1fr; }
-      }
-
-      .de-brand-card {
-        position: relative;
-        background: var(--white);
-        border-radius: var(--radius-lg);
-        padding: 3.5rem 3rem;
-        border: 1px solid #eee;
-        box-shadow: var(--shadow-sm);
-        overflow: hidden;
-        transition: transform 0.35s ease, box-shadow 0.35s ease;
-        cursor: default;
-      }
-      .de-brand-card::after {
-        content: '';
-        position: absolute;
-        inset: 0;
-        background: linear-gradient(135deg, var(--primary), var(--primary-lt));
-        opacity: 0;
-        transition: opacity 0.35s ease;
-        z-index: 0;
-        border-radius: var(--radius-lg);
-      }
-      .de-brand-card:hover {
-        transform: translateY(-8px);
-        box-shadow: var(--shadow-blue);
-      }
+      /* ④ 브랜드 포트폴리오 */
+      .de-brand-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2.5rem; margin-top: 6rem; }
+      @media (max-width: 56.25em) { .de-brand-grid { grid-template-columns: repeat(2, 1fr); } }
+      @media (max-width: 37.5em)  { .de-brand-grid { grid-template-columns: 1fr; } }
+      .de-brand-card { position: relative; background: var(--white); border-radius: var(--radius-lg); padding: 3.5rem 3rem; border: 1px solid #eee; box-shadow: var(--shadow-sm); overflow: hidden; transition: transform 0.35s ease, box-shadow 0.35s ease; cursor: default; }
+      .de-brand-card::after { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, var(--primary), var(--primary-lt)); opacity: 0; transition: opacity 0.35s ease; z-index: 0; border-radius: var(--radius-lg); }
+      .de-brand-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-blue); }
       .de-brand-card:hover::after { opacity: 1; }
-      .de-brand-card:hover .de-brand-card__category,
-      .de-brand-card:hover .de-brand-card__title,
-      .de-brand-card:hover .de-brand-card__desc,
-      .de-brand-card:hover .de-brand-card__tag { color: rgba(255,255,255,0.9); }
-      .de-brand-card:hover .de-brand-card__tag {
-        background: rgba(255,255,255,0.15);
-        border-color: rgba(255,255,255,0.3);
-      }
+      .de-brand-card:hover .de-brand-card__category, .de-brand-card:hover .de-brand-card__title, .de-brand-card:hover .de-brand-card__desc, .de-brand-card:hover .de-brand-card__tag { color: rgba(255,255,255,0.9); }
+      .de-brand-card:hover .de-brand-card__tag { background: rgba(255,255,255,0.15); border-color: rgba(255,255,255,0.3); }
       .de-brand-card:hover .de-brand-card__icon { background: rgba(255,255,255,0.2); }
-
       .de-brand-card__inner { position: relative; z-index: 1; }
-      .de-brand-card__icon {
-        width: 4.8rem; height: 4.8rem;
-        background: var(--primary-bg);
-        border-radius: 12px;
-        display: flex; align-items: center; justify-content: center;
-        font-size: 2.2rem;
-        margin-bottom: 2rem;
-        transition: background 0.35s;
-      }
-      .de-brand-card__category {
-        font-size: 1.1rem;
-        font-weight: 600;
-        letter-spacing: 2px;
-        text-transform: uppercase;
-        color: var(--primary);
-        margin-bottom: 0.8rem;
-        transition: color 0.35s;
-      }
-      .de-brand-card__title {
-        font-size: 2rem;
-        font-weight: 800;
-        color: var(--txt-dark);
-        margin-bottom: 1.2rem;
-        line-height: 1.3;
-        transition: color 0.35s;
-      }
-      .de-brand-card__desc {
-        font-size: 1.45rem;
-        color: #666;
-        line-height: 1.7;
-        margin-bottom: 2rem;
-        transition: color 0.35s;
-      }
+      .de-brand-card__icon { width: 4.8rem; height: 4.8rem; background: var(--primary-bg); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 2.2rem; margin-bottom: 2rem; transition: background 0.35s; }
+      .de-brand-card__category { font-size: 1.1rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--primary); margin-bottom: 0.8rem; transition: color 0.35s; }
+      .de-brand-card__title { font-size: 2rem; font-weight: 800; color: var(--txt-dark); margin-bottom: 1.2rem; line-height: 1.3; transition: color 0.35s; }
+      .de-brand-card__desc { font-size: 1.45rem; color: #666; line-height: 1.7; margin-bottom: 2rem; transition: color 0.35s; }
       .de-brand-card__tags { display: flex; flex-wrap: wrap; gap: 0.8rem; }
-      .de-brand-card__tag {
-        font-size: 1.2rem;
-        font-weight: 600;
-        color: var(--primary);
-        background: var(--primary-bg);
-        border: 1px solid var(--primary-bd);
-        border-radius: 50px;
-        padding: 0.4rem 1.2rem;
-        transition: color 0.35s, background 0.35s, border-color 0.35s;
-      }
+      .de-brand-card__tag { font-size: 1.2rem; font-weight: 600; color: var(--primary); background: var(--primary-bg); border: 1px solid var(--primary-bd); border-radius: 50px; padding: 0.4rem 1.2rem; transition: color 0.35s, background 0.35s, border-color 0.35s; }
 
-      /* =============================================
-          ⑤ 디자인 스킬 — 가로 바 차트 스타일
-         ============================================= */
-      .de-skill-list {
-        margin-top: 5rem;
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 3rem 6rem;
-      }
-      @media (max-width: 56.25em) {
-        .de-skill-list { grid-template-columns: 1fr; gap: 2.5rem; }
-      }
-      .de-skill-item {}
-      .de-skill-item__header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 1rem;
-      }
-      .de-skill-item__name {
-        font-size: 1.55rem;
-        font-weight: 600;
-        color: var(--txt-dark);
-      }
-      .de-skill-item__pct {
-        font-size: 1.4rem;
-        font-weight: 600;
-        color: var(--primary);
-      }
-      .de-skill-item__bar {
-        width: 100%;
-        height: 0.7rem;
-        background: #eef0ff;
-        border-radius: 10px;
-        overflow: hidden;
-      }
-      .de-skill-item__fill {
-        height: 100%;
-        background: linear-gradient(to right, var(--primary-dk), var(--primary-lt));
-        border-radius: 10px;
-        transform-origin: left;
-        animation: barGrow 1.2s ease forwards;
-        transform: scaleX(0);
-      }
-      @keyframes barGrow {
-        to { transform: scaleX(1); }
-      }
+      /* ⑤ 스킬 바 */
+      .de-skill-list { margin-top: 5rem; display: grid; grid-template-columns: repeat(2, 1fr); gap: 3rem 6rem; }
+      @media (max-width: 56.25em) { .de-skill-list { grid-template-columns: 1fr; gap: 2.5rem; } }
+      .de-skill-item__header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; }
+      .de-skill-item__name { font-size: 1.55rem; font-weight: 600; color: var(--txt-dark); }
+      .de-skill-item__pct  { font-size: 1.4rem; font-weight: 600; color: var(--primary); }
+      .de-skill-item__bar  { width: 100%; height: 0.7rem; background: #eef0ff; border-radius: 10px; overflow: hidden; }
+      .de-skill-item__fill { height: 100%; background: linear-gradient(to right, var(--primary-dk), var(--primary-lt)); border-radius: 10px; transform-origin: left; animation: barGrow 1.2s ease forwards; transform: scaleX(0); }
+      @keyframes barGrow { to { transform: scaleX(1); } }
 
-      /* =============================================
-          ⑥ 갤러리 — 매거진 레이아웃
-         ============================================= */
-      .de-gallery-magazine {
-        display: grid;
-        grid-template-columns: repeat(12, 1fr);
-        grid-template-rows: auto;
-        gap: 1.5rem;
-        margin-top: 5rem;
-      }
-      .de-gal-item {
-        border-radius: var(--radius-md);
-        overflow: hidden;
-        position: relative;
-        cursor: pointer;
-        background: var(--bg-gray);
-      }
-      .de-gal-item img {
-        width: 100%; height: 100%;
-        object-fit: cover;
-        display: block;
-        transition: transform 0.5s ease;
-      }
+      /* ⑥ 갤러리 */
+      .de-gallery-magazine { display: grid; grid-template-columns: repeat(12, 1fr); gap: 1.5rem; margin-top: 5rem; }
+      .de-gal-item { border-radius: var(--radius-md); overflow: hidden; position: relative; cursor: pointer; background: var(--bg-gray); }
+      .de-gal-item img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.5s ease; pointer-events: none; }
       .de-gal-item:hover img { transform: scale(1.06); }
-
-      /* 매거진 배치 */
       .de-gal-item:nth-child(1) { grid-column: span 8; aspect-ratio: 16/9; }
       .de-gal-item:nth-child(2) { grid-column: span 4; aspect-ratio: 4/5; }
       .de-gal-item:nth-child(3) { grid-column: span 4; aspect-ratio: 4/3; }
@@ -554,148 +174,201 @@
       .de-gal-item:nth-child(5) { grid-column: span 4; aspect-ratio: 4/3; }
       .de-gal-item:nth-child(6) { grid-column: span 6; aspect-ratio: 16/9; }
       .de-gal-item:nth-child(7) { grid-column: span 6; aspect-ratio: 16/9; }
-
-      @media (max-width: 56.25em) {
-        .de-gallery-magazine { grid-template-columns: repeat(2, 1fr); }
-        .de-gal-item:nth-child(n) {
-          grid-column: span 1 !important;
-          aspect-ratio: 4/3 !important;
-        }
-      }
-      @media (max-width: 37.5em) {
-        .de-gallery-magazine { grid-template-columns: 1fr; }
-      }
-
-      /* 이미지 오버레이 캡션 */
-      .de-gal-item__caption {
-        position: absolute;
-        bottom: 0; left: 0; right: 0;
-        background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 100%);
-        padding: 3rem 2rem 1.8rem;
-        transform: translateY(100%);
-        transition: transform 0.4s ease;
-      }
+      @media (max-width: 56.25em) { .de-gallery-magazine { grid-template-columns: repeat(2, 1fr); } .de-gal-item:nth-child(n) { grid-column: span 1 !important; aspect-ratio: 4/3 !important; } }
+      @media (max-width: 37.5em) { .de-gallery-magazine { grid-template-columns: 1fr; } }
+      .de-gal-item__hover { position: absolute; inset: 0; background: rgba(96,121,255,0.18); display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.3s ease; z-index: 2; pointer-events: none; }
+      .de-gal-item__hover span { font-size: 3.2rem; transform: scale(0.6); transition: transform 0.3s ease; display: block; }
+      .de-gal-item:hover .de-gal-item__hover { opacity: 1; }
+      .de-gal-item:hover .de-gal-item__hover span { transform: scale(1); }
+      .de-gal-item__caption { position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 100%); padding: 3rem 2rem 1.8rem; transform: translateY(100%); transition: transform 0.4s ease; z-index: 3; pointer-events: none; }
       .de-gal-item:hover .de-gal-item__caption { transform: translateY(0); }
-      .de-gal-item__caption-text {
-        color: #fff;
-        font-size: 1.5rem;
-        font-weight: 600;
-      }
+      .de-gal-item__caption-text { color: #fff; font-size: 1.5rem; font-weight: 600; }
 
-      /* =============================================
-          ⑦ 핵심 성과 수치
-         ============================================= */
-      .de-result-grid {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 2.5rem;
-        margin-top: 5rem;
-      }
-      @media (max-width: 56.25em) {
-        .de-result-grid { grid-template-columns: repeat(2, 1fr); }
-      }
-      @media (max-width: 37.5em) {
-        .de-result-grid { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
-      }
-      .de-result-card {
-        text-align: center;
-        padding: 4rem 2rem;
-        background: var(--white);
-        border-radius: var(--radius-lg);
-        box-shadow: var(--shadow-sm);
-        border: 1px solid #eee;
-        transition: transform 0.3s;
-      }
+      /* ⑦ 성과 수치 */
+      .de-result-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2.5rem; margin-top: 5rem; }
+      @media (max-width: 56.25em) { .de-result-grid { grid-template-columns: repeat(2, 1fr); } }
+      @media (max-width: 37.5em)  { .de-result-grid { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; } }
+      .de-result-card { text-align: center; padding: 4rem 2rem; background: var(--white); border-radius: var(--radius-lg); box-shadow: var(--shadow-sm); border: 1px solid #eee; transition: transform 0.3s; }
       .de-result-card:hover { transform: translateY(-5px); }
-      .de-result-card__num {
-        display: block;
-        font-size: 5rem;
-        font-weight: 800;
-        color: var(--primary);
-        line-height: 1;
-        margin-bottom: 1rem;
-      }
-      .de-result-card__label {
-        display: block;
-        font-size: 1.45rem;
-        color: #777;
-        font-weight: 600;
-        line-height: 1.5;
-      }
+      .de-result-card__num { display: block; font-size: 5rem; font-weight: 800; color: var(--primary); line-height: 1; margin-bottom: 1rem; }
+      .de-result-card__label { display: block; font-size: 1.45rem; color: #777; font-weight: 600; line-height: 1.5; }
+
+      /* ⑧ CTA */
+      .de-cta { background: linear-gradient(135deg, var(--primary-dk) 0%, var(--primary) 100%); padding: 10rem 0; text-align: center; color: var(--white); position: relative; overflow: hidden; }
+      .de-cta::before { content: ''; position: absolute; top: -15rem; right: -10rem; width: 50rem; height: 50rem; border-radius: 50%; background: rgba(255,255,255,0.05); pointer-events: none; }
+      .de-cta::after  { content: ''; position: absolute; bottom: -10rem; left: -5rem; width: 35rem; height: 35rem; border-radius: 50%; background: rgba(255,255,255,0.04); pointer-events: none; }
+      .de-cta__inner { position: relative; z-index: 1; }
+      .de-cta__label { display: inline-block; font-size: 1.2rem; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: rgba(255,255,255,0.6); margin-bottom: 2rem; }
+      .de-cta__title { font-size: 4.5rem; font-weight: 800; line-height: 1.2; margin-bottom: 2rem; }
+      @media (max-width: 37.5em) { .de-cta__title { font-size: 3rem; } }
+      .de-cta__desc { font-size: 1.8rem; color: rgba(255,255,255,0.72); margin-bottom: 5rem; max-width: 60rem; margin-left: auto; margin-right: auto; line-height: 1.7; }
+
 
       /* =============================================
-          ⑧ CTA 섹션
+         ★★★ 라이트박스 — 이미지 최대 960px 제한 버전 ★★★
          ============================================= */
-      .de-cta {
-        background: linear-gradient(135deg, var(--primary-dk) 0%, var(--primary) 100%);
-        padding: 10rem 0;
-        text-align: center;
-        color: var(--white);
-        position: relative;
-        overflow: hidden;
-      }
-      .de-cta::before {
-        content: '';
-        position: absolute;
-        top: -15rem; right: -10rem;
-        width: 50rem; height: 50rem;
-        border-radius: 50%;
-        background: rgba(255,255,255,0.05);
-        pointer-events: none;
-      }
-      .de-cta::after {
-        content: '';
-        position: absolute;
-        bottom: -10rem; left: -5rem;
-        width: 35rem; height: 35rem;
-        border-radius: 50%;
-        background: rgba(255,255,255,0.04);
-        pointer-events: none;
-      }
-      .de-cta__inner { position: relative; z-index: 1; }
-      .de-cta__label {
-        display: inline-block;
-        font-size: 1.2rem;
-        font-weight: 600;
-        letter-spacing: 3px;
-        text-transform: uppercase;
-        color: rgba(255,255,255,0.6);
-        margin-bottom: 2rem;
-      }
-      .de-cta__title {
-        font-size: 4.5rem;
-        font-weight: 800;
-        line-height: 1.2;
-        margin-bottom: 2rem;
-      }
-      @media (max-width: 37.5em) { .de-cta__title { font-size: 3rem; } }
-      .de-cta__desc {
-        font-size: 1.8rem;
-        color: rgba(255,255,255,0.72);
-        margin-bottom: 5rem;
-        max-width: 60rem;
-        margin-left: auto;
-        margin-right: auto;
-        line-height: 1.7;
-      }
-      .de-cta__image-wrap {
-        max-width: 90rem;
-        margin: 0 auto;
-        border-radius: 20px;
-        overflow: hidden;
-        box-shadow: 0 40px 80px rgba(0,0,0,0.3);
-        transition: transform 0.4s ease;
-      }
-      .de-cta__image-wrap:hover { transform: translateY(-8px); }
-      .de-cta__image { width: 100%; height: auto; display: block; }
 
+      /* 오버레이 */
+      #lbOverlay {
+        display: none;
+        position: fixed !important;
+        top: 0 !important; left: 0 !important;
+        width: 100vw !important; height: 100vh !important;
+        background: rgba(0, 0, 0, 0.93) !important;
+        z-index: 2147483647 !important;
+        box-sizing: border-box;
+        animation: none !important;
+        opacity: 1 !important;
+        transform: none !important;
+      }
+      #lbOverlay.is-open {
+        display: flex !important;
+        align-items: center;
+        justify-content: center;
+      }
+
+      /*
+       * ★ 변경 ①: #lbBox 에 max-width: 960px 추가
+       *   → 이미지 영역 전체가 960px 이내로 제한됨
+       *   → 화면이 960px 보다 넓어도 이미지는 960px 이내
+       */
+      #lbBox {
+        position: absolute;
+        top: 0; left: 0; right: 0; bottom: 140px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 80px 40px 20px;   /* ★ 좌우 패딩 100→40px (960px 확보) */
+        box-sizing: border-box;
+        animation: none !important;
+      }
+
+      /* 이미지 래퍼 — 960px 제한의 핵심 컨테이너 */
+      #lbImgWrap {
+        /* ★ 변경 ①-b: 래퍼 자체에 max-width 960px 설정 */
+        max-width: 960px !important;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+      }
+
+      /* 닫기 버튼 */
+      #lbClose {
+        position: fixed !important;
+        top: 16px; right: 20px;
+        width: 44px; height: 44px;
+        background: rgba(255,255,255,0.15);
+        border: 1.5px solid rgba(255,255,255,0.35);
+        border-radius: 50%;
+        display: flex; align-items: center; justify-content: center;
+        cursor: pointer;
+        z-index: 2147483647 !important;
+        color: #fff; font-size: 18px;
+        transition: background 0.2s, transform 0.25s;
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        outline: none;
+        animation: none !important;
+        opacity: 1 !important;
+      }
+      #lbClose:hover { background: rgba(255,255,255,0.28); transform: rotate(90deg); }
+
+      /* 화살표 */
+      .lb-arrow {
+        position: fixed !important;
+        top: 50%; transform: translateY(-50%);
+        width: 52px; height: 52px;
+        background: rgba(255,255,255,0.12);
+        border: 1.5px solid rgba(255,255,255,0.28);
+        border-radius: 50%;
+        display: flex; align-items: center; justify-content: center;
+        cursor: pointer;
+        z-index: 2147483647 !important;
+        color: #fff; font-size: 22px;
+        transition: background 0.2s, border-color 0.2s;
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        user-select: none; outline: none;
+        animation: none !important;
+        opacity: 1 !important;
+      }
+      .lb-arrow:hover { background: rgba(96,121,255,0.6); border-color: rgba(96,121,255,0.8); }
+      #lbPrev { left: 16px !important; }
+      #lbNext { right: 16px !important; }
+
+      /* 카운터 */
+      #lbCounter {
+        position: fixed !important;
+        bottom: 18px; left: 50%; transform: translateX(-50%);
+        color: rgba(255,255,255,0.9);
+        font-size: 13px; font-weight: 600; letter-spacing: 2px;
+        z-index: 2147483647 !important;
+        background: rgba(0,0,0,0.55);
+        padding: 5px 20px; border-radius: 50px;
+        backdrop-filter: blur(6px);
+        -webkit-backdrop-filter: blur(6px);
+        white-space: nowrap;
+        animation: none !important;
+        opacity: 1 !important;
+      }
+
+      /* 썸네일 */
+      #lbThumbs {
+        position: fixed !important;
+        bottom: 52px; left: 50%; transform: translateX(-50%);
+        display: flex; gap: 7px;
+        z-index: 2147483647 !important;
+        max-width: 86vw; overflow-x: auto;
+        padding: 4px 2px; scrollbar-width: none;
+        animation: none !important;
+        opacity: 1 !important;
+      }
+      #lbThumbs::-webkit-scrollbar { display: none; }
+      .lb-thumb {
+        width: 56px; height: 38px;
+        object-fit: cover; border-radius: 4px;
+        opacity: 0.4; border: 2px solid transparent;
+        cursor: pointer;
+        transition: opacity 0.2s, border-color 0.2s, transform 0.2s;
+        flex-shrink: 0;
+        animation: none !important;
+      }
+      .lb-thumb:hover { opacity: 0.78; transform: scale(1.07); }
+      .lb-thumb.is-active { opacity: 1; border-color: #6079FF; transform: scale(1.11); }
+
+      /* 로딩 스피너 */
+      #lbSpinner {
+        display: none;
+        position: absolute;
+        top: 50%; left: 50%;
+        transform: translate(-50%, -50%);
+        width: 40px; height: 40px;
+        border: 3px solid rgba(255,255,255,0.2);
+        border-top-color: #6079FF;
+        border-radius: 50%;
+        animation: spin 0.7s linear infinite !important;
+        z-index: 2;
+      }
+      @keyframes spin { to { transform: translate(-50%, -50%) rotate(360deg); } }
+
+      /* 모바일 */
+      @media (max-width: 600px) {
+        #lbBox    { padding: 60px 12px 20px; bottom: 120px; }
+        .lb-arrow { width: 40px !important; height: 40px !important; font-size: 16px; }
+        #lbPrev   { left: 6px !important; }
+        #lbNext   { right: 6px !important; }
+        #lbClose  { top: 10px; right: 10px; width: 38px; height: 38px; font-size: 15px; }
+        #lbThumbs { bottom: 44px; }
+        .lb-thumb { width: 42px; height: 28px; }
+      }
     </style>
   </head>
   <body>
 
-    <!-- =============================================
-          헤더
-         ============================================= -->
+    <!-- 헤더 -->
     <header class="header">
       <div class="header__content">
         <div class="header__logo-container">
@@ -729,42 +402,22 @@
       </div>
     </header>
 
-
-    <!-- =============================================
-          ① HERO 섹션
-         ============================================= -->
+    <!-- ① HERO -->
     <section class="de-hero">
       <div class="de-container">
-
         <div class="de-hero__tag">Content Design</div>
-
         <h1 class="de-hero__title">상세페이지<br>디자인</h1>
-
         <p class="de-hero__sub">
           단 하나의 페이지가 구매를 결정합니다.<br>
           브랜드의 본질을 꿰뚫고, 소비자의 감정선을 자극하는<br>
           전략적 상세페이지 디자인의 모든 것.
         </p>
-
-        <!-- 히어로 스탯 배지 -->
         <div class="de-hero__stats">
-          <div class="de-hero__stat">
-            <span class="de-hero__stat-num">100+</span>
-            <span class="de-hero__stat-label">상세페이지 디자인</span>
-          </div>
-          <div class="de-hero__stat">
-            <span class="de-hero__stat-num">20+</span>
-            <span class="de-hero__stat-label">운영 브랜드</span>
-          </div>
-          <div class="de-hero__stat">
-            <span class="de-hero__stat-num">5</span>
-            <span class="de-hero__stat-label">온/오프라인 채널</span>
-          </div>
+          <div class="de-hero__stat"><span class="de-hero__stat-num">100+</span><span class="de-hero__stat-label">상세페이지 디자인</span></div>
+          <div class="de-hero__stat"><span class="de-hero__stat-num">20+</span><span class="de-hero__stat-label">운영 브랜드</span></div>
+          <div class="de-hero__stat"><span class="de-hero__stat-num">5</span><span class="de-hero__stat-label">온/오프라인 채널</span></div>
         </div>
-
       </div>
-
-      <!-- 자동 스크롤 이미지 -->
       <div class="de-hero__scrolling-wrapper">
         <div class="de-hero__scrolling-track">
           <img src="./assets/png/de2_de1_main_bn01.png" alt="" class="de-hero__scrolling-item" />
@@ -775,7 +428,6 @@
           <img src="./assets/png/de2_de1_main_bn06.png" alt="" class="de-hero__scrolling-item" />
           <img src="./assets/png/de2_de1_main_bn07.png" alt="" class="de-hero__scrolling-item" />
           <img src="./assets/png/de2_de1_main_bn08.png" alt="" class="de-hero__scrolling-item" />
-          <!-- 무한 루프 복사본 -->
           <img src="./assets/png/de2_de1_main_bn01.png" alt="" class="de-hero__scrolling-item" />
           <img src="./assets/png/de2_de1_main_bn02.png" alt="" class="de-hero__scrolling-item" />
           <img src="./assets/png/de2_de1_main_bn03.png" alt="" class="de-hero__scrolling-item" />
@@ -788,538 +440,379 @@
       </div>
     </section>
 
-
     <div class="de-divider"></div>
 
-
-    <!-- =============================================
-          ② 프로젝트 개요 + 역할 카드
-         ============================================= -->
+    <!-- ② 프로젝트 개요 -->
     <section class="de-section">
       <div class="de-container">
         <div class="de-overview-grid">
-
-          <!-- 왼쪽: 개요 -->
           <div>
             <span class="de-section-label">Project Overview</span>
-            <h2 class="de-section-title">
-              팔리는 페이지를<br>설계하다
-            </h2>
-            <p class="de-section-desc">
-              상세페이지는 단순한 제품 소개가 아닙니다.<br>
-              브랜드의 첫인상이자, 소비자의 구매 결정이 이뤄지는
-              <strong style="color:#6079FF;">단 하나의 접점</strong>입니다.
-            </p>
-            <p class="de-section-desc" style="margin-top:2rem;">
-              동국제약 센텔리안24, 마데카21을 비롯해 원더브라, AK MALL,
-              유플러스콕, 세이브에어 등 20개 이상의 브랜드를 대상으로
-              종합몰·오픈마켓·자사몰·홈쇼핑 채널별 맞춤 상세페이지를
-              100건 이상 기획·설계·디자인했습니다.
-            </p>
-            <p class="de-section-desc" style="margin-top:2rem;">
-              제품의 핵심 강점을 시각 언어로 번역하고,
-              스크롤 흐름 안에서 소비자가 자연스럽게 구매 버튼으로 향하도록
-              설득력 있는 정보 위계와 비주얼 스토리텔링을 설계합니다.
-            </p>
-
+            <h2 class="de-section-title">팔리는 페이지를<br>설계하다</h2>
+            <p class="de-section-desc">상세페이지는 단순한 제품 소개가 아닙니다.<br>브랜드의 첫인상이자, 소비자의 구매 결정이 이뤄지는 <strong style="color:#6079FF;">단 하나의 접점</strong>입니다.</p>
+            <p class="de-section-desc" style="margin-top:2rem;">동국제약 센텔리안24, 마데카21을 비롯해 원더브라, AK MALL, 유플러스콕, 세이브에어 등 20개 이상의 브랜드를 대상으로 종합몰·오픈마켓·자사몰·홈쇼핑 채널별 맞춤 상세페이지를 100건 이상 기획·설계·디자인했습니다.</p>
+            <p class="de-section-desc" style="margin-top:2rem;">제품의 핵심 강점을 시각 언어로 번역하고, 스크롤 흐름 안에서 소비자가 자연스럽게 구매 버튼으로 향하도록 설득력 있는 정보 위계와 비주얼 스토리텔링을 설계합니다.</p>
             <div class="de-tags">
-              <span class="de-tag">#상세페이지</span>
-              <span class="de-tag">#커머스디자인</span>
-              <span class="de-tag">#비주얼스토리텔링</span>
-              <span class="de-tag">#전환율최적화</span>
-              <span class="de-tag">#멀티채널</span>
-              <span class="de-tag">#브랜드디자인</span>
-              <span class="de-tag">#홈쇼핑VMD</span>
-              <span class="de-tag">#MD·마케팅</span>
+              <span class="de-tag">#상세페이지</span><span class="de-tag">#커머스디자인</span><span class="de-tag">#비주얼스토리텔링</span><span class="de-tag">#전환율최적화</span><span class="de-tag">#멀티채널</span><span class="de-tag">#브랜드디자인</span><span class="de-tag">#홈쇼핑VMD</span><span class="de-tag">#MD·마케팅</span>
             </div>
           </div>
-
-          <!-- 오른쪽: 역할 카드 -->
           <div>
             <div class="de-role-card">
               <div class="de-role-card__title">담당 역할</div>
               <ul class="de-role-list">
-                <li>상세페이지 기획 · 콘텐츠 설계</li>
-                <li>멀티채널 상세페이지 UI 디자인</li>
-                <li>홈쇼핑 VMD 기획 및 디자인</li>
-                <li>온라인 광고 · 마케팅 소재 제작</li>
-                <li>브랜드 런칭 총괄 · 시즌 이벤트 기획</li>
+                <li>상세페이지 기획 · 콘텐츠 설계</li><li>멀티채널 상세페이지 UI 디자인</li><li>홈쇼핑 VMD 기획 및 디자인</li><li>온라인 광고 · 마케팅 소재 제작</li><li>브랜드 런칭 총괄 · 시즌 이벤트 기획</li>
               </ul>
             </div>
             <div class="de-role-card">
               <div class="de-role-card__title">운영 채널</div>
               <ul class="de-role-list">
-                <li>자사몰 · 종합몰 · 백화점몰</li>
-                <li>오픈마켓 (쿠팡·11번가·G마켓·옥션)</li>
-                <li>소셜커머스 · 폐쇄몰 · 복지몰</li>
-                <li>홈쇼핑 (CJ·GS·현대·롯데)</li>
-                <li>SNS · 인플루언서 채널</li>
+                <li>자사몰 · 종합몰 · 백화점몰</li><li>오픈마켓 (쿠팡·11번가·G마켓·옥션)</li><li>소셜커머스 · 폐쇄몰 · 복지몰</li><li>홈쇼핑 (CJ·GS·현대·롯데)</li><li>SNS · 인플루언서 채널</li>
               </ul>
             </div>
             <div class="de-role-card">
               <div class="de-role-card__title">사용 툴</div>
               <ul class="de-role-list">
-                <li>Figma</li>
-                <li>Adobe Photoshop · Illustrator</li>
-                <li>Adobe XD</li>
-                <li>Notion · 아임웹</li>
+                <li>Figma</li><li>Adobe Photoshop · Illustrator</li><li>Adobe XD</li><li>Notion · 아임웹</li>
               </ul>
             </div>
           </div>
-
         </div>
       </div>
     </section>
 
-
     <div class="de-divider"></div>
 
-
-    <!-- =============================================
-          ③ 디자인 철학 — 4단계 수평 흐름
-         ============================================= -->
+    <!-- ③ 디자인 철학 -->
     <section class="de-section de-section--gray">
       <div class="de-container">
-
         <span class="de-section-label">Design Philosophy</span>
         <h2 class="de-section-title">팔리는 상세페이지의 4가지 법칙</h2>
-        <p class="de-section-desc">
-          100개 이상의 상세페이지를 직접 기획·설계하며 체득한
-          핵심 원칙입니다.
-        </p>
-
+        <p class="de-section-desc">100개 이상의 상세페이지를 직접 기획·설계하며 체득한 핵심 원칙입니다.</p>
         <div class="de-philosophy-grid">
-
-          <div class="de-philosophy-card">
-            <div class="de-philosophy-card__icon">
-              🎯
-              <span class="de-philosophy-card__num">01</span>
-            </div>
-            <div class="de-philosophy-card__title">Pain → Solution</div>
-            <div class="de-philosophy-card__desc">
-              소비자가 느끼는 불편함을 첫 화면에서 짚고,
-              제품이 해결책임을 3초 안에 납득시킵니다.
-            </div>
-          </div>
-
-          <div class="de-philosophy-card">
-            <div class="de-philosophy-card__icon">
-              📖
-              <span class="de-philosophy-card__num">02</span>
-            </div>
-            <div class="de-philosophy-card__title">스크롤 스토리</div>
-            <div class="de-philosophy-card__desc">
-              정보를 단순히 나열하지 않고,
-              기승전결이 있는 하나의 이야기로 엮어
-              끝까지 읽히는 흐름을 설계합니다.
-            </div>
-          </div>
-
-          <div class="de-philosophy-card">
-            <div class="de-philosophy-card__icon">
-              🧠
-              <span class="de-philosophy-card__num">03</span>
-            </div>
-            <div class="de-philosophy-card__title">채널 최적화</div>
-            <div class="de-philosophy-card__desc">
-              자사몰·오픈마켓·홈쇼핑·SNS —
-              채널마다 다른 소비자 심리와 규격에
-              맞춰 동일 브랜드를 다르게 표현합니다.
-            </div>
-          </div>
-
-          <div class="de-philosophy-card">
-            <div class="de-philosophy-card__icon">
-              📈
-              <span class="de-philosophy-card__num">04</span>
-            </div>
-            <div class="de-philosophy-card__title">전환 유도 설계</div>
-            <div class="de-philosophy-card__desc">
-              CTA 버튼·후기·사회적 증거 배치까지
-              데이터와 직관을 결합해
-              구매를 자연스럽게 이끌어 냅니다.
-            </div>
-          </div>
-
+          <div class="de-philosophy-card"><div class="de-philosophy-card__icon">🎯<span class="de-philosophy-card__num">01</span></div><div class="de-philosophy-card__title">Pain → Solution</div><div class="de-philosophy-card__desc">소비자가 느끼는 불편함을 첫 화면에서 짚고, 제품이 해결책임을 3초 안에 납득시킵니다.</div></div>
+          <div class="de-philosophy-card"><div class="de-philosophy-card__icon">📖<span class="de-philosophy-card__num">02</span></div><div class="de-philosophy-card__title">스크롤 스토리</div><div class="de-philosophy-card__desc">정보를 단순히 나열하지 않고, 기승전결이 있는 하나의 이야기로 엮어 끝까지 읽히는 흐름을 설계합니다.</div></div>
+          <div class="de-philosophy-card"><div class="de-philosophy-card__icon">🧠<span class="de-philosophy-card__num">03</span></div><div class="de-philosophy-card__title">채널 최적화</div><div class="de-philosophy-card__desc">자사몰·오픈마켓·홈쇼핑·SNS — 채널마다 다른 소비자 심리와 규격에 맞춰 동일 브랜드를 다르게 표현합니다.</div></div>
+          <div class="de-philosophy-card"><div class="de-philosophy-card__icon">📈<span class="de-philosophy-card__num">04</span></div><div class="de-philosophy-card__title">전환 유도 설계</div><div class="de-philosophy-card__desc">CTA 버튼·후기·사회적 증거 배치까지 데이터와 직관을 결합해 구매를 자연스럽게 이끌어 냅니다.</div></div>
         </div>
       </div>
     </section>
 
-
     <div class="de-divider"></div>
 
-
-    <!-- =============================================
-          ④ 브랜드별 포트폴리오 카드 그리드
-         ============================================= -->
+    <!-- ④ 브랜드 포트폴리오 -->
     <section class="de-section">
       <div class="de-container">
-
         <span class="de-section-label">Brand Portfolio</span>
         <h2 class="de-section-title">함께한 브랜드들</h2>
-        <p class="de-section-desc">
-          화장품·헬스케어·패션·항공·커머스까지 —
-          카테고리를 넘나드는 브랜드 경험이 설계의 깊이를 만듭니다.
-        </p>
-
+        <p class="de-section-desc">화장품·헬스케어·패션·항공·커머스까지 — 카테고리를 넘나드는 브랜드 경험이 설계의 깊이를 만듭니다.</p>
         <div class="de-brand-grid">
-
-          <div class="de-brand-card">
-            <div class="de-brand-card__inner">
-              <div class="de-brand-card__icon">💄</div>
-              <div class="de-brand-card__category">화장품 · 헬스케어</div>
-              <div class="de-brand-card__title">동국제약 뷰티 브랜드</div>
-              <div class="de-brand-card__desc">
-                센텔리안24, 마데카21, 센시안, 메이올웨이즈 등 대표 브랜드의
-                자사몰·오픈마켓·홈쇼핑 전 채널 상세페이지 기획·디자인 및
-                신규 브랜드 런칭 총괄 VMD를 담당했습니다.
-              </div>
-              <div class="de-brand-card__tags">
-                <span class="de-brand-card__tag">홈쇼핑VMD</span>
-                <span class="de-brand-card__tag">런칭총괄</span>
-                <span class="de-brand-card__tag">멀티채널</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="de-brand-card">
-            <div class="de-brand-card__inner">
-              <div class="de-brand-card__icon">👙</div>
-              <div class="de-brand-card__category">패션 · 언더웨어</div>
-              <div class="de-brand-card__title">원더브라 外 속옷 브랜드</div>
-              <div class="de-brand-card__desc">
-                원더브라, 플레이텍스, 헤인즈, 마릴린먼로 등
-                10개 이상의 속옷 브랜드를 대상으로 홈쇼핑 방송 MD·VMD와
-                오픈마켓·소셜커머스 채널별 상세페이지를 제작했습니다.
-              </div>
-              <div class="de-brand-card__tags">
-                <span class="de-brand-card__tag">홈쇼핑MD</span>
-                <span class="de-brand-card__tag">영업디자인</span>
-                <span class="de-brand-card__tag">SNS마케팅</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="de-brand-card">
-            <div class="de-brand-card__inner">
-              <div class="de-brand-card__icon">🛍️</div>
-              <div class="de-brand-card__category">백화점 · 복지몰</div>
-              <div class="de-brand-card__title">AK MALL · AK FAMILY</div>
-              <div class="de-brand-card__desc">
-                AK MALL, 임직원몰, 타사 복지몰의 프로모션 이벤트·상세페이지·
-                이메일·팝업 디자인을 담당했으며, 2012·2013년 2회에 걸쳐
-                이메일·메인몰 리뉴얼 프로젝트를 총괄했습니다.
-              </div>
-              <div class="de-brand-card__tags">
-                <span class="de-brand-card__tag">리뉴얼총괄</span>
-                <span class="de-brand-card__tag">이메일디자인</span>
-                <span class="de-brand-card__tag">우수사원수상</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="de-brand-card">
-            <div class="de-brand-card__inner">
-              <div class="de-brand-card__icon">📱</div>
-              <div class="de-brand-card__category">커머스 · 플랫폼</div>
-              <div class="de-brand-card__title">U+콕 · K딜 · 오토카지</div>
-              <div class="de-brand-card__desc">
-                유플러스 통신 기반 커머스 플랫폼 U+콕의 모든 운영 소재·기획전·
-                상세페이지를 전담 디자인했으며, K딜·오토카지 커머스몰
-                웹 디자인 및 운영 소재를 제작했습니다.
-              </div>
-              <div class="de-brand-card__tags">
-                <span class="de-brand-card__tag">커머스UI</span>
-                <span class="de-brand-card__tag">기획전디자인</span>
-                <span class="de-brand-card__tag">운영소재</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="de-brand-card">
-            <div class="de-brand-card__inner">
-              <div class="de-brand-card__icon">✈️</div>
-              <div class="de-brand-card__category">항공 · 여행</div>
-              <div class="de-brand-card__title">세이브에어 항공몰</div>
-              <div class="de-brand-card__desc">
-                항공 특가 커머스 플랫폼 세이브에어의 런칭 UI를 설계했습니다.
-                복잡한 항공권 구매 플로우를 단순화하고, 타임딜·최저가 비교
-                모듈 등 핵심 기능의 상세 안내 페이지를 디자인했습니다.
-              </div>
-              <div class="de-brand-card__tags">
-                <span class="de-brand-card__tag">런칭UI</span>
-                <span class="de-brand-card__tag">타임딜UX</span>
-                <span class="de-brand-card__tag">플로우최적화</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="de-brand-card">
-            <div class="de-brand-card__inner">
-              <div class="de-brand-card__icon">🎯</div>
-              <div class="de-brand-card__category">생활건강 · 기타</div>
-              <div class="de-brand-card__title">동국제약 건강 기능 식품</div>
-              <div class="de-brand-card__desc">
-                구강케어·건강기능식품·스포츠 브랜드의 카테고리별 특성을
-                살린 상세페이지 디자인과 오프라인 판촉물·인쇄 광고물
-                편집 디자인을 함께 수행했습니다.
-              </div>
-              <div class="de-brand-card__tags">
-                <span class="de-brand-card__tag">편집디자인</span>
-                <span class="de-brand-card__tag">오프라인광고</span>
-                <span class="de-brand-card__tag">카테고리전략</span>
-              </div>
-            </div>
-          </div>
-
+          <div class="de-brand-card"><div class="de-brand-card__inner"><div class="de-brand-card__icon">💄</div><div class="de-brand-card__category">화장품 · 헬스케어</div><div class="de-brand-card__title">동국제약 뷰티 브랜드</div><div class="de-brand-card__desc">센텔리안24, 마데카21, 센시안, 메이올웨이즈 등 대표 브랜드의 자사몰·오픈마켓·홈쇼핑 전 채널 상세페이지 기획·디자인 및 신규 브랜드 런칭 총괄 VMD를 담당했습니다.</div><div class="de-brand-card__tags"><span class="de-brand-card__tag">홈쇼핑VMD</span><span class="de-brand-card__tag">런칭총괄</span><span class="de-brand-card__tag">멀티채널</span></div></div></div>
+          <div class="de-brand-card"><div class="de-brand-card__inner"><div class="de-brand-card__icon">👙</div><div class="de-brand-card__category">패션 · 언더웨어</div><div class="de-brand-card__title">원더브라 外 속옷 브랜드</div><div class="de-brand-card__desc">원더브라, 플레이텍스, 헤인즈, 마릴린먼로 등 10개 이상의 속옷 브랜드를 대상으로 홈쇼핑 방송 MD·VMD와 오픈마켓·소셜커머스 채널별 상세페이지를 제작했습니다.</div><div class="de-brand-card__tags"><span class="de-brand-card__tag">홈쇼핑MD</span><span class="de-brand-card__tag">영업디자인</span><span class="de-brand-card__tag">SNS마케팅</span></div></div></div>
+          <div class="de-brand-card"><div class="de-brand-card__inner"><div class="de-brand-card__icon">🛍️</div><div class="de-brand-card__category">백화점 · 복지몰</div><div class="de-brand-card__title">AK MALL · AK FAMILY</div><div class="de-brand-card__desc">AK MALL, 임직원몰, 타사 복지몰의 프로모션 이벤트·상세페이지·이메일·팝업 디자인을 담당했으며, 2012·2013년 2회에 걸쳐 이메일·메인몰 리뉴얼 프로젝트를 총괄했습니다.</div><div class="de-brand-card__tags"><span class="de-brand-card__tag">리뉴얼총괄</span><span class="de-brand-card__tag">이메일디자인</span><span class="de-brand-card__tag">우수사원수상</span></div></div></div>
+          <div class="de-brand-card"><div class="de-brand-card__inner"><div class="de-brand-card__icon">📱</div><div class="de-brand-card__category">커머스 · 플랫폼</div><div class="de-brand-card__title">U+콕 · K딜 · 오토카지</div><div class="de-brand-card__desc">유플러스 통신 기반 커머스 플랫폼 U+콕의 모든 운영 소재·기획전·상세페이지를 전담 디자인했으며, K딜·오토카지 커머스몰 웹 디자인 및 운영 소재를 제작했습니다.</div><div class="de-brand-card__tags"><span class="de-brand-card__tag">커머스UI</span><span class="de-brand-card__tag">기획전디자인</span><span class="de-brand-card__tag">운영소재</span></div></div></div>
+          <div class="de-brand-card"><div class="de-brand-card__inner"><div class="de-brand-card__icon">✈️</div><div class="de-brand-card__category">항공 · 여행</div><div class="de-brand-card__title">세이브에어 항공몰</div><div class="de-brand-card__desc">항공 특가 커머스 플랫폼 세이브에어의 런칭 UI를 설계했습니다. 복잡한 항공권 구매 플로우를 단순화하고, 타임딜·최저가 비교 모듈 등 핵심 기능의 상세 안내 페이지를 디자인했습니다.</div><div class="de-brand-card__tags"><span class="de-brand-card__tag">런칭UI</span><span class="de-brand-card__tag">타임딜UX</span><span class="de-brand-card__tag">플로우최적화</span></div></div></div>
+          <div class="de-brand-card"><div class="de-brand-card__inner"><div class="de-brand-card__icon">🎯</div><div class="de-brand-card__category">생활건강 · 기타</div><div class="de-brand-card__title">동국제약 건강 기능 식품</div><div class="de-brand-card__desc">구강케어·건강기능식품·스포츠 브랜드의 카테고리별 특성을 살린 상세페이지 디자인과 오프라인 판촉물·인쇄 광고물 편집 디자인을 함께 수행했습니다.</div><div class="de-brand-card__tags"><span class="de-brand-card__tag">편집디자인</span><span class="de-brand-card__tag">오프라인광고</span><span class="de-brand-card__tag">카테고리전략</span></div></div></div>
         </div>
       </div>
     </section>
 
-
     <div class="de-divider"></div>
 
-
-    <!-- =============================================
-          ⑤ 디자인 스킬 바
-         ============================================= -->
+    <!-- ⑤ 스킬 바 -->
     <section class="de-section de-section--gray">
       <div class="de-container">
-
         <span class="de-section-label">Design Skills</span>
         <h2 class="de-section-title">도구와 역량</h2>
-        <p class="de-section-desc">
-          디자인 툴부터 마케팅·MD 역량까지 — 상세페이지 하나를
-          완성하는 데 필요한 모든 무기를 갖추고 있습니다.
-        </p>
-
+        <p class="de-section-desc">디자인 툴부터 마케팅·MD 역량까지 — 상세페이지 하나를 완성하는 데 필요한 모든 무기를 갖추고 있습니다.</p>
         <div class="de-skill-list">
-
-          <div class="de-skill-item">
-            <div class="de-skill-item__header">
-              <span class="de-skill-item__name">Adobe Photoshop</span>
-              <span class="de-skill-item__pct">98%</span>
-            </div>
-            <div class="de-skill-item__bar">
-              <div class="de-skill-item__fill" style="width:98%"></div>
-            </div>
-          </div>
-
-          <div class="de-skill-item">
-            <div class="de-skill-item__header">
-              <span class="de-skill-item__name">Adobe Illustrator</span>
-              <span class="de-skill-item__pct">92%</span>
-            </div>
-            <div class="de-skill-item__bar">
-              <div class="de-skill-item__fill" style="width:92%"></div>
-            </div>
-          </div>
-
-          <div class="de-skill-item">
-            <div class="de-skill-item__header">
-              <span class="de-skill-item__name">Figma</span>
-              <span class="de-skill-item__pct">90%</span>
-            </div>
-            <div class="de-skill-item__bar">
-              <div class="de-skill-item__fill" style="width:90%"></div>
-            </div>
-          </div>
-
-          <div class="de-skill-item">
-            <div class="de-skill-item__header">
-              <span class="de-skill-item__name">멀티채널 MD · 마케팅 기획</span>
-              <span class="de-skill-item__pct">95%</span>
-            </div>
-            <div class="de-skill-item__bar">
-              <div class="de-skill-item__fill" style="width:95%"></div>
-            </div>
-          </div>
-
-          <div class="de-skill-item">
-            <div class="de-skill-item__header">
-              <span class="de-skill-item__name">홈쇼핑 VMD 기획</span>
-              <span class="de-skill-item__pct">93%</span>
-            </div>
-            <div class="de-skill-item__bar">
-              <div class="de-skill-item__fill" style="width:93%"></div>
-            </div>
-          </div>
-
-          <div class="de-skill-item">
-            <div class="de-skill-item__header">
-              <span class="de-skill-item__name">HTML · CSS 퍼블리싱</span>
-              <span class="de-skill-item__pct">80%</span>
-            </div>
-            <div class="de-skill-item__bar">
-              <div class="de-skill-item__fill" style="width:80%"></div>
-            </div>
-          </div>
-
+          <div class="de-skill-item"><div class="de-skill-item__header"><span class="de-skill-item__name">Adobe Photoshop</span><span class="de-skill-item__pct">98%</span></div><div class="de-skill-item__bar"><div class="de-skill-item__fill" style="width:98%"></div></div></div>
+          <div class="de-skill-item"><div class="de-skill-item__header"><span class="de-skill-item__name">Adobe Illustrator</span><span class="de-skill-item__pct">92%</span></div><div class="de-skill-item__bar"><div class="de-skill-item__fill" style="width:92%"></div></div></div>
+          <div class="de-skill-item"><div class="de-skill-item__header"><span class="de-skill-item__name">Figma</span><span class="de-skill-item__pct">90%</span></div><div class="de-skill-item__bar"><div class="de-skill-item__fill" style="width:90%"></div></div></div>
+          <div class="de-skill-item"><div class="de-skill-item__header"><span class="de-skill-item__name">멀티채널 MD · 마케팅 기획</span><span class="de-skill-item__pct">95%</span></div><div class="de-skill-item__bar"><div class="de-skill-item__fill" style="width:95%"></div></div></div>
+          <div class="de-skill-item"><div class="de-skill-item__header"><span class="de-skill-item__name">홈쇼핑 VMD 기획</span><span class="de-skill-item__pct">93%</span></div><div class="de-skill-item__bar"><div class="de-skill-item__fill" style="width:93%"></div></div></div>
+          <div class="de-skill-item"><div class="de-skill-item__header"><span class="de-skill-item__name">HTML · CSS 퍼블리싱</span><span class="de-skill-item__pct">80%</span></div><div class="de-skill-item__bar"><div class="de-skill-item__fill" style="width:80%"></div></div></div>
         </div>
       </div>
     </section>
 
-
     <div class="de-divider"></div>
 
-
-    <!-- =============================================
-          ⑥ 갤러리 — 매거진 레이아웃
-         ============================================= -->
+    <!-- ⑥ 갤러리 -->
     <section class="de-section">
       <div class="de-container">
-
         <span class="de-section-label">Screen Gallery</span>
         <h2 class="de-section-title">상세페이지 디자인 작업물</h2>
-        <!-- <h2 class="de-section-title">상세페이지 디자인 작업물</h2> -->
-
         <div class="de-gallery-magazine">
-
-          <div class="de-gal-item">
-            <img src="./assets/jpeg/project-2_de1_gallery_bn08.jpg" alt="" />
-            <div class="de-gal-item__caption">
-              <!-- <span class="de-gal-item__caption-text">동국제약 센텔리안24 상세페이지</span> -->
-            </div>
-          </div>
-
-          <div class="de-gal-item">
-            <img src="./assets/jpeg/project-2_de1_gallery_bn02.jpg" alt="" />
-            <div class="de-gal-item__caption">
-              <!-- <span class="de-gal-item__caption-text">원더브라 시즌 기획전</span> -->
-            </div>
-          </div>
-
-          <div class="de-gal-item">
-            <img src="./assets/jpeg/project-2_de1_gallery_bn03.jpg" alt="" />
-            <div class="de-gal-item__caption">
-              <!-- <span class="de-gal-item__caption-text">AK MALL 프로모션 이벤트 페이지</span> -->
-            </div>
-          </div>
-
-          <div class="de-gal-item">
-            <img src="./assets/jpeg/project-2_de1_gallery_bn04.jpg" alt="" />
-            <div class="de-gal-item__caption">
-              <!-- <span class="de-gal-item__caption-text">U+콕 기획전 상세 소재</span> -->
-            </div>
-          </div>
-
-          <div class="de-gal-item">
-            <img src="./assets/jpeg/project-2_de1_gallery_bn05.jpg" alt="" />
-            <div class="de-gal-item__caption">
-              <!-- <span class="de-gal-item__caption-text">세이브에어 항공몰 상세 UI</span> -->
-            </div>
-          </div>
-
-          <div class="de-gal-item">
-            <img src="./assets/jpeg/project-2_de1_gallery_bn06.jpg" alt="" />
-            <div class="de-gal-item__caption">
-              <!-- <span class="de-gal-item__caption-text">홈쇼핑 방송 VMD 디자인</span> -->
-            </div>
-          </div>
-
-          <div class="de-gal-item">
-            <img src="./assets/jpeg/project-2_de1_gallery_bn08.jpg" alt="" />
-            <div class="de-gal-item__caption">
-              <!-- <span class="de-gal-item__caption-text">오픈마켓 채널 최적화 상세페이지</span> -->
-            </div>
-          </div>
-
+          <div class="de-gal-item"><img src="./assets/jpeg/project-2_de1_gallery_bn08.jpg" alt="작업물 1" /><div class="de-gal-item__hover"><span>🔍</span></div><div class="de-gal-item__caption"></div></div>
+          <div class="de-gal-item"><img src="./assets/jpeg/project-2_de1_gallery_bn02.jpg" alt="작업물 2" /><div class="de-gal-item__hover"><span>🔍</span></div><div class="de-gal-item__caption"></div></div>
+          <div class="de-gal-item"><img src="./assets/jpeg/project-2_de1_gallery_bn03.jpg" alt="작업물 3" /><div class="de-gal-item__hover"><span>🔍</span></div><div class="de-gal-item__caption"></div></div>
+          <div class="de-gal-item"><img src="./assets/jpeg/project-2_de1_gallery_bn04.jpg" alt="작업물 4" /><div class="de-gal-item__hover"><span>🔍</span></div><div class="de-gal-item__caption"></div></div>
+          <div class="de-gal-item"><img src="./assets/jpeg/project-2_de1_gallery_bn05.jpg" alt="작업물 5" /><div class="de-gal-item__hover"><span>🔍</span></div><div class="de-gal-item__caption"></div></div>
+          <div class="de-gal-item"><img src="./assets/jpeg/project-2_de1_gallery_bn06.jpg" alt="작업물 6" /><div class="de-gal-item__hover"><span>🔍</span></div><div class="de-gal-item__caption"></div></div>
+          <div class="de-gal-item"><img src="./assets/jpeg/project-2_de1_gallery_bn07.jpg" alt="작업물 7" /><div class="de-gal-item__hover"><span>🔍</span></div><div class="de-gal-item__caption"></div></div>
         </div>
       </div>
     </section>
 
-
     <div class="de-divider"></div>
 
-
-    <!-- =============================================
-          ⑦ 핵심 성과 수치
-         ============================================= -->
+    <!-- ⑦ 성과 수치 -->
     <section class="de-section de-section--gray">
       <div class="de-container">
-
         <span class="de-section-label">Key Results</span>
         <h2 class="de-section-title">숫자로 증명하는 경험</h2>
-
         <div class="de-result-grid">
-
-          <div class="de-result-card">
-            <span class="de-result-card__num">12년</span>
-            <span class="de-result-card__label">온·오프라인·홈쇼핑<br>통합 디자인 경력</span>
-          </div>
-
-          <div class="de-result-card">
-            <span class="de-result-card__num">100+</span>
-            <span class="de-result-card__label">기획·설계·디자인한<br>상세페이지 누적 건수</span>
-          </div>
-
-          <div class="de-result-card">
-            <span class="de-result-card__num">20+</span>
-            <span class="de-result-card__label">직접 운영 및 디자인한<br>브랜드 수</span>
-          </div>
-
-          <div class="de-result-card">
-            <span class="de-result-card__num">5+</span>
-            <span class="de-result-card__label">자사몰·오픈마켓·홈쇼핑·<br>SNS 등 운영 채널</span>
-          </div>
-
+          <div class="de-result-card"><span class="de-result-card__num">12년</span><span class="de-result-card__label">온·오프라인·홈쇼핑<br>통합 디자인 경력</span></div>
+          <div class="de-result-card"><span class="de-result-card__num">100+</span><span class="de-result-card__label">기획·설계·디자인한<br>상세페이지 누적 건수</span></div>
+          <div class="de-result-card"><span class="de-result-card__num">20+</span><span class="de-result-card__label">직접 운영 및 디자인한<br>브랜드 수</span></div>
+          <div class="de-result-card"><span class="de-result-card__num">5+</span><span class="de-result-card__label">자사몰·오픈마켓·홈쇼핑·<br>SNS 등 운영 채널</span></div>
         </div>
       </div>
     </section>
 
-
     <div class="de-divider"></div>
 
-
-    <!-- =============================================
-          ⑧ CTA 섹션
-         ============================================= -->
+    <!-- ⑧ CTA -->
     <section class="de-cta">
       <div class="de-container">
         <div class="de-cta__inner">
-
           <p class="de-cta__label">Detail Page Design</p>
-          <h2 class="de-cta__title">
-            스크롤을 멈추게 하는<br>페이지를 만듭니다.
-          </h2>
-          <p class="de-cta__desc">
-            브랜드의 강점을 가장 설득력 있게 표현하는 방법,
-            12년의 경험이 담긴 상세페이지 디자인을 직접 확인하세요.
-          </p>
-<!-- 
-          <div class="de-cta__image-wrap">
-            <img
-              src="./assets/jpeg/de2_de1_all_bn.jpg"
-              alt="상세페이지 디자인 포트폴리오 전체 이미지"
-              class="de-cta__image"
-            />
-          </div> -->
-
+          <h2 class="de-cta__title">스크롤을 멈추게 하는<br>페이지를 만듭니다.</h2>
+          <p class="de-cta__desc">브랜드의 강점을 가장 설득력 있게 표현하는 방법, 12년의 경험이 담긴 상세페이지 디자인을 직접 확인하세요.</p>
         </div>
       </div>
     </section>
 
-
-    <!-- =============================================
-          푸터
-         ============================================= -->
+    <!-- 푸터 -->
     <footer class="main-footer">
       <div class="main-container">
         <div class="main-footer__upper">
           <div class="main-footer__row main-footer__row-1"></div>
           <div class="main-footer__row main-footer__row-2">
             <h4 class="heading heading-sm text-lt">Sumin</h4>
-            <p class="main-footer__short-desc">
-              작은 디테일이 모여 큰 감동을 만든다는 믿음으로
-              픽셀 하나하나에 브랜드의 진심을 담아냅니다.
-            </p>
+            <p class="main-footer__short-desc">작은 디테일이 모여 큰 감동을 만든다는 믿음으로 픽셀 하나하나에 브랜드의 진심을 담아냅니다.</p>
           </div>
         </div>
-        <div class="main-footer__lower">
-          &copy; Copyright 2026. Made by Sumin
-        </div>
+        <div class="main-footer__lower">&copy; Copyright 2026. Made by Sumin</div>
       </div>
     </footer>
+
+
+    <!-- ★★★ 라이트박스 HTML ★★★ -->
+    <div id="lbOverlay">
+      <div id="lbBox">
+        <!--
+          ★ 변경 ①: lbImgWrap 에 CSS max-width:960px 적용
+             (인라인 style 제거 → CSS에서 관리)
+        -->
+        <div id="lbImgWrap"></div>
+        <div id="lbSpinner"></div>
+      </div>
+      <button id="lbClose" title="닫기">&#10005;</button>
+      <button class="lb-arrow" id="lbPrev" title="이전">&#8592;</button>
+      <button class="lb-arrow" id="lbNext" title="다음">&#8594;</button>
+      <div id="lbCounter">1 / 7</div>
+      <div id="lbThumbs"></div>
+    </div>
+
+
+    <script>
+    (function () {
+
+      /* ── 이미지 경로 수집 ── */
+      var galItems = document.querySelectorAll('.de-gal-item');
+      var imgSrcs  = [];
+
+      galItems.forEach(function (item) {
+        var img = item.querySelector('img');
+        if (img) {
+          imgSrcs.push({
+            src: img.getAttribute('src'),
+            alt: img.getAttribute('alt') || '갤러리 이미지'
+          });
+        }
+      });
+
+      if (imgSrcs.length === 0) return;
+
+      /* ── 요소 참조 ── */
+      var overlay  = document.getElementById('lbOverlay');
+      var lbBox    = document.getElementById('lbBox');
+      var imgWrap  = document.getElementById('lbImgWrap');
+      var spinner  = document.getElementById('lbSpinner');
+      var lbClose  = document.getElementById('lbClose');
+      var lbPrev   = document.getElementById('lbPrev');
+      var lbNext   = document.getElementById('lbNext');
+      var lbCounter= document.getElementById('lbCounter');
+      var lbThumbs = document.getElementById('lbThumbs');
+
+      if (!overlay || !imgWrap) return;
+
+      var currentIdx = 0;
+      var isOpen     = false;
+
+      /* ── 썸네일 생성 ── */
+      imgSrcs.forEach(function (info, i) {
+        var th = document.createElement('img');
+        th.setAttribute('src', info.src);
+        th.setAttribute('alt', info.alt);
+        th.className = 'lb-thumb';
+        th.style.cssText += ';animation:none!important;opacity:0.4;';
+        th.addEventListener('click', function (e) {
+          e.stopPropagation();
+          showImg(i);
+        });
+        lbThumbs.appendChild(th);
+      });
+
+      /* ── ★★★ 핵심: 새 img 태그 생성 + 960px 제한 ★★★ ── */
+      function showImg(idx) {
+        currentIdx = idx;
+        var info   = imgSrcs[idx];
+
+        spinner.style.display = 'block';
+        imgWrap.innerHTML = '';
+
+        var newImg = document.createElement('img');
+
+        /*
+         * ★ 변경 ②: max-width 를 960px 로 설정
+         *   - 이미지 원본이 960px 보다 크면 → 960px 로 줄어듦
+         *   - 이미지 원본이 960px 보다 작으면 → 원본 크기 그대로 표시
+         *   - 세로는 화면 높이 기준으로 자동 조절
+         */
+        newImg.setAttribute('style', [
+          'display:block',
+          'max-width:960px',                    /* ★ 가로 최대 960px */
+          'width:100%',                         /* ★ 래퍼(960px) 안에서 꽉 채움 */
+          'max-height:calc(100vh - 220px)',      /* 세로는 뷰포트 기준 */
+          'height:auto',
+          'object-fit:contain',
+          'border-radius:8px',
+          'box-shadow:0 20px 60px rgba(0,0,0,0.7)',
+          'animation:none',
+          'opacity:1',
+          'transform:none',
+          'transition:none',
+          'position:relative',
+          'z-index:1'
+        ].join(';'));
+
+        newImg.setAttribute('alt', info.alt);
+
+        newImg.onload = function () {
+          spinner.style.display = 'none';
+          imgWrap.appendChild(newImg);
+          newImg.style.opacity   = '1';
+          newImg.style.animation = 'none';
+        };
+
+        newImg.onerror = function () {
+          spinner.style.display = 'none';
+          imgWrap.innerHTML = '<div style="color:rgba(255,255,255,0.5);font-size:14px;text-align:center;">이미지를 불러올 수 없습니다.<br><small>' + info.src + '</small></div>';
+        };
+
+        /* ★ src 는 onload/onerror 등록 후 마지막에 설정 */
+        newImg.setAttribute('src', info.src);
+
+        /* 캐시 이미지 즉시 처리 */
+        if (newImg.complete && newImg.naturalWidth > 0) {
+          spinner.style.display = 'none';
+          imgWrap.appendChild(newImg);
+          newImg.style.opacity   = '1';
+          newImg.style.animation = 'none';
+        }
+
+        /* 카운터 */
+        lbCounter.textContent = (idx + 1) + ' / ' + imgSrcs.length;
+
+        /* 썸네일 활성화 */
+        var thumbEls = lbThumbs.querySelectorAll('.lb-thumb');
+        thumbEls.forEach(function (t, i) {
+          t.classList.toggle('is-active', i === idx);
+          t.style.opacity = (i === idx) ? '1' : '0.4';
+        });
+        if (thumbEls[idx]) {
+          thumbEls[idx].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+        }
+
+        /* 화살표 dim */
+        lbPrev.style.opacity       = (idx === 0)                  ? '0.25' : '1';
+        lbPrev.style.pointerEvents = (idx === 0)                  ? 'none'  : 'auto';
+        lbNext.style.opacity       = (idx === imgSrcs.length - 1) ? '0.25' : '1';
+        lbNext.style.pointerEvents = (idx === imgSrcs.length - 1) ? 'none'  : 'auto';
+      }
+
+      /* ── 열기 ── */
+      function openLB(idx) {
+        isOpen = true;
+        overlay.classList.add('is-open');
+        document.body.style.overflow = 'hidden';
+        showImg(idx);
+      }
+
+      /* ── 닫기 ── */
+      function closeLB() {
+        isOpen = false;
+        overlay.classList.remove('is-open');
+        document.body.style.overflow = '';
+        imgWrap.innerHTML = '';
+        spinner.style.display = 'none';
+      }
+
+      /* ── 갤러리 클릭 ── */
+      galItems.forEach(function (item, idx) {
+        item.addEventListener('click', function (e) {
+          e.preventDefault();
+          e.stopPropagation();
+          openLB(idx);
+        });
+      });
+
+      /* ── 닫기 버튼 ── */
+      lbClose.addEventListener('click', function (e) { e.stopPropagation(); closeLB(); });
+
+      /* ── 이전/다음 ── */
+      lbPrev.addEventListener('click', function (e) {
+        e.stopPropagation();
+        if (currentIdx > 0) showImg(currentIdx - 1);
+      });
+      lbNext.addEventListener('click', function (e) {
+        e.stopPropagation();
+        if (currentIdx < imgSrcs.length - 1) showImg(currentIdx + 1);
+      });
+
+      /* ── 배경 클릭 닫기 ── */
+      overlay.addEventListener('click', function (e) {
+        if (e.target === overlay || e.target === lbBox || e.target === imgWrap) {
+          closeLB();
+        }
+      });
+
+      /* ── 키보드 ── */
+      document.addEventListener('keydown', function (e) {
+        if (!isOpen) return;
+        if (e.key === 'Escape' || e.key === 'Esc') { closeLB(); }
+        else if (e.key === 'ArrowLeft')  { if (currentIdx > 0) showImg(currentIdx - 1); }
+        else if (e.key === 'ArrowRight') { if (currentIdx < imgSrcs.length - 1) showImg(currentIdx + 1); }
+      });
+
+      /* ── 터치 스와이프 ── */
+      var txStart = 0, tyStart = 0;
+      overlay.addEventListener('touchstart', function (e) {
+        txStart = e.touches[0].clientX;
+        tyStart = e.touches[0].clientY;
+      }, { passive: true });
+      overlay.addEventListener('touchend', function (e) {
+        var dx = txStart - e.changedTouches[0].clientX;
+        var dy = tyStart - e.changedTouches[0].clientY;
+        if (Math.abs(dx) < 40 || Math.abs(dx) < Math.abs(dy)) return;
+        if (dx > 0 && currentIdx < imgSrcs.length - 1) showImg(currentIdx + 1);
+        else if (dx < 0 && currentIdx > 0)             showImg(currentIdx - 1);
+      }, { passive: true });
+
+    })();
+    </script>
 
     <script src="./index.js"></script>
   </body>
