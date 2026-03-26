@@ -30,15 +30,6 @@
         --shadow-sm:   0 4px 20px rgba(0,0,0,0.06);
         --shadow-md:   0 8px 40px rgba(0,0,0,0.10);
         --shadow-blue: 0 16px 40px rgba(96,121,255,0.18);
-        --primary-glow: rgba(96, 121, 255, 0.4);
-            --glass: rgba(255, 255, 255, 0.1);
-            --glass-border: rgba(255, 255, 255, 0.2);
-
-
-
-
-
-
       }
 
       body {
@@ -416,27 +407,18 @@
   transition: transform 0.3s ease;
 }
 
-/* --- [핸드폰 목업: 그림자 업그레이드] --- */
-        .mockup-phone {
-            width: 280px;
-            height: 560px;
-            background: #1a1a1a;
-            border-radius: 44px;
-            padding: 12px;
-            border: 6px solid #333;
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.12), 
-                        0 0 0 1px rgba(0, 0, 0, 0.05); /* 입체감 있는 그림자 */
-            position: relative;
-            overflow: hidden;
-        }
+/* 모바일 목업 스타일 */
+.mockup-phone {
+  width: 280px;
+  height: 560px;
+  background: #222;
+  border-radius: 36px;
+  padding: 12px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+  position: relative;
+  border: 4px solid #333;
+}
 
-
-
-
-
-
-
-        
 /* 내부 화면 영역 */
 .mockup-phone .screen {
   width: 100%;
@@ -472,14 +454,12 @@ width: 100%;
   text-align: center;
 }
 
-/* [텍스트 디자인 업그레이드] */
-        .gallery-info h3 {
-            font-size: 1.6rem;
-            font-weight: 700;
-            margin-top: 2rem;
-            color: #222;
-            letter-spacing: -0.5px;
-        }
+.gallery-info h3 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--txt-dark);
+  margin-bottom: 0.8rem;
+}
 
 .gallery-info p {
   font-size: 1.4rem;
@@ -496,61 +476,46 @@ width: 100%;
 
 
 
-/* --- [기차 레일: 무한 루프 최적화] --- */
-        .gallery-slider-track {
-            display: flex;
-            gap: 4rem; /* 간격을 넓혀서 더 시원하게! */
-            width: max-content;
-            animation: scrollGallery 40s linear infinite;
-            transition: transform 0.8s cubic-bezier(0.23, 1, 0.32, 1); /* 트렌디한 가속도 */
-        }
-/* --- [기차 칸: 마우스 올리면 붕 뜨는 효과] --- */
-        .gallery-item-slide {
-            transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-/* 드래그 중이거나 마우스 올렸을 때 정지 */
-        .gallery-item-slide:hover .screen-content,
-        .screen-content.is-dragging {
-            animation-play-state: paused !important;
-        }
+/* 기차 레일 설정 */
+.gallery-slider-track {
+  margin-top: 10rem;
+  display: flex; /* 옆으로 나란히 서기 */
+  animation: scrollGallery 10s linear infinite; /* 60초 동안 한 바퀴 돌아라! */
+  gap: 3rem;
+}
+
+/* 마우스를 올리면 기차 멈춤! */
+.gallery-slider-track:hover {
+  animation-play-state: paused;
+}
+
+/* 기차가 움직이는 규칙 (왼쪽으로 쭉 밀기) */
+@keyframes scrollGallery {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); } /* 반 바퀴 지점까지 이동 */
+}
 
 
-
-
-
-/* --- [사진 도화지: 드래그 최적화] --- */
-        .screen {
-            width: 100%;
-            height: 100%;
-            background: #fff;
-            border-radius: 32px;
-            overflow: hidden;
-            position: relative;
-        }
-
-
+/* 마우스를 올리면(hover) 화면(screen) 안의 이미지(img)를 움직여라! */
+.gallery-item-slide:hover .screen img {
+  /* 이미지의 맨 아래쪽까지 슥~ 내려가게 하는 마법이에요 */
+  transform: translateY(-100%);
+  /* 4초 동안 부드럽게 움직이게 해요 */
+  transition: transform 4s ease-in-out; 
+}
 
 
 
 /* 도화지 기본 설정 */
 .screen-content {
-width: 100%;
-            display: flex;
-            flex-direction: column;
-            cursor: grab;
-            animation: autoScroll 30s linear infinite;
-            will-change: transform; /* 컴퓨터가 미리 준비하게 해서 안 버벅거리게 함 */
-        }
-
-
-
-.screen-content img {
-            width: 100%;
-            height: auto;
-            display: block;
-            position: relative;
-        }
-
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  cursor: grab;
+  /* 평소에는 자동으로 계속 올라가는 마법 */
+  animation: autoScroll 25s linear infinite;
+}
 
 /* ★ 클릭해서 끌고 있을 때(is-dragging 이름표가 붙었을 때)만 자동 재생을 완전히 꺼요 */
 .screen-content.is-dragging {
@@ -558,62 +523,53 @@ width: 100%;
   cursor: grabbing;
 }
 
-/* 자동 스크롤 애니메이션 */
-        @keyframes autoScroll {
-            0% { transform: translateY(0); }
-            100% { transform: translateY(calc(-100% + 536px)); }
-        }
-
-        @keyframes scrollGallery {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
-        }
+@keyframes autoScroll {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(calc(-100% + 560px)); }
+}
 
 
-/* --- [기차 창문: 글래스모피즘 & 꽉 찬 화면] --- */
-        .gallery-slider-wrapper {
-            width: 100vw;
-            position: relative;
-            left: 50%;
-            right: 50%;
-            margin-left: -50vw;
-            margin-right: -50vw;
-            overflow: hidden;
-            padding: 6rem 0;
-            background: linear-gradient(180deg, #fff 0%, #f9faff 100%);
-        }
 
+/* 슬라이더 창문을 버튼의 기준점으로 잡아요 */
+.gallery-slider-wrapper {
+  /* 1. 화면의 왼쪽 끝부터 오른쪽 끝까지 억지로 늘리는 마법 */
+  width: 100vw; 
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
 
-/* --- [최신형 버튼: 화살표 조종석] --- */
-        .slider-btn {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 60px;
-            height: 60px;
-            background: rgba(255, 255, 255, 0.7);
-            backdrop-filter: blur(12px); /* 유리알 효과! */
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid var(--glass-border);
-            border-radius: 50%;
-            color: var(--primary);
-            font-size: 24px;
-            cursor: pointer;
-            z-index: 1000;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
+  /* 2. 가로로 삐져나가는 사진들은 숨기기 */
+  overflow: hidden; 
+  
+  /* 3. 위아래 간격 살짝 주기 */
+  padding: 4rem 0;
+}
+/* 왼쪽, 오른쪽 버튼 공통 스타일 */
+.slider-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 50px;
+  height: 50px;
+  background: rgba(96, 121, 255, 0.8); /* 우리 포인트 컬러! */
+  color: white;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 100; /* 사진보다 위에 있어야 해요 */
+  font-size: 20px;
+  transition: 0.3s;
+}
 
 .slider-btn:hover {
-            background: var(--primary);
-            color: white;
-            box-shadow: 0 15px 30px var(--primary-glow);
-        }
-.prev-btn { left: 40px; }
-        .next-btn { right: 40px; }
+  background: var(--primary-dk);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.prev-btn { left: 5%; }  /* 왼쪽 버튼 위치 */
+.next-btn { right: 5%; } /* 오른쪽 버튼 위치 */
 
 /* ★ 버튼을 누를 때 움직이게 하려면 자동 애니메이션을 꺼야 해요 */
 .gallery-slider-track.manual-mode {
@@ -1168,10 +1124,6 @@ width: 100%;
     </div>
 
     <script>
-
-
-
-
     (function () {
 
       /* ── 이미지 경로 수집 ── */
@@ -1401,93 +1353,93 @@ var img = item.querySelector('.screen-content img');
 
 
 
+// --- 버튼 조종 마법 시작 ---
+var track = document.querySelector('.gallery-slider-track');
+var prevBtn = document.querySelector('.prev-btn');
+var nextBtn = document.querySelector('.next-btn');
+var currentScroll = 0; // 지금 얼마나 움직였는지 기억하는 변수
 
+// 버튼을 누르면 기차를 수동 모드로 바꿔요
+function setManualMode() {
+  track.classList.add('manual-mode');
+}
 
+// 오른쪽 버튼 클릭!
+nextBtn.addEventListener('click', function() {
+  setManualMode();
+  currentScroll -= 300; // 기차 한 칸(240px) + 간격(60px) 정도인 300씩 이동
+  track.style.transform = 'translateX(' + currentScroll + 'px)';
+});
 
-// --- [마법 주문 1: 드래그 마법 강화] ---
-        const screens = document.querySelectorAll('.screen-content');
-        
-        screens.forEach(screen => {
-            let isDown = false;
-            let startY;
-            let scrollPos = 0;
-
-            screen.addEventListener('mousedown', (e) => {
-                isDown = true;
-                screen.classList.add('is-dragging');
-                const style = window.getComputedStyle(screen);
-                const matrix = new WebKitCSSMatrix(style.transform);
-                scrollPos = matrix.m42;
-                startY = e.pageY - scrollPos;
-                screen.style.transition = 'none';
-            });
-
-            window.addEventListener('mousemove', (e) => {
-                if (!isDown) return;
-                e.preventDefault();
-                const y = e.pageY;
-                let moveY = y - startY;
-
-                const containerH = screen.parentElement.offsetHeight;
-                const contentH = screen.offsetHeight;
-                const limit = -(contentH - containerH);
-
-                if (moveY > 0) moveY = 0;
-                if (moveY < limit) moveY = limit;
-
-                screen.style.transform = `translateY(${moveY}px)`;
-            });
-
-            window.addEventListener('mouseup', () => {
-                if (!isDown) return;
-                isDown = false;
-                screen.classList.remove('is-dragging');
-                screen.style.transition = 'transform 0.6s cubic-bezier(0.23, 1, 0.32, 1)'; // 쫀득한 멈춤
-            });
-        });
-
-        // --- [마법 주문 2: 화살표 버튼 부드러운 스크롤] ---
-        const track = document.querySelector('.gallery-slider-track');
-        const nextBtn = document.querySelector('.next-btn');
-        const prevBtn = document.querySelector('.prev-btn');
-        let currentX = 0;
-
-        nextBtn.addEventListener('click', () => {
-            track.style.animationPlayState = 'paused';
-            currentX -= 400; // 한 번에 이동하는 거리를 조절해 보세요
-            track.classList.add('manual-mode');
-            track.style.transform = `translateX(${currentX}px)`;
-        });
-
-        prevBtn.addEventListener('click', () => {
-            track.style.animationPlayState = 'paused';
-            currentX += 400;
-            track.classList.add('manual-mode');
-            track.style.transform = `translateX(${currentX}px)`;
-        });
-
-        // --- [마법 주문 3: 스크롤 등장 효과 (Reveal)] ---
-        // 화면을 내릴 때 핸드폰들이 숑숑 나타나게 하는 최신 기법이에요!
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = "1";
-                    entry.target.style.transform = "translateY(0)";
-                }
-            });
-        }, { threshold: 0.1 });
-
-        document.querySelectorAll('.gallery-item-slide').forEach(item => {
-            item.style.opacity = "0";
-            item.style.transform = "translateY(50px)";
-            item.style.transition = "all 0.8s ease-out";
-            observer.observe(item);
-        });
+// 왼쪽 버튼 클릭!
+prevBtn.addEventListener('click', function() {
+  setManualMode();
+  currentScroll += 300; // 반대로 300씩 이동
+  track.style.transform = 'translateX(' + currentScroll + 'px)';
+});
+// --- 버튼 조종 마법 끝 ---
 
 
 
 
-        
+const scrollScreens = document.querySelectorAll('.screen-content');
+
+scrollScreens.forEach(screen => {
+  let isDown = false;
+  let startY;
+  let scrollPos = 0;
+
+  // 1. 마우스 왼쪽 버튼을 꾹 눌렀을 때! (드래그 시작)
+  screen.addEventListener('mousedown', (e) => {
+    isDown = true;
+    
+    // "자동 모드 해제! 이제 수동 모드다!" 이름표 붙이기
+    screen.classList.add('is-dragging');
+    
+    // 현재 사진이 멈춘 정확한 위치(Y값)를 계산해서 기억해요
+    const style = window.getComputedStyle(screen);
+    const matrix = new WebKitCSSMatrix(style.transform);
+    scrollPos = matrix.m42; 
+    
+    // 클릭한 지점의 마우스 높이를 기억해요
+    startY = e.pageY - scrollPos;
+    screen.style.transition = 'none'; // 손을 따라 바로바로 움직이게 부드러운 효과는 잠시 꺼요
+  });
+
+  // 2. 마우스를 누른 채로 위아래로 끌 때! (방향 조종)
+  window.addEventListener('mousemove', (e) => {
+    if (!isDown) return; // 꾹 안 눌렀으면 무시!
+    
+    e.preventDefault(); // 드래그할 때 텍스트가 선택되거나 방해받지 않게 해요
+    const y = e.pageY;
+    let moveY = y - startY; // 내 마우스가 이동한 만큼 사진 위치 계산
+
+    // 사진의 맨 위와 맨 아래를 넘지 않게 '자석' 가둬두기
+    const containerH = screen.parentElement.offsetHeight; // 핸드폰 화면 높이
+    const contentH = screen.offsetHeight; // 전체 사진 높이
+    const limit = -(contentH - containerH);
+
+    if (moveY > 0) moveY = 0; // 맨 위로 가면 멈춤
+    if (moveY < limit) moveY = limit; // 맨 아래로 가면 멈춤
+
+    // 사진을 내 마우스 방향대로 이동시켜요!
+    screen.style.transform = `translateY(${moveY}px)`;
+  });
+
+  // 3. 마우스 버튼을 떼면! (드래그 끝)
+  window.addEventListener('mouseup', () => {
+    if (!isDown) return;
+    isDown = false;
+    
+    // 수동 모드 이름표 떼기 -> 다시 자동 모드로 변신!
+    screen.classList.remove('is-dragging');
+    
+    // 떼는 순간 자연스럽게 다시 재생되도록 살짝 부드러운 효과 추가
+    screen.style.transition = 'transform 0.5s ease-out';
+  });
+});
+
+
     </script>
 
     <script src="./index.js"></script>
