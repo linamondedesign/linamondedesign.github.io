@@ -506,29 +506,95 @@ width: 100%;
 
 
 
-
-
-/* 1. 도화지 설정: 사진들을 세로로 1열 종대! */
+/* 도화지 기본 설정 */
 .screen-content {
   width: 100%;
   display: flex;
   flex-direction: column;
-  transition: transform 6s ease-in-out; /* 6초 동안 천천히 올라가요 */
+  position: relative;
+  cursor: grab;
+  /* 평소에는 자동으로 계속 올라가는 마법 */
+  animation: autoScroll 25s linear infinite;
 }
 
-/* 2. 사진 설정: 사진 사이의 틈을 없애요 */
-.screen-content img {
-  width: 100%;
-  height: auto;
-  display: block;
+/* ★ 클릭해서 끌고 있을 때(is-dragging 이름표가 붙었을 때)만 자동 재생을 완전히 꺼요 */
+.screen-content.is-dragging {
+  animation: none !important;
+  cursor: grabbing;
 }
 
-/* 3. 움직임 설정: 마우스를 올리면 도화지를 위로 끌어올려요 */
-.gallery-item-slide:hover .screen-content {
-  /* 사진이 2장일 때는 -100%를 하면 첫 사진이 다 지나가고 두 번째가 나와요 */
-  /* 사진 장수가 많아지면 숫자를 조절해 보세요! */
-  transform: translateY(calc(-100% + 530px)); 
+@keyframes autoScroll {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(calc(-100% + 560px)); }
 }
+
+
+
+/* 슬라이더 창문을 버튼의 기준점으로 잡아요 */
+.gallery-slider-wrapper {
+  /* 1. 화면의 왼쪽 끝부터 오른쪽 끝까지 억지로 늘리는 마법 */
+  width: 100vw; 
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+
+  /* 2. 가로로 삐져나가는 사진들은 숨기기 */
+  overflow: hidden; 
+  
+  /* 3. 위아래 간격 살짝 주기 */
+  padding: 4rem 0;
+}
+/* 왼쪽, 오른쪽 버튼 공통 스타일 */
+.slider-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 50px;
+  height: 50px;
+  background: rgba(96, 121, 255, 0.8); /* 우리 포인트 컬러! */
+  color: white;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 100; /* 사진보다 위에 있어야 해요 */
+  font-size: 20px;
+  transition: 0.3s;
+}
+
+.slider-btn:hover {
+  background: var(--primary-dk);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.prev-btn { left: 5%; }  /* 왼쪽 버튼 위치 */
+.next-btn { right: 5%; } /* 오른쪽 버튼 위치 */
+
+/* ★ 버튼을 누를 때 움직이게 하려면 자동 애니메이션을 꺼야 해요 */
+.gallery-slider-track.manual-mode {
+  animation: none !important; 
+  transition: transform 0.5s ease-out;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -720,141 +786,278 @@ width: 100%;
 
 
 
-<div class="gallery-slider-track">
+    
+
+
+
+
+<div class="gallery-slider-wrapper">
+  <button class="slider-btn prev-btn">❮</button>
+  <button class="slider-btn next-btn">❯</button>
+
+  <div class="gallery-slider-track">
+
 
 <div class="gallery-item-slide">
   <div class="mockup-phone">
     <div class="screen">
       <div class="screen-content">
-        <img src="./assets/png/your-long-image1.png">
-        <img src="./assets/png/your-long-image1.png">
-        <img src="./assets/png/your-long-image1.png">
+        <img src="./assets/jpeg/de2_de1_gallery_bn01_1.jpg">
+        <img src="./assets/jpeg/de2_de1_gallery_bn01_2.jpg">
+        <img src="./assets/jpeg/de2_de1_gallery_bn01_3.jpg">
+        <img src="./assets/jpeg/de2_de1_gallery_bn01_4.jpg">
        </div>
     </div>
   </div>
   <div class="gallery-info"><h3>작품 이름</h3></div>
 </div>
-
-
-
-  <div class="gallery-item-slide">
-    <div class="mockup-phone">
-      <div class="screen"><img src="./assets/png/your-long-image1.png"></div>
+<div class="gallery-item-slide">
+  <div class="mockup-phone">
+    <div class="screen">
+      <div class="screen-content">
+        <img src="./assets/jpeg/de2_de1_gallery_bn01_1.jpg">
+        <img src="./assets/jpeg/de2_de1_gallery_bn01_2.jpg">
+        <img src="./assets/jpeg/de2_de1_gallery_bn01_3.jpg">
+        <img src="./assets/jpeg/de2_de1_gallery_bn01_4.jpg">
+       </div>
     </div>
-    <div class="gallery-info"><h3>멋진 화장품 페이지</h3></div>
   </div>
-  <div class="gallery-item-slide">
-    <div class="mockup-phone">
-      <div class="screen"><img src="./assets/png/your-long-image1.png"></div>
+  <div class="gallery-info"><h3>작품 이름</h3></div>
+</div>
+<div class="gallery-item-slide">
+  <div class="mockup-phone">
+    <div class="screen">
+      <div class="screen-content">
+        <img src="./assets/jpeg/de2_de1_gallery_bn01_1.jpg">
+        <img src="./assets/jpeg/de2_de1_gallery_bn01_2.jpg">
+        <img src="./assets/jpeg/de2_de1_gallery_bn01_3.jpg">
+        <img src="./assets/jpeg/de2_de1_gallery_bn01_4.jpg">
+       </div>
     </div>
-    <div class="gallery-info"><h3>멋진 화장품 페이지</h3></div>
   </div>
-  <div class="gallery-item-slide">
-    <div class="mockup-phone">
-      <div class="screen"><img src="./assets/png/your-long-image1.png"></div>
+  <div class="gallery-info"><h3>작품 이름</h3></div>
+</div>
+<div class="gallery-item-slide">
+  <div class="mockup-phone">
+    <div class="screen">
+      <div class="screen-content">
+        <img src="./assets/jpeg/de2_de1_gallery_bn01_1.jpg">
+        <img src="./assets/jpeg/de2_de1_gallery_bn01_2.jpg">
+        <img src="./assets/jpeg/de2_de1_gallery_bn01_3.jpg">
+        <img src="./assets/jpeg/de2_de1_gallery_bn01_4.jpg">
+       </div>
     </div>
-    <div class="gallery-info"><h3>멋진 화장품 페이지</h3></div>
   </div>
-  <div class="gallery-item-slide">
-    <div class="mockup-phone">
-      <div class="screen"><img src="./assets/png/your-long-image1.png"></div>
+  <div class="gallery-info"><h3>작품 이름</h3></div>
+</div>
+<div class="gallery-item-slide">
+  <div class="mockup-phone">
+    <div class="screen">
+      <div class="screen-content">
+        <img src="./assets/jpeg/de2_de1_gallery_bn01_1.jpg">
+        <img src="./assets/jpeg/de2_de1_gallery_bn01_2.jpg">
+        <img src="./assets/jpeg/de2_de1_gallery_bn01_3.jpg">
+        <img src="./assets/jpeg/de2_de1_gallery_bn01_4.jpg">
+       </div>
     </div>
-    <div class="gallery-info"><h3>멋진 화장품 페이지</h3></div>
   </div>
-  <div class="gallery-item-slide">
-    <div class="mockup-phone">
-      <div class="screen"><img src="./assets/png/your-long-image1.png"></div>
+  <div class="gallery-info"><h3>작품 이름</h3></div>
+</div>
+<div class="gallery-item-slide">
+  <div class="mockup-phone">
+    <div class="screen">
+      <div class="screen-content">
+        <img src="./assets/jpeg/de2_de1_gallery_bn01_1.jpg">
+        <img src="./assets/jpeg/de2_de1_gallery_bn01_2.jpg">
+        <img src="./assets/jpeg/de2_de1_gallery_bn01_3.jpg">
+        <img src="./assets/jpeg/de2_de1_gallery_bn01_4.jpg">
+       </div>
     </div>
-    <div class="gallery-info"><h3>멋진 화장품 페이지</h3></div>
   </div>
-  <div class="gallery-item-slide">
-    <div class="mockup-phone">
-      <div class="screen"><img src="./assets/png/your-long-image1.png"></div>
+  <div class="gallery-info"><h3>작품 이름</h3></div>
+</div>
+<div class="gallery-item-slide">
+  <div class="mockup-phone">
+    <div class="screen">
+      <div class="screen-content">
+        <img src="./assets/jpeg/de2_de1_gallery_bn01_1.jpg">
+        <img src="./assets/jpeg/de2_de1_gallery_bn01_2.jpg">
+        <img src="./assets/jpeg/de2_de1_gallery_bn01_3.jpg">
+        <img src="./assets/jpeg/de2_de1_gallery_bn01_4.jpg">
+       </div>
     </div>
-    <div class="gallery-info"><h3>멋진 화장품 페이지</h3></div>
   </div>
-  <div class="gallery-item-slide">
-    <div class="mockup-phone">
-      <div class="screen"><img src="./assets/png/your-long-image1.png"></div>
+  <div class="gallery-info"><h3>작품 이름</h3></div>
+</div>
+<div class="gallery-item-slide">
+  <div class="mockup-phone">
+    <div class="screen">
+      <div class="screen-content">
+        <img src="./assets/jpeg/de2_de1_gallery_bn01_1.jpg">
+        <img src="./assets/jpeg/de2_de1_gallery_bn01_2.jpg">
+        <img src="./assets/jpeg/de2_de1_gallery_bn01_3.jpg">
+        <img src="./assets/jpeg/de2_de1_gallery_bn01_4.jpg">
+       </div>
     </div>
-    <div class="gallery-info"><h3>멋진 화장품 페이지</h3></div>
   </div>
-  <div class="gallery-item-slide">
-    <div class="mockup-phone">
-      <div class="screen"><img src="./assets/png/your-long-image1.png"></div>
+  <div class="gallery-info"><h3>작품 이름</h3></div>
+</div>
+<div class="gallery-item-slide">
+  <div class="mockup-phone">
+    <div class="screen">
+      <div class="screen-content">
+        <img src="./assets/jpeg/de2_de1_gallery_bn01_1.jpg">
+        <img src="./assets/jpeg/de2_de1_gallery_bn01_2.jpg">
+        <img src="./assets/jpeg/de2_de1_gallery_bn01_3.jpg">
+        <img src="./assets/jpeg/de2_de1_gallery_bn01_4.jpg">
+       </div>
     </div>
-    <div class="gallery-info"><h3>멋진 화장품 페이지</h3></div>
   </div>
-  <div class="gallery-item-slide">
-    <div class="mockup-phone">
-      <div class="screen"><img src="./assets/png/your-long-image1.png"></div>
+  <div class="gallery-info"><h3>작품 이름</h3></div>
+</div>
+<div class="gallery-item-slide">
+  <div class="mockup-phone">
+    <div class="screen">
+      <div class="screen-content">
+        <img src="./assets/jpeg/de2_de1_gallery_bn01_1.jpg">
+        <img src="./assets/jpeg/de2_de1_gallery_bn01_2.jpg">
+        <img src="./assets/jpeg/de2_de1_gallery_bn01_3.jpg">
+        <img src="./assets/jpeg/de2_de1_gallery_bn01_4.jpg">
+       </div>
     </div>
-    <div class="gallery-info"><h3>멋진 화장품 페이지</h3></div>
   </div>
-  <div class="gallery-item-slide">
-    <div class="mockup-phone">
-      <div class="screen"><img src="./assets/png/your-long-image1.png"></div>
+  <div class="gallery-info"><h3>작품 이름</h3></div>
+</div>
+<div class="gallery-item-slide">
+  <div class="mockup-phone">
+    <div class="screen">
+      <div class="screen-content">
+        <img src="./assets/jpeg/de2_de1_gallery_bn01_1.jpg">
+        <img src="./assets/jpeg/de2_de1_gallery_bn01_2.jpg">
+        <img src="./assets/jpeg/de2_de1_gallery_bn01_3.jpg">
+        <img src="./assets/jpeg/de2_de1_gallery_bn01_4.jpg">
+       </div>
     </div>
-    <div class="gallery-info"><h3>멋진 화장품 페이지</h3></div>
   </div>
-  <div class="gallery-item-slide">
-    <div class="mockup-phone">
-      <div class="screen"><img src="./assets/png/your-long-image1.png"></div>
+  <div class="gallery-info"><h3>작품 이름</h3></div>
+</div>
+<div class="gallery-item-slide">
+  <div class="mockup-phone">
+    <div class="screen">
+      <div class="screen-content">
+        <img src="./assets/jpeg/de2_de1_gallery_bn01_1.jpg">
+        <img src="./assets/jpeg/de2_de1_gallery_bn01_2.jpg">
+        <img src="./assets/jpeg/de2_de1_gallery_bn01_3.jpg">
+        <img src="./assets/jpeg/de2_de1_gallery_bn01_4.jpg">
+       </div>
     </div>
-    <div class="gallery-info"><h3>멋진 화장품 페이지</h3></div>
   </div>
-  <div class="gallery-item-slide">
-    <div class="mockup-phone">
-      <div class="screen"><img src="./assets/png/your-long-image1.png"></div>
+  <div class="gallery-info"><h3>작품 이름</h3></div>
+</div>
+<div class="gallery-item-slide">
+  <div class="mockup-phone">
+    <div class="screen">
+      <div class="screen-content">
+        <img src="./assets/jpeg/de2_de1_gallery_bn01_1.jpg">
+        <img src="./assets/jpeg/de2_de1_gallery_bn01_2.jpg">
+        <img src="./assets/jpeg/de2_de1_gallery_bn01_3.jpg">
+        <img src="./assets/jpeg/de2_de1_gallery_bn01_4.jpg">
+       </div>
     </div>
-    <div class="gallery-info"><h3>멋진 화장품 페이지</h3></div>
   </div>
-  <div class="gallery-item-slide">
-    <div class="mockup-phone">
-      <div class="screen"><img src="./assets/png/your-long-image1.png"></div>
+  <div class="gallery-info"><h3>작품 이름</h3></div>
+</div>
+<div class="gallery-item-slide">
+  <div class="mockup-phone">
+    <div class="screen">
+      <div class="screen-content">
+        <img src="./assets/jpeg/de2_de1_gallery_bn01_1.jpg">
+        <img src="./assets/jpeg/de2_de1_gallery_bn01_2.jpg">
+        <img src="./assets/jpeg/de2_de1_gallery_bn01_3.jpg">
+        <img src="./assets/jpeg/de2_de1_gallery_bn01_4.jpg">
+       </div>
     </div>
-    <div class="gallery-info"><h3>멋진 화장품 페이지</h3></div>
   </div>
-  <div class="gallery-item-slide">
-    <div class="mockup-phone">
-      <div class="screen"><img src="./assets/png/your-long-image1.png"></div>
+  <div class="gallery-info"><h3>작품 이름</h3></div>
+</div>
+<div class="gallery-item-slide">
+  <div class="mockup-phone">
+    <div class="screen">
+      <div class="screen-content">
+        <img src="./assets/jpeg/de2_de1_gallery_bn01_1.jpg">
+        <img src="./assets/jpeg/de2_de1_gallery_bn01_2.jpg">
+        <img src="./assets/jpeg/de2_de1_gallery_bn01_3.jpg">
+        <img src="./assets/jpeg/de2_de1_gallery_bn01_4.jpg">
+       </div>
     </div>
-    <div class="gallery-info"><h3>멋진 화장품 페이지</h3></div>
   </div>
-  <div class="gallery-item-slide">
-    <div class="mockup-phone">
-      <div class="screen"><img src="./assets/png/your-long-image1.png"></div>
+  <div class="gallery-info"><h3>작품 이름</h3></div>
+</div>
+<div class="gallery-item-slide">
+  <div class="mockup-phone">
+    <div class="screen">
+      <div class="screen-content">
+        <img src="./assets/jpeg/de2_de1_gallery_bn01_1.jpg">
+        <img src="./assets/jpeg/de2_de1_gallery_bn01_2.jpg">
+        <img src="./assets/jpeg/de2_de1_gallery_bn01_3.jpg">
+        <img src="./assets/jpeg/de2_de1_gallery_bn01_4.jpg">
+       </div>
     </div>
-    <div class="gallery-info"><h3>멋진 화장품 페이지</h3></div>
   </div>
-  <div class="gallery-item-slide">
-    <div class="mockup-phone">
-      <div class="screen"><img src="./assets/png/your-long-image1.png"></div>
+  <div class="gallery-info"><h3>작품 이름</h3></div>
+</div>
+<div class="gallery-item-slide">
+  <div class="mockup-phone">
+    <div class="screen">
+      <div class="screen-content">
+        <img src="./assets/jpeg/de2_de1_gallery_bn01_1.jpg">
+        <img src="./assets/jpeg/de2_de1_gallery_bn01_2.jpg">
+        <img src="./assets/jpeg/de2_de1_gallery_bn01_3.jpg">
+        <img src="./assets/jpeg/de2_de1_gallery_bn01_4.jpg">
+       </div>
     </div>
-    <div class="gallery-info"><h3>멋진 화장품 페이지</h3></div>
   </div>
-  <div class="gallery-item-slide">
-    <div class="mockup-phone">
-      <div class="screen"><img src="./assets/png/your-long-image1.png"></div>
+  <div class="gallery-info"><h3>작품 이름</h3></div>
+</div>
+<div class="gallery-item-slide">
+  <div class="mockup-phone">
+    <div class="screen">
+      <div class="screen-content">
+        <img src="./assets/jpeg/de2_de1_gallery_bn01_1.jpg">
+        <img src="./assets/jpeg/de2_de1_gallery_bn01_2.jpg">
+        <img src="./assets/jpeg/de2_de1_gallery_bn01_3.jpg">
+        <img src="./assets/jpeg/de2_de1_gallery_bn01_4.jpg">
+       </div>
     </div>
-    <div class="gallery-info"><h3>멋진 화장품 페이지</h3></div>
   </div>
-  <div class="gallery-item-slide">
-    <div class="mockup-phone">
-      <div class="screen"><img src="./assets/png/your-long-image1.png"></div>
+  <div class="gallery-info"><h3>작품 이름</h3></div>
+</div>
+<div class="gallery-item-slide">
+  <div class="mockup-phone">
+    <div class="screen">
+      <div class="screen-content">
+        <img src="./assets/jpeg/de2_de1_gallery_bn01_1.jpg">
+        <img src="./assets/jpeg/de2_de1_gallery_bn01_2.jpg">
+        <img src="./assets/jpeg/de2_de1_gallery_bn01_3.jpg">
+        <img src="./assets/jpeg/de2_de1_gallery_bn01_4.jpg">
+       </div>
     </div>
-    <div class="gallery-info"><h3>멋진 화장품 페이지</h3></div>
   </div>
-  <div class="gallery-item-slide">
-    <div class="mockup-phone">
-      <div class="screen"><img src="./assets/png/your-long-image1.png"></div>
+  <div class="gallery-info"><h3>작품 이름</h3></div>
+</div>
+<div class="gallery-item-slide">
+  <div class="mockup-phone">
+    <div class="screen">
+      <div class="screen-content">
+        <img src="./assets/jpeg/de2_de1_gallery_bn01_1.jpg">
+        <img src="./assets/jpeg/de2_de1_gallery_bn01_2.jpg">
+        <img src="./assets/jpeg/de2_de1_gallery_bn01_3.jpg">
+        <img src="./assets/jpeg/de2_de1_gallery_bn01_4.jpg">
+       </div>
     </div>
-    <div class="gallery-info"><h3>멋진 화장품 페이지</h3></div>
   </div>
-
-
-
-      
+  <div class="gallery-info"><h3>작품 이름</h3></div>
+</div>
 
 
 
@@ -1147,6 +1350,96 @@ var img = item.querySelector('.screen-content img');
       }, { passive: true });
 
     })();
+
+
+
+// --- 버튼 조종 마법 시작 ---
+var track = document.querySelector('.gallery-slider-track');
+var prevBtn = document.querySelector('.prev-btn');
+var nextBtn = document.querySelector('.next-btn');
+var currentScroll = 0; // 지금 얼마나 움직였는지 기억하는 변수
+
+// 버튼을 누르면 기차를 수동 모드로 바꿔요
+function setManualMode() {
+  track.classList.add('manual-mode');
+}
+
+// 오른쪽 버튼 클릭!
+nextBtn.addEventListener('click', function() {
+  setManualMode();
+  currentScroll -= 300; // 기차 한 칸(240px) + 간격(60px) 정도인 300씩 이동
+  track.style.transform = 'translateX(' + currentScroll + 'px)';
+});
+
+// 왼쪽 버튼 클릭!
+prevBtn.addEventListener('click', function() {
+  setManualMode();
+  currentScroll += 300; // 반대로 300씩 이동
+  track.style.transform = 'translateX(' + currentScroll + 'px)';
+});
+// --- 버튼 조종 마법 끝 ---
+
+
+
+
+const scrollScreens = document.querySelectorAll('.screen-content');
+
+scrollScreens.forEach(screen => {
+  let isDown = false;
+  let startY;
+  let scrollPos = 0;
+
+  // 1. 마우스 왼쪽 버튼을 꾹 눌렀을 때! (드래그 시작)
+  screen.addEventListener('mousedown', (e) => {
+    isDown = true;
+    
+    // "자동 모드 해제! 이제 수동 모드다!" 이름표 붙이기
+    screen.classList.add('is-dragging');
+    
+    // 현재 사진이 멈춘 정확한 위치(Y값)를 계산해서 기억해요
+    const style = window.getComputedStyle(screen);
+    const matrix = new WebKitCSSMatrix(style.transform);
+    scrollPos = matrix.m42; 
+    
+    // 클릭한 지점의 마우스 높이를 기억해요
+    startY = e.pageY - scrollPos;
+    screen.style.transition = 'none'; // 손을 따라 바로바로 움직이게 부드러운 효과는 잠시 꺼요
+  });
+
+  // 2. 마우스를 누른 채로 위아래로 끌 때! (방향 조종)
+  window.addEventListener('mousemove', (e) => {
+    if (!isDown) return; // 꾹 안 눌렀으면 무시!
+    
+    e.preventDefault(); // 드래그할 때 텍스트가 선택되거나 방해받지 않게 해요
+    const y = e.pageY;
+    let moveY = y - startY; // 내 마우스가 이동한 만큼 사진 위치 계산
+
+    // 사진의 맨 위와 맨 아래를 넘지 않게 '자석' 가둬두기
+    const containerH = screen.parentElement.offsetHeight; // 핸드폰 화면 높이
+    const contentH = screen.offsetHeight; // 전체 사진 높이
+    const limit = -(contentH - containerH);
+
+    if (moveY > 0) moveY = 0; // 맨 위로 가면 멈춤
+    if (moveY < limit) moveY = limit; // 맨 아래로 가면 멈춤
+
+    // 사진을 내 마우스 방향대로 이동시켜요!
+    screen.style.transform = `translateY(${moveY}px)`;
+  });
+
+  // 3. 마우스 버튼을 떼면! (드래그 끝)
+  window.addEventListener('mouseup', () => {
+    if (!isDown) return;
+    isDown = false;
+    
+    // 수동 모드 이름표 떼기 -> 다시 자동 모드로 변신!
+    screen.classList.remove('is-dragging');
+    
+    // 떼는 순간 자연스럽게 다시 재생되도록 살짝 부드러운 효과 추가
+    screen.style.transition = 'transform 0.5s ease-out';
+  });
+});
+
+
     </script>
 
     <script src="./index.js"></script>
