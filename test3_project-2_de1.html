@@ -389,151 +389,6 @@
         .lb-thumb { width: 40px; height: 27px; }
         #lbCounter { font-size: 11px; padding: 4px 14px; bottom: 14px; }
       }
-
-
-
-/* 갤러리 그리드 레이아웃 */
-.gallery-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 4rem;
-  margin-top: 5rem;
-}
-
-.gallery-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  transition: transform 0.3s ease;
-}
-
-/* 모바일 목업 스타일 */
-.mockup-phone {
-  width: 280px;
-  height: 560px;
-  background: #222;
-  border-radius: 36px;
-  padding: 12px;
-  box-shadow: 0 20px 50px rgba(0,0,0,0.15);
-  position: relative;
-  border: 4px solid #333;
-}
-
-/* 내부 화면 영역 */
-.mockup-phone .screen {
-  width: 100%;
-  height: 100%;
-  background: #fff;
-  border-radius: 22px;
-  overflow: hidden;
-  position: relative;
-  
-  /* ★ 추가된 마법: 사진들을 세로로 차곡차곡 쌓아줘요! */
-  display: flex;
-  flex-direction: column;
-}
-
-/* 상세페이지 이미지 (세로로 긴 이미지) */
-.mockup-phone .screen img {
-width: 100%;
-  height: auto;
-  display: block; /* 사진 사이에 틈이 생기지 않게 해요 */
-  position: relative; /* absolute에서 relative로 바꿔야 두 개가 이어서 보여요! */
-  top: 0;
-  transition: transform 6s ease-in-out; /* 움직이는 시간 */
-}
-
-/* ★ 핵심: 마우스 올렸을 때 이미지 아래로 스크롤 */
-.gallery-item:hover .screen img {
-  transform: translateY(-500%);
-}
-
-/* 텍스트 설명 */
-.gallery-info {
-  margin-top: 2.5rem;
-  text-align: center;
-}
-
-.gallery-info h3 {
-  font-size: 1.8rem;
-  font-weight: 700;
-  color: var(--txt-dark);
-  margin-bottom: 0.8rem;
-}
-
-.gallery-info p {
-  font-size: 1.4rem;
-  color: var(--txt-light);
-}
-
-/* 모바일 대응 */
-@media (max-width: 37.5em) {
-  .mockup-phone { width: 240px; height: 480px; }
-  .gallery-item:hover .screen img { transform: translateY(calc(-100% + 450px)); }
-}
-
-
-
-
-
-/* 기차 레일 설정 */
-.gallery-slider-track {
-  margin-top: 10rem;
-  display: flex; /* 옆으로 나란히 서기 */
-  animation: scrollGallery 10s linear infinite; /* 60초 동안 한 바퀴 돌아라! */
-  gap: 3rem;
-}
-
-/* 마우스를 올리면 기차 멈춤! */
-.gallery-slider-track:hover {
-  animation-play-state: paused;
-}
-
-/* 기차가 움직이는 규칙 (왼쪽으로 쭉 밀기) */
-@keyframes scrollGallery {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); } /* 반 바퀴 지점까지 이동 */
-}
-
-
-/* 마우스를 올리면(hover) 화면(screen) 안의 이미지(img)를 움직여라! */
-.gallery-item-slide:hover .screen img {
-  /* 이미지의 맨 아래쪽까지 슥~ 내려가게 하는 마법이에요 */
-  transform: translateY(-100%);
-  /* 4초 동안 부드럽게 움직이게 해요 */
-  transition: transform 4s ease-in-out; 
-}
-
-
-
-
-
-/* 1. 도화지 설정: 사진들을 세로로 1열 종대! */
-.screen-content {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  transition: transform 6s ease-in-out; /* 6초 동안 천천히 올라가요 */
-}
-
-/* 2. 사진 설정: 사진 사이의 틈을 없애요 */
-.screen-content img {
-  width: 100%;
-  height: auto;
-  display: block;
-}
-
-/* 3. 움직임 설정: 마우스를 올리면 도화지를 위로 끌어올려요 */
-.gallery-item-slide:hover .screen-content {
-  /* 사진이 2장일 때는 -100%를 하면 첫 사진이 다 지나가고 두 번째가 나와요 */
-  /* 사진 장수가 많아지면 숫자를 조절해 보세요! */
-  transform: translateY(calc(-100% + 530px)); 
-}
-
-
-
-
-
     </style>
   </head>
   <body>
@@ -708,161 +563,21 @@ width: 100%;
     <div class="de-divider"></div>
 
     <!-- ⑥ 갤러리 -->
-<section class="de-section">
-  <div class="de-container">
-    <span class="de-section-label">Screen Gallery</span>
-    <h2 class="de-section-title">디자인 결과물</h2>
-    
-
-
-
-
-
-
-
-<div class="gallery-slider-track">
-
-<div class="gallery-item-slide">
-  <div class="mockup-phone">
-    <div class="screen">
-      <div class="screen-content">
-        <img src="./assets/png/your-long-image1.png">
-        <img src="./assets/png/your-long-image1.png">
-        <img src="./assets/png/your-long-image1.png">
-       </div>
-    </div>
-  </div>
-  <div class="gallery-info"><h3>작품 이름</h3></div>
-</div>
-
-
-
-  <div class="gallery-item-slide">
-    <div class="mockup-phone">
-      <div class="screen"><img src="./assets/png/your-long-image1.png"></div>
-    </div>
-    <div class="gallery-info"><h3>멋진 화장품 페이지</h3></div>
-  </div>
-  <div class="gallery-item-slide">
-    <div class="mockup-phone">
-      <div class="screen"><img src="./assets/png/your-long-image1.png"></div>
-    </div>
-    <div class="gallery-info"><h3>멋진 화장품 페이지</h3></div>
-  </div>
-  <div class="gallery-item-slide">
-    <div class="mockup-phone">
-      <div class="screen"><img src="./assets/png/your-long-image1.png"></div>
-    </div>
-    <div class="gallery-info"><h3>멋진 화장품 페이지</h3></div>
-  </div>
-  <div class="gallery-item-slide">
-    <div class="mockup-phone">
-      <div class="screen"><img src="./assets/png/your-long-image1.png"></div>
-    </div>
-    <div class="gallery-info"><h3>멋진 화장품 페이지</h3></div>
-  </div>
-  <div class="gallery-item-slide">
-    <div class="mockup-phone">
-      <div class="screen"><img src="./assets/png/your-long-image1.png"></div>
-    </div>
-    <div class="gallery-info"><h3>멋진 화장품 페이지</h3></div>
-  </div>
-  <div class="gallery-item-slide">
-    <div class="mockup-phone">
-      <div class="screen"><img src="./assets/png/your-long-image1.png"></div>
-    </div>
-    <div class="gallery-info"><h3>멋진 화장품 페이지</h3></div>
-  </div>
-  <div class="gallery-item-slide">
-    <div class="mockup-phone">
-      <div class="screen"><img src="./assets/png/your-long-image1.png"></div>
-    </div>
-    <div class="gallery-info"><h3>멋진 화장품 페이지</h3></div>
-  </div>
-  <div class="gallery-item-slide">
-    <div class="mockup-phone">
-      <div class="screen"><img src="./assets/png/your-long-image1.png"></div>
-    </div>
-    <div class="gallery-info"><h3>멋진 화장품 페이지</h3></div>
-  </div>
-  <div class="gallery-item-slide">
-    <div class="mockup-phone">
-      <div class="screen"><img src="./assets/png/your-long-image1.png"></div>
-    </div>
-    <div class="gallery-info"><h3>멋진 화장품 페이지</h3></div>
-  </div>
-  <div class="gallery-item-slide">
-    <div class="mockup-phone">
-      <div class="screen"><img src="./assets/png/your-long-image1.png"></div>
-    </div>
-    <div class="gallery-info"><h3>멋진 화장품 페이지</h3></div>
-  </div>
-  <div class="gallery-item-slide">
-    <div class="mockup-phone">
-      <div class="screen"><img src="./assets/png/your-long-image1.png"></div>
-    </div>
-    <div class="gallery-info"><h3>멋진 화장품 페이지</h3></div>
-  </div>
-  <div class="gallery-item-slide">
-    <div class="mockup-phone">
-      <div class="screen"><img src="./assets/png/your-long-image1.png"></div>
-    </div>
-    <div class="gallery-info"><h3>멋진 화장품 페이지</h3></div>
-  </div>
-  <div class="gallery-item-slide">
-    <div class="mockup-phone">
-      <div class="screen"><img src="./assets/png/your-long-image1.png"></div>
-    </div>
-    <div class="gallery-info"><h3>멋진 화장품 페이지</h3></div>
-  </div>
-  <div class="gallery-item-slide">
-    <div class="mockup-phone">
-      <div class="screen"><img src="./assets/png/your-long-image1.png"></div>
-    </div>
-    <div class="gallery-info"><h3>멋진 화장품 페이지</h3></div>
-  </div>
-  <div class="gallery-item-slide">
-    <div class="mockup-phone">
-      <div class="screen"><img src="./assets/png/your-long-image1.png"></div>
-    </div>
-    <div class="gallery-info"><h3>멋진 화장품 페이지</h3></div>
-  </div>
-  <div class="gallery-item-slide">
-    <div class="mockup-phone">
-      <div class="screen"><img src="./assets/png/your-long-image1.png"></div>
-    </div>
-    <div class="gallery-info"><h3>멋진 화장품 페이지</h3></div>
-  </div>
-  <div class="gallery-item-slide">
-    <div class="mockup-phone">
-      <div class="screen"><img src="./assets/png/your-long-image1.png"></div>
-    </div>
-    <div class="gallery-info"><h3>멋진 화장품 페이지</h3></div>
-  </div>
-  <div class="gallery-item-slide">
-    <div class="mockup-phone">
-      <div class="screen"><img src="./assets/png/your-long-image1.png"></div>
-    </div>
-    <div class="gallery-info"><h3>멋진 화장품 페이지</h3></div>
-  </div>
-  <div class="gallery-item-slide">
-    <div class="mockup-phone">
-      <div class="screen"><img src="./assets/png/your-long-image1.png"></div>
-    </div>
-    <div class="gallery-info"><h3>멋진 화장품 페이지</h3></div>
-  </div>
-
-
-
-      
-
-
-
-
-
+    <section class="de-section">
+      <div class="de-container">
+        <span class="de-section-label">Screen Gallery</span>
+        <h2 class="de-section-title">상세페이지 디자인 작업물</h2>
+        <div class="de-gallery-magazine">
+          <div class="de-gal-item"><img src="./assets/jpeg/project-2_de1_gallery_bn01.jpg" alt="작업물 1" /><div class="de-gal-item__hover"><span>🔍</span></div><div class="de-gal-item__caption"></div></div>
+          <div class="de-gal-item"><img src="./assets/jpeg/project-2_de1_gallery_bn02.jpg" alt="작업물 2" /><div class="de-gal-item__hover"><span>🔍</span></div><div class="de-gal-item__caption"></div></div>
+          <div class="de-gal-item"><img src="./assets/jpeg/project-2_de1_gallery_bn03.jpg" alt="작업물 3" /><div class="de-gal-item__hover"><span>🔍</span></div><div class="de-gal-item__caption"></div></div>
+          <div class="de-gal-item"><img src="./assets/jpeg/project-2_de1_gallery_bn04.jpg" alt="작업물 4" /><div class="de-gal-item__hover"><span>🔍</span></div><div class="de-gal-item__caption"></div></div>
+          <div class="de-gal-item"><img src="./assets/jpeg/project-2_de1_gallery_bn05.jpg" alt="작업물 5" /><div class="de-gal-item__hover"><span>🔍</span></div><div class="de-gal-item__caption"></div></div>
+          <div class="de-gal-item"><img src="./assets/jpeg/project-2_de1_gallery_bn06.jpg" alt="작업물 6" /><div class="de-gal-item__hover"><span>🔍</span></div><div class="de-gal-item__caption"></div></div>
+          <div class="de-gal-item"><img src="./assets/jpeg/project-2_de1_gallery_bn07.jpg" alt="작업물 7" /><div class="de-gal-item__hover"><span>🔍</span></div><div class="de-gal-item__caption"></div></div>
+        </div>
       </div>
-  </div>
-</section>
+    </section>
 
     <div class="de-divider"></div>
 
@@ -928,7 +643,7 @@ width: 100%;
       var imgSrcs  = [];
 
       galItems.forEach(function (item) {
-var img = item.querySelector('.screen-content img');
+        var img = item.querySelector('img');
         if (img) {
           imgSrcs.push({
             src: img.getAttribute('src'),
