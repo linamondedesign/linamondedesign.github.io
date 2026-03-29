@@ -55,12 +55,12 @@
         .hero-badge {
             display: inline-block; padding: 8px 24px;
             background: var(--primary-bg); color: var(--primary);
-            border: 1px solid var(--primary-bd); border-radius: 50px;
-            font-weight: 800; letter-spacing: 2px; text-transform: uppercase;
-            margin-bottom: 2rem; box-shadow: 0 4px 10px rgba(96,121,255,0.1);
+            border: 1.5px solid rgba(96, 121, 255, 0.25); border-radius: 50px;
+            font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: 0.7rem 2rem;
+            margin-bottom: 3rem; margin-top: 14rem; font-size: 1.6rem;
         }
         .hero-title {
-            font-size: clamp(4rem, 8vw, 8.5rem); font-weight: 900;
+            font-size: clamp(4rem, 8vw, 8.5rem); font-weight: 800;
             letter-spacing: -3px; line-height: 1.1; margin-bottom: 3rem;
             color: var(--txt-dark);
         }
@@ -69,14 +69,14 @@
             -webkit-background-clip: text; -webkit-text-fill-color: transparent;
         }
         .hero-desc {
-            font-size: 1.6rem; color: var(--txt-mid); max-width: 760px;
+            font-size: 2rem; color: var(--txt-mid); max-width: 800px;
             margin: 0 auto; line-height: 1.8; word-break: keep-all;
         }
 
         /* ── ② 기발한 스티키 스택(Sticky Stack) 전략 영역 ── */
         .strategy-section { padding: 10rem 5%; max-width: 1200px; margin: 0 auto; }
         .strategy-header { text-align: center; margin-bottom: 6rem; }
-        .strategy-header h2 { font-size: 3.5rem; font-weight: 900; letter-spacing: -1px; }
+        .strategy-header h2 { font-size: 3.5rem; font-weight: 800; letter-spacing: -1px;  }
 
         .stack-container {
             display: flex; flex-direction: column; gap: 2rem;
@@ -99,7 +99,7 @@
         .stack-card:nth-child(3) { top: 160px; z-index: 3; }
         .stack-card:nth-child(4) { top: 180px; z-index: 4; background: var(--primary); color: var(--white); border:none;}
 
-        .stack-num { font-size: 5rem; font-weight: 900; color: var(--primary-lt); line-height: 1; opacity: 0.5; }
+        .stack-num { font-size: 5rem; font-weight: 800; color: var(--primary-lt); line-height: 1; opacity: 0.5; }
         .stack-card:nth-child(4) .stack-num { color: #fff; opacity: 0.3; }
         .stack-content h3 { font-size: 2.2rem; font-weight: 800; margin-bottom: 1rem; }
         .stack-content p { font-size: 1.4rem; color: var(--txt-mid); line-height: 1.6; }
@@ -114,7 +114,7 @@
         /* 20개의 아이템을 단순히 나열하지 않고 크기를 다르게 섞어 화보처럼 연출 */
         .magazine-section { padding: 10rem 5% 15rem; }
         .magazine-header { text-align: center; margin-bottom: 8rem; }
-        .magazine-header h2 { font-size: 4rem; font-weight: 900; letter-spacing: -2px; }
+        .magazine-header h2 { font-size: 4rem; font-weight: 800; letter-spacing: -2px; }
 
         .mag-grid {
             max-width: 1400px; margin: 0 auto;
@@ -150,10 +150,19 @@
 
         /* 라이트박스 및 오토스크롤을 위한 내부 구조 */
         .mag-frame { width: 100%; height: 100%; position: relative; overflow: hidden; background: #eef2ff; }
-        .screen-content { width: 100%; height: 100%; }
-        .screen-content img {
-            width: 100%; display: block; position: absolute; top: 0; left: 0;
+        
+        /* [수정 부분] 여러 이미지를 세로로 나열하기 위해 absolute 위치 속성 수정 */
+        .screen-content { 
+            width: 100%; 
+            display: flex; 
+            flex-direction: column; 
             transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+            /* 스크롤 시 화면 밖으로 이동할 수 있도록 위치 조정 */
+            position: absolute; top: 0; left: 0;
+        }
+        .screen-content img {
+            width: 100%; display: block; 
+            /* 기존의 absolute 속성을 제거하여 이미지가 차례대로 세로로 붙도록 함 */
         }
 
         /* 호버 시 나타나는 세련된 플로팅 캡션 */
@@ -175,7 +184,7 @@
             background: var(--txt-dark); color: var(--white);
             text-align: center; padding: 15rem 5%; position: relative;
         }
-        .cta-title { font-size: clamp(3rem, 6vw, 5rem); font-weight: 900; letter-spacing: -2px; margin-bottom: 2rem; }
+        .cta-title { font-size: clamp(3rem, 6vw, 5rem); font-weight: 800; letter-spacing: -2px; margin-bottom: 2rem; }
         .cta-btn {
             display: inline-block; background: var(--primary); color: var(--white);
             padding: 1.8rem 5rem; border-radius: 50px; font-size: 1.6rem; font-weight: 800;
@@ -241,9 +250,9 @@
 
     <main>
         <section class="hero-section">
-            <span class="hero-badge reveal">Promotion & Event Design</span>
+            <span class="hero-badge reveal">Content Design</span>
             <h1 class="hero-title reveal">
-                0.1초의 시선, <br><span>결제로 이어지다</span>
+                프로모션<br>디자인
             </h1>
             <p class="hero-desc reveal">
                 이탈을 방어하는 압도적인 비주얼 후킹부터 거부할 수 없는 혜택 설계까지.<br>
@@ -297,92 +306,137 @@
             <div class="mag-grid">
                 
                 <div class="mag-item span-8 de-gal-item reveal">
-                    <div class="mag-frame screen-content"><img src="./assets/jpeg/project-2_de1_gallery_bn01_01.jpg" alt="마데카크림"></div>
+                    <div class="mag-frame">
+                        <div class="screen-content">
+                            <img src="./assets/jpeg/project-2_de1_gallery_bn01_01.jpg" alt="마데카크림 파트 1">
+                            <img src="./assets/jpeg/project-2_de1_gallery_bn01_02.jpg" alt="마데카크림 파트 2">
+                            <img src="./assets/jpeg/project-2_de1_gallery_bn01_03.jpg" alt="마데카크림 파트 3">
+                        </div>
+                    </div>
                     <div class="mag-caption"><div><p>Best Seller</p><h3>마데카 크림 메가 런칭</h3></div><div class="mag-arrow">➔</div></div>
                 </div>
+                
                 <div class="mag-item span-4 de-gal-item reveal">
-                    <div class="mag-frame screen-content"><img src="./assets/jpeg/project-2_de1_gallery_bn02_01.jpg" alt="바이탈 캡슐 세럼"></div>
+                    <div class="mag-frame">
+                        <div class="screen-content"><img src="./assets/jpeg/project-2_de1_gallery_bn02_01.jpg" alt="바이탈 캡슐 세럼"></div>
+                    </div>
                     <div class="mag-caption"><div><p>25% Up</p><h3>바이탈 캡슐 세럼</h3></div><div class="mag-arrow">➔</div></div>
                 </div>
 
                 <div class="mag-item span-4 de-gal-item reveal">
-                    <div class="mag-frame screen-content"><img src="./assets/jpeg/project-2_de1_gallery_bn03_01.jpg"></div>
+                    <div class="mag-frame">
+                        <div class="screen-content"><img src="./assets/jpeg/project-2_de1_gallery_bn03_01.jpg"></div>
+                    </div>
                     <div class="mag-caption"><div><p>VIP Only</p><h3>리페어 밤 크림</h3></div><div class="mag-arrow">➔</div></div>
                 </div>
                 <div class="mag-item span-4 de-gal-item reveal">
-                    <div class="mag-frame screen-content"><img src="./assets/jpeg/project-2_de1_gallery_bn04_01.jpg"></div>
+                    <div class="mag-frame">
+                        <div class="screen-content"><img src="./assets/jpeg/project-2_de1_gallery_bn04_01.jpg"></div>
+                    </div>
                     <div class="mag-caption"><div><p>Sold Out</p><h3>랩핑 마스크</h3></div><div class="mag-arrow">➔</div></div>
                 </div>
                 <div class="mag-item span-4 de-gal-item reveal">
-                    <div class="mag-frame screen-content"><img src="./assets/jpeg/project-2_de1_gallery_bn05_01.jpg"></div>
+                    <div class="mag-frame">
+                        <div class="screen-content"><img src="./assets/jpeg/project-2_de1_gallery_bn05_01.jpg"></div>
+                    </div>
                     <div class="mag-caption"><div><p>Tone-up</p><h3>페이셜 톤업 크림</h3></div><div class="mag-arrow">➔</div></div>
                 </div>
 
                 <div class="mag-item span-6 de-gal-item reveal">
-                    <div class="mag-frame screen-content"><img src="./assets/jpeg/project-2_de1_gallery_bn06_01.jpg"></div>
+                    <div class="mag-frame">
+                        <div class="screen-content"><img src="./assets/jpeg/project-2_de1_gallery_bn06_01.jpg"></div>
+                    </div>
                     <div class="mag-caption"><div><p>Summer</p><h3>스타톡 아쿠아 세럼</h3></div><div class="mag-arrow">➔</div></div>
                 </div>
                 <div class="mag-item span-6 de-gal-item reveal">
-                    <div class="mag-frame screen-content"><img src="./assets/jpeg/project-2_de1_gallery_bn07_01.jpg"></div>
+                    <div class="mag-frame">
+                        <div class="screen-content"><img src="./assets/jpeg/project-2_de1_gallery_bn07_01.jpg"></div>
+                    </div>
                     <div class="mag-caption"><div><p>Premium</p><h3>마이크로 스타톡</h3></div><div class="mag-arrow">➔</div></div>
                 </div>
 
                 <div class="mag-item span-12 de-gal-item reveal">
-                    <div class="mag-frame screen-content"><img src="./assets/jpeg/project-2_de1_gallery_bn08_01.jpg"></div>
+                    <div class="mag-frame">
+                        <div class="screen-content"><img src="./assets/jpeg/project-2_de1_gallery_bn08_01.jpg"></div>
+                    </div>
                     <div class="mag-caption"><div><p>Double Sale</p><h3>타임 에너지 1+1 빅세일</h3></div><div class="mag-arrow">➔</div></div>
                 </div>
 
                 <div class="mag-item span-4 de-gal-item reveal">
-                    <div class="mag-frame screen-content"><img src="./assets/jpeg/project-2_de1_gallery_bn09_01.jpg"></div>
+                    <div class="mag-frame">
+                        <div class="screen-content"><img src="./assets/jpeg/project-2_de1_gallery_bn09_01.jpg"></div>
+                    </div>
                     <div class="mag-caption"><div><p>Scientific</p><h3>인텐시브 포뮬러</h3></div><div class="mag-arrow">➔</div></div>
                 </div>
                 <div class="mag-item span-8 de-gal-item reveal">
-                    <div class="mag-frame screen-content"><img src="./assets/jpeg/project-2_de1_gallery_bn10_01.jpg"></div>
+                    <div class="mag-frame">
+                        <div class="screen-content"><img src="./assets/jpeg/project-2_de1_gallery_bn10_01.jpg"></div>
+                    </div>
                     <div class="mag-caption"><div><p>For Men</p><h3>인텐시브 바이탈 올인원</h3></div><div class="mag-arrow">➔</div></div>
                 </div>
 
                 <div class="mag-item span-6 de-gal-item reveal">
-                    <div class="mag-frame screen-content"><img src="./assets/jpeg/project-2_de1_gallery_bn11_01.jpg"></div>
+                    <div class="mag-frame">
+                        <div class="screen-content"><img src="./assets/jpeg/project-2_de1_gallery_bn11_01.jpg"></div>
+                    </div>
                     <div class="mag-caption"><div><p>Radiance</p><h3>래디언트 앰플</h3></div><div class="mag-arrow">➔</div></div>
                 </div>
                 <div class="mag-item span-6 de-gal-item reveal">
-                    <div class="mag-frame screen-content"><img src="./assets/jpeg/project-2_de1_gallery_bn12_01.jpg"></div>
+                    <div class="mag-frame">
+                        <div class="screen-content"><img src="./assets/jpeg/project-2_de1_gallery_bn12_01.jpg"></div>
+                    </div>
                     <div class="mag-caption"><div><p>Outdoor</p><h3>UV 프로텍션 선스틱</h3></div><div class="mag-arrow">➔</div></div>
                 </div>
 
                 <div class="mag-item span-4 de-gal-item reveal">
-                    <div class="mag-frame screen-content"><img src="./assets/jpeg/project-2_de1_gallery_bn13_01.jpg"></div>
+                    <div class="mag-frame">
+                        <div class="screen-content"><img src="./assets/jpeg/project-2_de1_gallery_bn13_01.jpg"></div>
+                    </div>
                     <div class="mag-caption"><div><p>Cover</p><h3>블레미쉬 커버</h3></div><div class="mag-arrow">➔</div></div>
                 </div>
                 <div class="mag-item span-4 de-gal-item reveal">
-                    <div class="mag-frame screen-content"><img src="./assets/jpeg/project-2_de1_gallery_bn14_01.jpg"></div>
+                    <div class="mag-frame">
+                        <div class="screen-content"><img src="./assets/jpeg/project-2_de1_gallery_bn14_01.jpg"></div>
+                    </div>
                     <div class="mag-caption"><div><p>1M Sold</p><h3>더마 마스크</h3></div><div class="mag-arrow">➔</div></div>
                 </div>
                 <div class="mag-item span-4 de-gal-item reveal">
-                    <div class="mag-frame screen-content"><img src="./assets/jpeg/project-2_de1_gallery_bn15_01.jpg"></div>
+                    <div class="mag-frame">
+                        <div class="screen-content"><img src="./assets/jpeg/project-2_de1_gallery_bn15_01.jpg"></div>
+                    </div>
                     <div class="mag-caption"><div><p>Gift</p><h3>테카솔 마스크팩</h3></div><div class="mag-arrow">➔</div></div>
                 </div>
 
                 <div class="mag-item span-8 de-gal-item reveal">
-                    <div class="mag-frame screen-content"><img src="./assets/jpeg/project-2_de1_gallery_bn16_01.jpg"></div>
+                    <div class="mag-frame">
+                        <div class="screen-content"><img src="./assets/jpeg/project-2_de1_gallery_bn16_01.jpg"></div>
+                    </div>
                     <div class="mag-caption"><div><p>Clean Beauty</p><h3>모이스처 바디로션</h3></div><div class="mag-arrow">➔</div></div>
                 </div>
                 <div class="mag-item span-4 de-gal-item reveal">
-                    <div class="mag-frame screen-content"><img src="./assets/jpeg/project-2_de1_gallery_bn17_01.jpg"></div>
+                    <div class="mag-frame">
+                        <div class="screen-content"><img src="./assets/jpeg/project-2_de1_gallery_bn17_01.jpg"></div>
+                    </div>
                     <div class="mag-caption"><div><p>Kakao</p><h3>밀크씨슬 플러스</h3></div><div class="mag-arrow">➔</div></div>
                 </div>
 
                 <div class="mag-item span-6 de-gal-item reveal">
-                    <div class="mag-frame screen-content"><img src="./assets/jpeg/project-2_de1_gallery_bn18_01.jpg"></div>
+                    <div class="mag-frame">
+                        <div class="screen-content"><img src="./assets/jpeg/project-2_de1_gallery_bn18_01.jpg"></div>
+                    </div>
                     <div class="mag-caption"><div><p>Story</p><h3>허브 차가버섯</h3></div><div class="mag-arrow">➔</div></div>
                 </div>
                 <div class="mag-item span-6 de-gal-item reveal">
-                    <div class="mag-frame screen-content"><img src="./assets/jpeg/project-2_de1_gallery_bn19_01.jpg"></div>
+                    <div class="mag-frame">
+                        <div class="screen-content"><img src="./assets/jpeg/project-2_de1_gallery_bn19_01.jpg"></div>
+                    </div>
                     <div class="mag-caption"><div><p>Trust</p><h3>프로비마게 유산균</h3></div><div class="mag-arrow">➔</div></div>
                 </div>
 
                 <div class="mag-item span-12 de-gal-item reveal">
-                    <div class="mag-frame screen-content"><img src="./assets/jpeg/project-2_de1_gallery_bn20_01.jpg"></div>
+                    <div class="mag-frame">
+                        <div class="screen-content"><img src="./assets/jpeg/project-2_de1_gallery_bn20_01.jpg"></div>
+                    </div>
                     <div class="mag-caption"><div><p>Pre-order</p><h3>피크노제놀 홈쇼핑 선주문</h3></div><div class="mag-arrow">➔</div></div>
                 </div>
 
@@ -391,7 +445,7 @@
 
         <section class="cta-section">
             <h2 class="cta-title reveal">이제, 당신의 브랜드도<br>매출을 터트릴 시간입니다.</h2>
-            <a href="#contact" class="cta-btn reveal">프로젝트 문의하기</a>
+            <!-- <a href="#contact" class="cta-btn reveal">프로젝트 문의하기</a> -->
         </section>
 
     </main>
@@ -437,36 +491,41 @@
             observer.observe(el);
         });
 
-        /* 2. 기발한 오토스크롤: 매거진 프레임에 마우스 호버 시 세로 이미지 자동 재생 */
+        /* 2. 기발한 오토스크롤: 컨텐츠(.screen-content)의 실제 길이를 계산하여 스크롤 */
         document.querySelectorAll('.de-gal-item').forEach(item => {
-            const img = item.querySelector('.screen-content img');
+            const screenContent = item.querySelector('.screen-content');
             const frame = item.querySelector('.mag-frame');
             
             item.addEventListener('mouseenter', () => {
-                if (!img || !frame) return;
-                const imgHeight = img.offsetHeight;
+                if (!screenContent || !frame) return;
+                
+                // .screen-content 내부의 전체 높이 계산 (여러 이미지의 높이 합)
+                const contentHeight = screenContent.scrollHeight;
                 const frameHeight = frame.offsetHeight;
-                if(imgHeight > frameHeight) {
-                    const scrollDistance = imgHeight - frameHeight;
-                    const duration = Math.max(3, (imgHeight / 800)); 
-                    img.style.transition = `transform ${duration}s linear`;
-                    img.style.transform = `translateY(-${scrollDistance}px)`;
+                
+                if(contentHeight > frameHeight) {
+                    const scrollDistance = contentHeight - frameHeight;
+                    // 길이가 길수록 천천히 스크롤되도록 속도 계산 (최소 3초)
+                    const duration = Math.max(3, (contentHeight / 800)); 
+                    screenContent.style.transition = `transform ${duration}s linear`;
+                    screenContent.style.transform = `translateY(-${scrollDistance}px)`;
                 }
             });
             
             item.addEventListener('mouseleave', () => {
-                if (!img) return;
-                img.style.transition = `transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1)`;
-                img.style.transform = `translateY(0)`;
+                if (!screenContent) return;
+                screenContent.style.transition = `transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1)`;
+                screenContent.style.transform = `translateY(0)`;
             });
         });
 
-        /* 3. 라이트박스 로직 (원본 완벽 유지) */
+        /* 3. 라이트박스 로직 (원본 완벽 유지 - 다중 이미지 처리는 별도 로직 필요, 현재는 첫 이미지만 썸네일로 가져옴) */
         (function () {
           var galItems = document.querySelectorAll('.de-gal-item');
           var imgSrcs  = [];
 
           galItems.forEach(function (item) {
+            // 라이트박스는 대표 썸네일 1개만 띄움
             var img = item.querySelector('.screen-content img');
             if (img) {
               imgSrcs.push({
