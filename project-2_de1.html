@@ -108,6 +108,9 @@
         margin-top: 14rem;
         }
 
+
+
+
         .section-label {
             display: inline-block;
             font-size: 1.1rem;
@@ -116,6 +119,9 @@
             text-transform: uppercase;
             color: var(--primary);
             margin-bottom: 1.5rem;
+            /* border: 1px solid var(--primary-bd); */
+            /* padding: 0.5rem 1.2rem; */
+            /* border-radius: 50px; */
         }
         
         .section-title {
@@ -215,7 +221,7 @@
         .de-gal-item:nth-child(3n+2) .masonry-frame { height: 600px; }
         .de-gal-item:nth-child(3n+3) .masonry-frame { height: 750px; }
 
-        /* [핵심 수정] 마우스 호버 자동 스크롤을 위한 컨테이너 구조 분리 및 Flex 적용 */
+        /* 마우스 호버 자동 스크롤 매직 (Auto-Scroll) */
         .masonry-frame {
             width: 100%;
             height: 100%; /* 부모 높이를 상속받아 마스크 역할 */
@@ -802,7 +808,7 @@
       <button id="lbClose" title="닫기">&#10005;</button>
       <button class="lb-arrow" id="lbPrev" title="이전">&#8592;</button>
       <button class="lb-arrow" id="lbNext" title="다음">&#8594;</button>
-      <div id="lbCounter">1 / 7</div>
+      <div id="lbCounter">1 / 21</div>
       <div id="lbThumbs"></div>
     </div>
 
@@ -850,19 +856,23 @@
             });
         });
 
-        // 3. 라이트박스 로직 (원본 완벽 유지 - 첫 번째 이미지를 대표 썸네일로 띄움)
+        // 3. [완벽 수정] 라이트박스 로직: 4개 이미지를 세로로 스크롤하여 보여주도록 변경
         (function () {
           var galItems = document.querySelectorAll('.de-gal-item');
-          var imgSrcs  = [];
+          var imgSrcs  = []; // 배열 안에 각 항목의 이미지 객체 배열이 들어감
 
           galItems.forEach(function (item) {
-            // 라이트박스는 대표 썸네일 1개만 띄움
-            var img = item.querySelector('.screen-content img');
-            if (img) {
-              imgSrcs.push({
-                src: img.getAttribute('src'),
-                alt: img.getAttribute('alt') || '갤러리 이미지'
+            // 해당 아이템 안의 모든 4개 이미지를 찾아서 배열로 만듦
+            var imgs = item.querySelectorAll('.screen-content img');
+            if (imgs.length > 0) {
+              var itemImgs = [];
+              imgs.forEach(function(img) {
+                itemImgs.push({
+                  src: img.getAttribute('src'),
+                  alt: img.getAttribute('alt') || '갤러리 이미지'
+                });
               });
+              imgSrcs.push(itemImgs);
             }
           });
 
@@ -884,10 +894,11 @@
           var isOpen     = false;
 
           /* ── 썸네일 생성 ── */
-          imgSrcs.forEach(function (info, i) {
+          imgSrcs.forEach(function (infoGroup, i) {
+            var firstInfo = infoGroup[0]; // 대표 썸네일은 그룹의 첫 번째 이미지로 설정
             var th = document.createElement('img');
-            th.setAttribute('src', info.src);
-            th.setAttribute('alt', info.alt);
+            th.setAttribute('src', firstInfo.src);
+            th.setAttribute('alt', firstInfo.alt);
             th.className = 'lb-thumb';
             th.style.cssText = 'animation:none!important;opacity:0.4;';
             th.addEventListener('click', function (e) {
@@ -899,54 +910,58 @@
 
           function showImg(idx) {
             currentIdx = idx;
-            var info = imgSrcs[idx];
+            var infoGroup = imgSrcs[idx]; // 선택된 항목의 이미지 4장 배열
 
             spinner.style.display = 'block';
             imgWrap.innerHTML = '';
 
-            var newImg = document.createElement('img');
-            var isMobile = window.innerWidth <= 600;
-            var maxH     = isMobile ? 'calc(100vh - 180px)' : 'calc(100vh - 220px)';
+            // 4장의 이미지가 담길 스크롤 가능한 컨테이너 생성
+            var scrollContainer = document.createElement('div');
+            scrollContainer.className = 'lb-scroll-container';
+            scrollContainer.style.cssText = 'width: 100%; height: 100%; overflow-y: auto; overflow-x: hidden; text-align: center; -webkit-overflow-scrolling: touch;';
+            
+            // 이미지가 가운데 정렬되도록 감싸는 내부 래퍼
+            var innerWrap = document.createElement('div');
+            innerWrap.style.cssText = 'display: inline-flex; flex-direction: column; width: 100%; max-width: 900px; margin: 0 auto; background: #fff; box-shadow: 0 20px 60px rgba(0,0,0,0.7); border-radius: 8px; overflow: hidden;';
 
-            var styleArr = [
-              'display:block', 'max-width:100%', 'width:auto', 'max-height:' + maxH,
-              'height:auto', 'object-fit:contain', 'border-radius:8px', 'box-shadow:0 20px 60px rgba(0,0,0,0.7)',
-              'animation:none', 'opacity:1', 'transform:none', 'transition:none', 'position:relative',
-              'z-index:1', '-webkit-transform:none', '-webkit-animation:none'
-            ];
+            var loadedCount = 0;
 
-            newImg.setAttribute('style', styleArr.join(';'));
-            newImg.setAttribute('alt', info.alt);
+            // 4장의 이미지를 각각 생성하여 래퍼에 추가
+            infoGroup.forEach(function(info) {
+              var newImg = document.createElement('img');
+              var styleArr = [
+                'display:block',
+                'width:100%',
+                'height:auto',
+                'margin:0',
+                'padding:0',
+                'vertical-align:top',
+                'border:none'
+              ];
+              newImg.setAttribute('style', styleArr.join(';'));
+              newImg.setAttribute('alt', info.alt);
 
-            newImg.onload = function () {
-              spinner.style.display = 'none';
-              newImg.style.opacity        = '1';
-              newImg.style.animation      = 'none';
-              newImg.style.webkitAnimation = 'none';
-              newImg.style.maxWidth       = '100%';
-              imgWrap.appendChild(newImg);
-            };
+              newImg.onload = function () {
+                loadedCount++;
+                if (loadedCount === infoGroup.length) spinner.style.display = 'none';
+              };
 
-            newImg.onerror = function () {
-              spinner.style.display = 'none';
-              imgWrap.innerHTML =
-                '<div style="color:rgba(255,255,255,0.6);font-size:13px;text-align:center;padding:20px;">' +
-                '⚠️ 이미지를 불러올 수 없습니다.<br>' +
-                '<small style="opacity:0.6;word-break:break-all;">' + info.src + '</small><br><br>' +
-                '<small style="opacity:0.5;">파일 용량이 크거나 경로가 잘못되었을 수 있습니다.</small>' +
-                '</div>';
-            };
+              newImg.onerror = function () {
+                loadedCount++;
+                if (loadedCount === infoGroup.length) spinner.style.display = 'none';
+              };
 
-            newImg.setAttribute('src', info.src);
+              newImg.setAttribute('src', info.src);
+              innerWrap.appendChild(newImg);
+            });
 
-            if (newImg.complete && newImg.naturalWidth > 0) {
-              spinner.style.display       = 'none';
-              newImg.style.opacity        = '1';
-              newImg.style.animation      = 'none';
-              newImg.style.webkitAnimation = 'none';
-              newImg.style.maxWidth       = '100%';
-              imgWrap.appendChild(newImg);
-            }
+            scrollContainer.appendChild(innerWrap);
+            imgWrap.appendChild(scrollContainer);
+
+            // 다른 프로젝트 클릭 시 항상 최상단부터 보이도록 스크롤 0으로 초기화
+            setTimeout(function() {
+                scrollContainer.scrollTop = 0;
+            }, 10);
 
             lbCounter.textContent = (idx + 1) + ' / ' + imgSrcs.length;
 
@@ -1002,7 +1017,8 @@
           });
 
           overlay.addEventListener('click', function (e) {
-            if (e.target === overlay || e.target === lbBox || e.target === imgWrap) {
+            // 이미지가 담긴 스크롤 컨테이너나 배경 클릭 시 닫기 (이미지 자체 클릭 시엔 안 닫힘)
+            if (e.target === overlay || e.target === lbBox || e.target === imgWrap || e.target.classList.contains('lb-scroll-container')) {
               closeLB();
             }
           });
@@ -1022,6 +1038,7 @@
           overlay.addEventListener('touchend', function (e) {
             var dx = txStart - e.changedTouches[0].clientX;
             var dy = tyStart - e.changedTouches[0].clientY;
+            // 세로 스크롤할 때는 좌우 넘김을 방지
             if (Math.abs(dx) < 40 || Math.abs(dx) < Math.abs(dy)) return;
             if (dx > 0 && currentIdx < imgSrcs.length - 1) showImg(currentIdx + 1);
             else if (dx < 0 && currentIdx > 0)             showImg(currentIdx - 1);
