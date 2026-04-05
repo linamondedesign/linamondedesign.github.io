@@ -79,7 +79,7 @@ textarea {
     전체 폰트 일괄 Pretendard 적용
    ============================================= */
 
-*,
+
 *::before,
 *::after {
   font-family: 'Pretendard', -apple-system, BlinkMacSystemFont,
