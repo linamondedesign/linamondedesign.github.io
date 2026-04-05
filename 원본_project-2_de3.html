@@ -131,13 +131,13 @@
             .impact-left { position: relative; top: 0; margin-bottom: 3rem; flex: auto; text-align: center; }
         }
 
-        /* ── ③ NEW GALLERY SECTION: Asymmetric Neo-Grid & Curtain Reveal (14 Items) ── */
+        /* ── ③ NEW GALLERY SECTION: Asymmetric Neo-Grid & Curtain Reveal (10 Items) ── */
         .gallery-section { padding: 10rem 5% 15rem; background: var(--txt-dark); color: var(--white); }
         .gallery-header { text-align: center; margin-bottom: 8rem; }
         .gallery-header h2 { font-size: 4rem; font-weight: 800; letter-spacing: -2px; color: var(--white); }
         .gallery-header p { font-size: 1.6rem; color: #94a3b8; margin-top: 1rem; }
 
-        /* 14개 아이템을 위한 정교한 비대칭 그리드 */
+        /* 10개 아이템을 위한 정교한 비대칭 그리드 */
         .neo-grid {
             max-width: 1400px; margin: 0 auto;
             display: grid;
@@ -146,7 +146,7 @@
             gap: 24px;
         }
 
-        /* 각 아이템별 Span 설정 (14개를 꽉 차게 배치) */
+        /* 각 아이템별 Span 설정 (10개를 꽉 차게 배치) */
         .neo-item:nth-child(1) { grid-column: span 2; grid-row: span 2; } /* 대형 메인 */
         .neo-item:nth-child(2) { grid-column: span 1; grid-row: span 1; }
         .neo-item:nth-child(3) { grid-column: span 1; grid-row: span 2; } /* 세로로 긴 이미지 */
@@ -157,16 +157,11 @@
         .neo-item:nth-child(8) { grid-column: span 1; grid-row: span 2; } /* 세로로 긴 이미지 */
         .neo-item:nth-child(9) { grid-column: span 2; grid-row: span 2; } /* 대형 메인 */
         .neo-item:nth-child(10){ grid-column: span 1; grid-row: span 1; }
-        /* 추가된 4개 아이템 레이아웃 흐름 */
-        .neo-item:nth-child(11){ grid-column: span 2; grid-row: span 2; } /* 대형 메인 */
-        .neo-item:nth-child(12){ grid-column: span 1; grid-row: span 2; } /* 세로로 긴 이미지 */
-        .neo-item:nth-child(13){ grid-column: span 1; grid-row: span 1; }
-        .neo-item:nth-child(14){ grid-column: span 1; grid-row: span 1; }
 
         @media (max-width: 1024px) {
             .neo-grid { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 250px; }
             .neo-item { grid-column: span 1; grid-row: span 1; }
-            .neo-item:nth-child(1), .neo-item:nth-child(5), .neo-item:nth-child(6), .neo-item:nth-child(9), .neo-item:nth-child(11) { grid-column: span 2; grid-row: span 2; }
+            .neo-item:nth-child(1), .neo-item:nth-child(5), .neo-item:nth-child(6), .neo-item:nth-child(9) { grid-column: span 2; grid-row: span 2; }
         }
         @media (max-width: 600px) {
             .neo-grid { grid-template-columns: 1fr; grid-auto-rows: 300px; }
@@ -337,7 +332,7 @@
                 
                 <div class="neo-item de-gal-item reveal">
                     <div class="neo-curtain"></div>
-                    <div class="neo-frame screen-content"><img src="./assets/jpeg/project-2_de3_gallery_bn01.jpg" alt="홈쇼핑 스튜디오 세트 기획"></div>
+                    <div class="neo-frame screen-content"><img src="./assets/jpeg/project-2_de3_gallery_bn22.jpg" alt="홈쇼핑 스튜디오 세트 기획"></div>
                     <div class="neo-text-box">
                         <span class="neo-tag">Home Shopping</span>
                         <h3 class="neo-title">홈쇼핑 스튜디오 세트 기획</h3>
@@ -346,7 +341,7 @@
                 
                 <div class="neo-item de-gal-item reveal">
                     <div class="neo-curtain"></div>
-                    <div class="neo-frame screen-content"><img src="./assets/jpeg/project-2_de3_gallery_bn02.jpg" alt="방송용 타임찬스 L판넬"></div>
+                    <div class="neo-frame screen-content"><img src="./assets/jpeg/project-2_de3_gallery_bn23.jpg" alt="방송용 타임찬스 L판넬"></div>
                     <div class="neo-text-box">
                         <span class="neo-tag">L-Panel</span>
                         <h3 class="neo-title">타임찬스 L판넬</h3>
@@ -355,7 +350,7 @@
 
                 <div class="neo-item de-gal-item reveal">
                     <div class="neo-curtain"></div>
-                    <div class="neo-frame screen-content"><img src="./assets/jpeg/project-2_de3_gallery_bn03.jpg" alt="아크릴 입체 스카시"></div>
+                    <div class="neo-frame screen-content"><img src="./assets/jpeg/project-2_de3_gallery_bn20.jpg" alt="아크릴 입체 스카시"></div>
                     <div class="neo-text-box">
                         <span class="neo-tag">Signage</span>
                         <h3 class="neo-title">아크릴 입체 스카시</h3>
@@ -364,7 +359,7 @@
                 
                 <div class="neo-item de-gal-item reveal">
                     <div class="neo-curtain"></div>
-                    <div class="neo-frame screen-content"><img src="./assets/jpeg/project-2_de3_gallery_bn04.jpg" alt="신제품 런칭 플래그십 POP"></div>
+                    <div class="neo-frame screen-content"><img src="./assets/jpeg/project-2_de3_gallery_bn21.jpg" alt="신제품 런칭 플래그십 POP"></div>
                     <div class="neo-text-box">
                         <span class="neo-tag">Store POP</span>
                         <h3 class="neo-title">신제품 매대 POP</h3>
@@ -373,7 +368,7 @@
 
                 <div class="neo-item de-gal-item reveal">
                     <div class="neo-curtain"></div>
-                    <div class="neo-frame screen-content"><img src="./assets/jpeg/project-2_de3_gallery_bn05.jpg" alt="브랜드 아이덴티티 윈도우 시트지"></div>
+                    <div class="neo-frame screen-content"><img src="./assets/jpeg/project-2_de3_gallery_bn01_01.jpg" alt="브랜드 아이덴티티 윈도우 시트지"></div>
                     <div class="neo-text-box">
                         <span class="neo-tag">Exterior</span>
                         <h3 class="neo-title">매장 전면 시트지</h3>
@@ -382,7 +377,7 @@
 
                 <div class="neo-item de-gal-item reveal">
                     <div class="neo-curtain"></div>
-                    <div class="neo-frame screen-content"><img src="./assets/jpeg/project-2_de3_gallery_bn06.jpg" alt="VIP 익스클루시브 웰컴 패키지"></div>
+                    <div class="neo-frame screen-content"><img src="./assets/jpeg/project-2_de3_gallery_bn02_02.jpg" alt="VIP 익스클루시브 웰컴 패키지"></div>
                     <div class="neo-text-box">
                         <span class="neo-tag">Package</span>
                         <h3 class="neo-title">VIP 웰컴 패키지</h3>
@@ -391,82 +386,61 @@
 
                 <div class="neo-item de-gal-item reveal">
                     <div class="neo-curtain"></div>
-                    <div class="neo-frame screen-content"><img src="./assets/jpeg/project-2_de3_gallery_bn07.jpg" alt="매장 쉘프 입체 와블러"></div>
+                    <div class="neo-frame screen-content"><img src="./assets/jpeg/project-2_de3_gallery_bn02.jpg" alt="매장 쉘프 입체 와블러"></div>
                     <div class="neo-text-box">
                         <span class="neo-tag">Wobbler</span>
-                        <h3 class="neo-title">07쉘프 입체 와블러</h3>
+                        <h3 class="neo-title">쉘프 입체 와블러</h3>
                     </div>
                 </div>
 
                 <div class="neo-item de-gal-item reveal">
                     <div class="neo-curtain"></div>
-                    <div class="neo-frame screen-content"><img src="./assets/jpeg/project-2_de3_gallery_bn08.jpg" alt="실물 스케일 등신대"></div>
+                    <div class="neo-frame screen-content"><img src="./assets/jpeg/project-2_de3_gallery_bn09.jpg" alt="실물 스케일 등신대"></div>
                     <div class="neo-text-box">
                         <span class="neo-tag">Display</span>
-                        <h3 class="neo-title">08실물 비율 모델 등신대</h3>
+                        <h3 class="neo-title">실물 비율 모델 등신대</h3>
                     </div>
                 </div>
 
                 <div class="neo-item de-gal-item reveal">
                     <div class="neo-curtain"></div>
-                    <div class="neo-frame screen-content"><img src="./assets/jpeg/project-2_de3_gallery_bn09.jpg" alt="대형 팝업스토어 공간 VMD 총괄"></div>
+                    <div class="neo-frame screen-content"><img src="./assets/jpeg/project-2_de3_gallery_bn12.jpg" alt="대형 팝업스토어 공간 VMD 총괄"></div>
                     <div class="neo-text-box">
                         <span class="neo-tag">Exhibition</span>
-                        <h3 class="neo-title">09대형 팝업 공간 VMD 총괄</h3>
+                        <h3 class="neo-title">대형 팝업 공간 VMD 총괄</h3>
                     </div>
                 </div>
 
                 <div class="neo-item de-gal-item reveal">
                     <div class="neo-curtain"></div>
-                    <div class="neo-frame screen-content"><img src="./assets/jpeg/project-2_de3_gallery_bn10.jpg" alt="브랜드 헤리티지 카탈로그 북"></div>
+                    <div class="neo-frame screen-content"><img src="./assets/jpeg/project-2_de3_gallery_bn03_01.jpg" alt="브랜드 헤리티지 카탈로그 북"></div>
                     <div class="neo-text-box">
                         <span class="neo-tag">Print</span>
-                        <h3 class="neo-title">10브랜드 카탈로그 북</h3>
+                        <h3 class="neo-title">브랜드 카탈로그 북</h3>
                     </div>
                 </div>
 
-                <div class="neo-item de-gal-item reveal">
-                    <div class="neo-curtain"></div>
-                    <div class="neo-frame screen-content"><img src="./assets/jpeg/project-2_de3_gallery_bn11.jpg" alt="시즌 프로모션 매대"></div>
-                    <div class="neo-text-box">
-                        <span class="neo-tag">Promo</span>
-                        <h3 class="neo-title">11시즌 프로모션 매대</h3>
-                    </div>
-                </div>
 
-                <div class="neo-item de-gal-item reveal">
-                    <div class="neo-curtain"></div>
-                    <div class="neo-frame screen-content"><img src="./assets/jpeg/project-2_de3_gallery_bn12.jpg" alt="브랜드 지주 간판"></div>
-                    <div class="neo-text-box">
-                        <span class="neo-tag">Signage</span>
-                        <h3 class="neo-title">12브랜드 지주 간판</h3>
-                    </div>
-                </div>
 
-                <div class="neo-item de-gal-item reveal">
-                    <div class="neo-curtain"></div>
-                    <div class="neo-frame screen-content"><img src="./assets/jpeg/project-2_de3_gallery_bn13.jpg" alt="리미티드 에디션 굿즈"></div>
-                    <div class="neo-text-box">
-                        <span class="neo-tag">Goods</span>
-                        <h3 class="neo-title">13리미티드 에디션 굿즈</h3>
-                    </div>
-                </div>
 
-                <div class="neo-item de-gal-item reveal">
-                    <div class="neo-curtain"></div>
-                    <div class="neo-frame screen-content"><img src="./assets/jpeg/project-2_de3_gallery_bn14.jpg" alt="캠페인 브로슈어"></div>
-                    <div class="neo-text-box">
-                        <span class="neo-tag">Print</span>
-                        <h3 class="neo-title">14캠페인 브로슈어</h3>
-                    </div>
-                </div>
+
+
+
+
+
+
+
+
+
+
 
             </div>
         </section>
 
         <section class="cta-section">
             <h2 class="cta-title reveal">이제, 오프라인에서도<br>당신의 브랜드가 압도할 시간입니다.</h2>
-            </section>
+            <!-- <a href="#contact" class="cta-btn reveal">프로젝트 문의하기</a> -->
+        </section>
 
     </main>
 
@@ -491,7 +465,7 @@
       <button id="lbClose" title="닫기">&#10005;</button>
       <button class="lb-arrow" id="lbPrev" title="이전">&#8592;</button>
       <button class="lb-arrow" id="lbNext" title="다음">&#8594;</button>
-      <div id="lbCounter">1 / 14</div>
+      <div id="lbCounter">1 / 10</div>
       <div id="lbThumbs"></div>
     </div>
 
