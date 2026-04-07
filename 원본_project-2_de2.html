@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Sumin Portfolio</title>
+    <meta name="description" content="프로모션 디자인 포트폴리오" />
+
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" as="style" crossorigin
+        href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <style>
+        /* =========================================================
+           [Promotion Theme: Sticky Stack & Magazine Bento Grid]
+           ========================================================= */
+        :root {
+            --primary:     #6079FF;
+            --primary-dk:  #3a4fd0;
+            --primary-lt:  #7b92ff;
+            --txt-dark:    #0F172A;
+            --txt-mid:     #475569;
+            --bg-base:     #F4F7FA;
+            --white:       #ffffff;
+            --border-line: rgba(0, 0, 0, 0.08);
+            --radius-lg:   24px;
+            --radius-md:   16px;
+            --glass:       rgba(255, 255, 255, 0.85);
+            --shadow-sm:   0 10px 20px rgba(0,0,0,0.04);
+            --shadow-lg:   0 20px 40px rgba(96, 121, 255, 0.15);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Pretendard', sans-serif;
+            color: var(--txt-dark);
+            background-color: var(--bg-base);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .reveal { opacity: 0; transform: translateY(50px); transition: all 0.8s cubic-bezier(0.2, 0.8, 0.2, 1); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        /* ── ① HERO SECTION: 타이포그래피 임팩트 ── */
+        .hero-section {
+            padding: 22rem 5% 15rem; text-align: center;
+            background: linear-gradient(180deg, #ffffff 0%, var(--bg-base) 100%);
+            position: relative; overflow: hidden;
+        }
+        .hero-badge {
+            display: inline-block; padding: 8px 24px;
+            background: var(--primary-bg); color: var(--primary);
+            border: 1.5px solid rgba(96, 121, 255, 0.25); border-radius: 50px;
+            font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: 0.7rem 2rem;
+            margin-bottom: 3rem; margin-top: 14rem; font-size: 1.6rem;
+        }
+        .hero-title {
+            font-size: clamp(4rem, 8vw, 8.5rem); font-weight: 800;
+            letter-spacing: -3px; line-height: 1.1; margin-bottom: 3rem;
+            color: var(--txt-dark);
+        }
+        .hero-title span {
+            background: linear-gradient(to right, var(--primary), #8A9CFF);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
+        .hero-desc {
+            font-size: 2rem; color: var(--txt-mid); max-width: 800px;
+            margin: 0 auto; line-height: 1.8; word-break: keep-all;
+        }
+
+        /* ── ② 기발한 스티키 스택(Sticky Stack) 전략 영역 ── */
+        .strategy-section { padding: 10rem 5%; max-width: 1200px; margin: 0 auto; }
+        .strategy-header { text-align: center; margin-bottom: 6rem; }
+        .strategy-header h2 { font-size: 3.5rem; font-weight: 800; letter-spacing: -1px;  }
+
+        .stack-container {
+            display: flex; flex-direction: column; gap: 2rem;
+            position: relative;
+        }
+        /* 마우스 스크롤을 내리면 카드가 위로 올라가며 겹쳐지는 최신 트렌드 애니메이션 */
+        .stack-card {
+            position: sticky;
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: 5rem 4rem;
+            border: 1px solid var(--border-line);
+            box-shadow: 0 -10px 30px rgba(0,0,0,0.03);
+            display: flex; align-items: center; gap: 4rem;
+            transform-origin: top center;
+        }
+        /* 카드별 고정 위치 지정 (겹침 효과) */
+        .stack-card:nth-child(1) { top: 120px; z-index: 1; }
+        .stack-card:nth-child(2) { top: 140px; z-index: 2; background: #fafbfc; }
+        .stack-card:nth-child(3) { top: 160px; z-index: 3; }
+        .stack-card:nth-child(4) { top: 180px; z-index: 4; background: var(--primary); color: var(--white); border:none;}
+
+        .stack-num { font-size: 5rem; font-weight: 800; color: var(--primary-lt); line-height: 1; opacity: 0.5; }
+        .stack-card:nth-child(4) .stack-num { color: #fff; opacity: 0.3; }
+        .stack-content h3 { font-size: 2.2rem; font-weight: 800; margin-bottom: 1rem; }
+        .stack-content p { font-size: 1.4rem; color: var(--txt-mid); line-height: 1.6; }
+        .stack-card:nth-child(4) .stack-content h3, 
+        .stack-card:nth-child(4) .stack-content p { color: var(--white); }
+        
+        @media (max-width: 768px) {
+            .stack-card { flex-direction: column; text-align: center; gap: 2rem; padding: 3rem 2rem; }
+        }
+
+        /* ── ③ 매거진 벤토 갤러리 (12-Column Grid) ── */
+        /* 20개의 아이템을 단순히 나열하지 않고 크기를 다르게 섞어 화보처럼 연출 */
+        .magazine-section { padding: 10rem 5% 15rem; }
+        .magazine-header { text-align: center; margin-bottom: 8rem; }
+        .magazine-header h2 { font-size: 4rem; font-weight: 800; letter-spacing: -2px; }
+
+        .mag-grid {
+            max-width: 1400px; margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 2rem;
+            grid-auto-flow: dense;
+        }
+
+        /* 20개 아이템 비율 할당 (합이 12가 되도록 행을 구성) */
+        .mag-item.span-8  { grid-column: span 8;  height: 550px; }
+        .mag-item.span-4  { grid-column: span 4;  height: 550px; }
+        .mag-item.span-6  { grid-column: span 6;  height: 480px; }
+        .mag-item.span-12 { grid-column: span 12; height: 600px; } /* 강조형 와이드 */
+
+        @media (max-width: 1024px) {
+            .mag-item.span-8, .mag-item.span-4, .mag-item.span-6 { grid-column: span 6; height: 450px; }
+            .mag-item.span-12 { grid-column: span 12; height: 500px; }
+        }
+        @media (max-width: 600px) {
+            .mag-item { grid-column: span 12 !important; height: 450px !important; }
+        }
+
+        .mag-item {
+            position: relative; border-radius: var(--radius-lg);
+            background: var(--white); overflow: hidden;
+            box-shadow: var(--shadow-sm); cursor: pointer;
+            transition: all 0.4s ease; border: 1px solid var(--border-line);
+        }
+        .mag-item:hover {
+            transform: translateY(-8px); box-shadow: var(--shadow-lg); border-color: var(--primary-lt);
+        }
+
+        /* 라이트박스 및 오토스크롤을 위한 내부 구조 */
+        .mag-frame { width: 100%; height: 100%; position: relative; overflow: hidden; background: #eef2ff; }
+        
+        /* [수정 부분] 여러 이미지를 세로로 나열하기 위해 absolute 위치 속성 수정 */
+        .screen-content { 
+            width: 100%; 
+            display: flex; 
+            flex-direction: column; 
+            transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+            /* 스크롤 시 화면 밖으로 이동할 수 있도록 위치 조정 */
+            position: absolute; top: 0; left: 0;
+        }
+        .screen-content img {
+            width: 100%; display: block; 
+            /* 기존의 absolute 속성을 제거하여 이미지가 차례대로 세로로 붙도록 함 */
+        }
+
+        /* 호버 시 나타나는 세련된 플로팅 캡션 */
+        .mag-caption {
+            position: absolute; bottom: 2rem; left: 2rem; right: 2rem;
+            background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px);
+            padding: 1.5rem 2rem; border-radius: var(--radius-md);
+            display: flex; justify-content: space-between; align-items: center;
+            opacity: 0; transform: translateY(20px); transition: all 0.4s ease;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1); pointer-events: none;
+        }
+        .mag-item:hover .mag-caption { opacity: 1; transform: translateY(0); }
+        .mag-caption h3 { font-size: 1.4rem; font-weight: 800; color: var(--txt-dark); margin-bottom: 0.2rem; }
+        .mag-caption p { font-size: 1rem; font-weight: 600; color: var(--primary); text-transform: uppercase; letter-spacing: 1px; }
+        .mag-arrow { width: 35px; height: 35px; border-radius: 50%; background: var(--txt-dark); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; }
+
+        /* ── ④ CTA ── */
+        .cta-section {
+            background: var(--txt-dark); color: var(--white);
+            text-align: center; padding: 15rem 5%; position: relative;
+        }
+        .cta-title { font-size: clamp(3rem, 6vw, 5rem); font-weight: 800; letter-spacing: -2px; margin-bottom: 2rem; }
+        .cta-btn {
+            display: inline-block; background: var(--primary); color: var(--white);
+            padding: 1.8rem 5rem; border-radius: 50px; font-size: 1.6rem; font-weight: 800;
+            text-decoration: none; transition: 0.3s; margin-top: 3rem; box-shadow: 0 10px 20px rgba(96,121,255,0.3);
+        }
+        .cta-btn:hover { background: var(--white); color: var(--txt-dark); transform: translateY(-5px); }
+
+        /* 기존 헤더 스타일 보호 */
+        .header { background: rgba(255,255,255,0.9) !important; backdrop-filter: blur(10px); border-bottom: 1px solid rgba(0,0,0,0.05); }
+
+        /* ── 라이트박스 CSS (원본 완벽 유지) ── */
+        #lbOverlay { display: none; position: fixed !important; top: 0 !important; left: 0 !important; width: 100% !important; height: 100% !important; background: rgba(0, 0, 0, 0.93) !important; z-index: 2147483647 !important; box-sizing: border-box; overflow: hidden; }
+        #lbOverlay.is-open { display: flex !important; align-items: center; justify-content: center; }
+        #lbBox { position: absolute; top: 0; left: 0; right: 0; bottom: 140px; display: flex; align-items: center; justify-content: center; padding: 80px 16px 20px; box-sizing: border-box; overflow: hidden; }
+        #lbImgWrap { max-width: 100%; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
+        #lbClose { position: fixed !important; top: 16px; right: 20px; width: 44px; height: 44px; background: rgba(255,255,255,0.15); border: 1.5px solid rgba(255,255,255,0.35); border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 2147483647 !important; color: #fff; font-size: 18px; outline: none; }
+        .lb-arrow { position: fixed !important; top: 50%; transform: translateY(-50%); width: 52px; height: 52px; background: rgba(255,255,255,0.12); border: 1.5px solid rgba(255,255,255,0.28); border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 2147483647 !important; color: #fff; font-size: 22px; outline: none; }
+        #lbPrev { left: 16px !important; } #lbNext { right: 16px !important; }
+        #lbCounter { position: fixed !important; bottom: 18px; left: 50%; transform: translateX(-50%); color: rgba(255,255,255,0.9); font-size: 13px; font-weight: 600; letter-spacing: 2px; z-index: 2147483647 !important; background: rgba(0,0,0,0.55); padding: 5px 20px; border-radius: 50px; }
+        #lbThumbs { position: fixed !important; bottom: 52px; left: 50%; transform: translateX(-50%); display: flex; gap: 7px; z-index: 2147483647 !important; max-width: 86vw; overflow-x: auto; padding: 4px 2px; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+        #lbThumbs::-webkit-scrollbar { display: none; }
+        .lb-thumb { width: 56px; height: 38px; object-fit: cover; border-radius: 4px; opacity: 0.4; border: 2px solid transparent; cursor: pointer; flex-shrink: 0; }
+        .lb-thumb.is-active { opacity: 1; border-color: #6079FF; transform: scale(1.11); }
+        #lbSpinner { display: none; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 40px; height: 40px; border: 3px solid rgba(255,255,255,0.2); border-top-color: #6079FF; border-radius: 50%; animation: spin 0.7s linear infinite !important; z-index: 2; }
+        @keyframes spin { to { transform: translate(-50%, -50%) rotate(360deg); } }
+        @media (max-width: 600px) { #lbBox { padding: 56px 8px 16px; bottom: 110px; } .lb-arrow { width: 44px !important; height: 44px !important; font-size: 18px; background: rgba(0,0,0,0.45) !important; border-color: rgba(255,255,255,0.4) !important; } #lbPrev { left: 4px !important; } #lbNext { right: 4px !important; } #lbClose { top: 8px; right: 8px; width: 40px; height: 40px; font-size: 16px; } #lbThumbs { bottom: 42px; gap: 5px; } .lb-thumb { width: 40px; height: 27px; } #lbCounter { font-size: 11px; padding: 4px 14px; bottom: 14px; } }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+      <div class="header__content">
+        <div class="header__logo-container">
+          <div class="header__logo-img-cont">
+            <img src="./assets/png/logo_sumin.png" alt="Logo Image" class="header__logo-img" />
+          </div>
+          <span class="header__logo-sub">Sumin</span>
+        </div>
+        <div class="header__main">
+          <ul class="header__links">
+            <li class="header__link-wrapper"><a href="./index.html" class="header__link">Home</a></li>
+            <li class="header__link-wrapper"><a href="./index.html#about" class="header__link">About</a></li>
+            <li class="header__link-wrapper"><a href="./index.html#projects" class="header__link">Projects</a></li>
+            <li class="header__link-wrapper"><a href="./index.html#contact" class="header__link">Contact</a></li>
+          </ul>
+          <div class="header__main-ham-menu-cont">
+            <img src="./assets/svg/ham-menu.svg" alt="hamburger menu" class="header__main-ham-menu" />
+            <img src="./assets/svg/ham-menu-close.svg" alt="hamburger menu close" class="header__main-ham-menu-close d-none" />
+          </div>
+        </div>
+      </div>
+      <div class="header__sm-menu">
+        <div class="header__sm-menu-content">
+          <ul class="header__sm-menu-links">
+            <li class="header__sm-menu-link"><a href="./index.html">Home</a></li>
+            <li class="header__sm-menu-link"><a href="./index.html#about">About</a></li>
+            <li class="header__sm-menu-link"><a href="./index.html#projects">Projects</a></li>
+            <li class="header__sm-menu-link"><a href="./index.html#contact">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+    </header>
+
+    <main>
+        <section class="hero-section">
+            <span class="hero-badge reveal">Content Design</span>
+            <h1 class="hero-title reveal">
+                프로모션<br>디자인
+            </h1>
+            <p class="hero-desc reveal">
+                이탈을 방어하는 압도적인 비주얼 후킹부터 거부할 수 없는 혜택 설계까지.<br>
+                프로모션의 본질인 '전환율'에 집착하며, 예쁜 디자인을 넘어 가장 완벽한 세일즈 캔버스를 만듭니다.
+            </p>
+        </section>
+
+        <section class="strategy-section">
+            <div class="strategy-header reveal">
+                <h2>The 4 Steps of Strategy</h2>
+            </div>
+            
+            <div class="stack-container">
+                <div class="stack-card">
+                    <div class="stack-num">01</div>
+                    <div class="stack-content">
+                        <h3>Visual Hooking (초반 3초의 승부)</h3>
+                        <p>수많은 광고 속에서 고객의 무의식적 스크롤을 멈추게 만드는 강력한 헤드라인과 직관적인 메인 비주얼을 설계합니다.</p>
+                    </div>
+                </div>
+                <div class="stack-card">
+                    <div class="stack-num">02</div>
+                    <div class="stack-content">
+                        <h3>Rhythmic Flow (스크롤 스토리)</h3>
+                        <p>단순한 정보 나열이 아닌 공감-증명-해결책으로 이어지는 완벽한 심리적 흐름을 구성하여 이탈률을 최소화합니다.</p>
+                    </div>
+                </div>
+                <div class="stack-card">
+                    <div class="stack-num">03</div>
+                    <div class="stack-content">
+                        <h3>Data & Omni-Channel (플랫폼 최적화)</h3>
+                        <p>자사몰, 오픈마켓, 홈쇼핑 등 채널별 고객 행동 데이터를 기반으로 맞춤형 톤앤매너와 UI 배치를 적용합니다.</p>
+                    </div>
+                </div>
+                <div class="stack-card">
+                    <div class="stack-num">04</div>
+                    <div class="stack-content">
+                        <h3>Call To Action (결제 유도 설계)</h3>
+                        <p>타임세일 게이지, 쿠폰 뱃지, 신뢰도 엠블럼 등을 적재적소에 배치하여 장바구니 버튼 클릭을 폭발적으로 이끌어냅니다.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="magazine-section">
+            <div class="magazine-header reveal">
+                <h2>Promotion Design</h2>
+                <p style="font-size: 1.5rem; color: var(--txt-mid); margin-top:1rem;">마우스를 올리면 숨겨진 상세페이지의 흐름이 플레이됩니다.</p>
+            </div>
+
+            <div class="mag-grid">
+                
+                <div class="mag-item span-8 de-gal-item reveal">
+                    <div class="mag-frame">
+                        <div class="screen-content">
+                            <img src="./assets/jpeg/project-2_de2_gallery_bn01_01.jpg" alt="마데카크림 파트 1">
+                        </div>
+                    </div>
+                    <div class="mag-caption"><div><p>Best Seller</p><h3>마데카 크림 메가 런칭</h3></div><div class="mag-arrow">➔</div></div>
+                </div>
+                
+                <div class="mag-item span-4 de-gal-item reveal">
+                    <div class="mag-frame">
+                        <div class="screen-content"><img src="./assets/jpeg/project-2_de2_gallery_bn02_01.jpg" alt="바이탈 캡슐 세럼"></div>
+                    </div>
+                    <div class="mag-caption"><div><p>25% Up</p><h3>바이탈 캡슐 세럼</h3></div><div class="mag-arrow">➔</div></div>
+                </div>
+
+                <div class="mag-item span-4 de-gal-item reveal">
+                    <div class="mag-frame">
+                        <div class="screen-content"><img src="./assets/jpeg/project-2_de2_gallery_bn03_01.jpg"></div>
+                    </div>
+                    <div class="mag-caption"><div><p>VIP Only</p><h3>리페어 밤 크림</h3></div><div class="mag-arrow">➔</div></div>
+                </div>
+                <div class="mag-item span-4 de-gal-item reveal">
+                    <div class="mag-frame">
+                        <div class="screen-content"><img src="./assets/jpeg/project-2_de2_gallery_bn04_01.jpg"></div>
+                    </div>
+                    <div class="mag-caption"><div><p>Sold Out</p><h3>랩핑 마스크</h3></div><div class="mag-arrow">➔</div></div>
+                </div>
+                <div class="mag-item span-4 de-gal-item reveal">
+                    <div class="mag-frame">
+                        <div class="screen-content"><img src="./assets/jpeg/project-2_de2_gallery_bn05_02.jpg"></div>
+                    </div>
+                    <div class="mag-caption"><div><p>Tone-up</p><h3>페이셜 톤업 크림</h3></div><div class="mag-arrow">➔</div></div>
+                </div>
+
+                <div class="mag-item span-6 de-gal-item reveal">
+                    <div class="mag-frame">
+                        <div class="screen-content"><img src="./assets/jpeg/project-2_de2_gallery_bn06_02.jpg"></div>
+                    </div>
+                    <div class="mag-caption"><div><p>Summer</p><h3>스타톡 아쿠아 세럼</h3></div><div class="mag-arrow">➔</div></div>
+                </div>
+                <div class="mag-item span-6 de-gal-item reveal">
+                    <div class="mag-frame">
+                        <div class="screen-content"><img src="./assets/jpeg/project-2_de2_gallery_bn07_06.jpg"></div>
+                    </div>
+                    <div class="mag-caption"><div><p>Premium</p><h3>마이크로 스타톡</h3></div><div class="mag-arrow">➔</div></div>
+                </div>
+
+                <div class="mag-item span-12 de-gal-item reveal">
+                    <div class="mag-frame">
+                        <div class="screen-content"><img src="./assets/jpeg/project-2_de2_gallery_bn08_03.jpg"></div>
+                    </div>
+                    <div class="mag-caption"><div><p>Double Sale</p><h3>타임 에너지 1+1 빅세일</h3></div><div class="mag-arrow">➔</div></div>
+                </div>
+
+                <div class="mag-item span-4 de-gal-item reveal">
+                    <div class="mag-frame">
+                        <div class="screen-content"><img src="./assets/jpeg/project-2_de2_gallery_bn09_04.jpg"></div>
+                    </div>
+                    <div class="mag-caption"><div><p>Scientific</p><h3>인텐시브 포뮬러</h3></div><div class="mag-arrow">➔</div></div>
+                </div>
+                <div class="mag-item span-8 de-gal-item reveal">
+                    <div class="mag-frame">
+                        <div class="screen-content"><img src="./assets/jpeg/project-2_de2_gallery_bn10_02.jpg"></div>
+                    </div>
+                    <div class="mag-caption"><div><p>For Men</p><h3>인텐시브 바이탈 올인원</h3></div><div class="mag-arrow">➔</div></div>
+                </div>
+
+                <div class="mag-item span-6 de-gal-item reveal">
+                    <div class="mag-frame">
+                        <div class="screen-content"><img src="./assets/jpeg/project-2_de2_gallery_bn11_03.jpg"></div>
+                    </div>
+                    <div class="mag-caption"><div><p>Radiance</p><h3>래디언트 앰플</h3></div><div class="mag-arrow">➔</div></div>
+                </div>
+                <div class="mag-item span-6 de-gal-item reveal">
+                    <div class="mag-frame">
+                        <div class="screen-content"><img src="./assets/jpeg/project-2_de2_gallery_bn12_02.jpg"></div>
+                    </div>
+                    <div class="mag-caption"><div><p>Outdoor</p><h3>UV 프로텍션 선스틱</h3></div><div class="mag-arrow">➔</div></div>
+                </div>
+
+                <div class="mag-item span-4 de-gal-item reveal">
+                    <div class="mag-frame">
+                        <div class="screen-content"><img src="./assets/jpeg/project-2_de2_gallery_bn13_03.jpg"></div>
+                    </div>
+                    <div class="mag-caption"><div><p>Cover</p><h3>블레미쉬 커버</h3></div><div class="mag-arrow">➔</div></div>
+                </div>
+                <div class="mag-item span-4 de-gal-item reveal">
+                    <div class="mag-frame">
+                        <div class="screen-content"><img src="./assets/jpeg/project-2_de2_gallery_bn14_02.jpg"></div>
+                    </div>
+                    <div class="mag-caption"><div><p>1M Sold</p><h3>더마 마스크</h3></div><div class="mag-arrow">➔</div></div>
+                </div>
+                <div class="mag-item span-4 de-gal-item reveal">
+                    <div class="mag-frame">
+                        <div class="screen-content"><img src="./assets/jpeg/project-2_de2_gallery_bn15_01.jpg"></div>
+                    </div>
+                    <div class="mag-caption"><div><p>Gift</p><h3>테카솔 마스크팩</h3></div><div class="mag-arrow">➔</div></div>
+                </div>
+
+                <div class="mag-item span-8 de-gal-item reveal">
+                    <div class="mag-frame">
+                        <div class="screen-content"><img src="./assets/jpeg/project-2_de2_gallery_bn16_03.jpg"></div>
+                    </div>
+                    <div class="mag-caption"><div><p>Clean Beauty</p><h3>모이스처 바디로션</h3></div><div class="mag-arrow">➔</div></div>
+                </div>
+                <div class="mag-item span-4 de-gal-item reveal">
+                    <div class="mag-frame">
+                        <div class="screen-content"><img src="./assets/jpeg/project-2_de2_gallery_bn17_02.jpg"></div>
+                    </div>
+                    <div class="mag-caption"><div><p>Kakao</p><h3>밀크씨슬 플러스</h3></div><div class="mag-arrow">➔</div></div>
+                </div>
+
+                <div class="mag-item span-6 de-gal-item reveal">
+                    <div class="mag-frame">
+                        <div class="screen-content"><img src="./assets/jpeg/project-2_de2_gallery_bn18_01.jpg"></div>
+                    </div>
+                    <div class="mag-caption"><div><p>Story</p><h3>허브 차가버섯</h3></div><div class="mag-arrow">➔</div></div>
+                </div>
+                <div class="mag-item span-6 de-gal-item reveal">
+                    <div class="mag-frame">
+                        <div class="screen-content"><img src="./assets/jpeg/project-2_de2_gallery_bn19_01.jpg"></div>
+                    </div>
+                    <div class="mag-caption"><div><p>Trust</p><h3>프로비마게 유산균</h3></div><div class="mag-arrow">➔</div></div>
+                </div>
+
+                <div class="mag-item span-12 de-gal-item reveal">
+                    <div class="mag-frame">
+                        <div class="screen-content"><img src="./assets/jpeg/project-2_de2_gallery_bn20_01.jpg"></div>
+                    </div>
+                    <div class="mag-caption"><div><p>Pre-order</p><h3>피크노제놀 홈쇼핑 선주문</h3></div><div class="mag-arrow">➔</div></div>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="cta-section">
+            <h2 class="cta-title reveal">이제, 당신의 브랜드도<br>매출을 터트릴 시간입니다.</h2>
+            <!-- <a href="#contact" class="cta-btn reveal">프로젝트 문의하기</a> -->
+        </section>
+
+    </main>
+
+    <footer class="main-footer">
+      <div class="main-container">
+        <div class="main-footer__upper">
+          <div class="main-footer__row main-footer__row-1"></div>
+          <div class="main-footer__row main-footer__row-2">
+            <h4 class="heading heading-sm text-lt">Sumin</h4>
+            <p class="main-footer__short-desc">작은 디테일이 모여 큰 감동을 만든다는 믿음으로 픽셀 하나하나에 브랜드의 진심을 담아냅니다.</p>
+          </div>
+        </div>
+        <div class="main-footer__lower">&copy; Copyright 2026. Made by Sumin</div>
+      </div>
+    </footer>
+
+    <div id="lbOverlay">
+      <div id="lbBox">
+        <div id="lbImgWrap"></div>
+        <div id="lbSpinner"></div>
+      </div>
+      <button id="lbClose" title="닫기">&#10005;</button>
+      <button class="lb-arrow" id="lbPrev" title="이전">&#8592;</button>
+      <button class="lb-arrow" id="lbNext" title="다음">&#8594;</button>
+      <div id="lbCounter">1 / 7</div>
+      <div id="lbThumbs"></div>
+    </div>
+
+    <script>
+        /* 1. 스크롤 등장 애니메이션 */
+        const observerOptions = { threshold: 0.1, rootMargin: "0px 0px -50px 0px" };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach((el) => {
+            observer.observe(el);
+        });
+
+        /* 2. 기발한 오토스크롤: 컨텐츠(.screen-content)의 실제 길이를 계산하여 스크롤 */
+        document.querySelectorAll('.de-gal-item').forEach(item => {
+            const screenContent = item.querySelector('.screen-content');
+            const frame = item.querySelector('.mag-frame');
+            
+            item.addEventListener('mouseenter', () => {
+                if (!screenContent || !frame) return;
+                
+                // .screen-content 내부의 전체 높이 계산 (여러 이미지의 높이 합)
+                const contentHeight = screenContent.scrollHeight;
+                const frameHeight = frame.offsetHeight;
+                
+                if(contentHeight > frameHeight) {
+                    const scrollDistance = contentHeight - frameHeight;
+                    // 길이가 길수록 천천히 스크롤되도록 속도 계산 (최소 3초)
+                    const duration = Math.max(3, (contentHeight / 800)); 
+                    screenContent.style.transition = `transform ${duration}s linear`;
+                    screenContent.style.transform = `translateY(-${scrollDistance}px)`;
+                }
+            });
+            
+            item.addEventListener('mouseleave', () => {
+                if (!screenContent) return;
+                screenContent.style.transition = `transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1)`;
+                screenContent.style.transform = `translateY(0)`;
+            });
+        });
+
+        /* 3. 라이트박스 로직 (원본 완벽 유지 - 다중 이미지 처리는 별도 로직 필요, 현재는 첫 이미지만 썸네일로 가져옴) */
+        (function () {
+          var galItems = document.querySelectorAll('.de-gal-item');
+          var imgSrcs  = [];
+
+          galItems.forEach(function (item) {
+            // 라이트박스는 대표 썸네일 1개만 띄움
+            var img = item.querySelector('.screen-content img');
+            if (img) {
+              imgSrcs.push({
+                src: img.getAttribute('src'),
+                alt: img.getAttribute('alt') || '갤러리 이미지'
+              });
+            }
+          });
+
+          if (imgSrcs.length === 0) return;
+
+          var overlay   = document.getElementById('lbOverlay');
+          var lbBox     = document.getElementById('lbBox');
+          var imgWrap   = document.getElementById('lbImgWrap');
+          var spinner   = document.getElementById('lbSpinner');
+          var lbClose   = document.getElementById('lbClose');
+          var lbPrev    = document.getElementById('lbPrev');
+          var lbNext    = document.getElementById('lbNext');
+          var lbCounter = document.getElementById('lbCounter');
+          var lbThumbs  = document.getElementById('lbThumbs');
+
+          if (!overlay || !imgWrap) return;
+
+          var currentIdx = 0;
+          var isOpen     = false;
+
+          imgSrcs.forEach(function (info, i) {
+            var th = document.createElement('img');
+            th.setAttribute('src', info.src);
+            th.setAttribute('alt', info.alt);
+            th.className = 'lb-thumb';
+            th.style.cssText = 'animation:none!important;opacity:0.4;';
+            th.addEventListener('click', function (e) {
+              e.stopPropagation();
+              showImg(i);
+            });
+            lbThumbs.appendChild(th);
+          });
+
+          function showImg(idx) {
+            currentIdx = idx;
+            var info = imgSrcs[idx];
+
+            spinner.style.display = 'block';
+            imgWrap.innerHTML = '';
+
+            var newImg = document.createElement('img');
+            var isMobile = window.innerWidth <= 600;
+            var maxH     = isMobile ? 'calc(100vh - 180px)' : 'calc(100vh - 220px)';
+
+            var styleArr = [
+              'display:block', 'max-width:100%', 'width:auto', 'max-height:' + maxH,
+              'height:auto', 'object-fit:contain', 'border-radius:8px', 'box-shadow:0 20px 60px rgba(0,0,0,0.7)',
+              'animation:none', 'opacity:1', 'transform:none', 'transition:none', 'position:relative',
+              'z-index:1', '-webkit-transform:none', '-webkit-animation:none'
+            ];
+
+            newImg.setAttribute('style', styleArr.join(';'));
+            newImg.setAttribute('alt', info.alt);
+
+            newImg.onload = function () {
+              spinner.style.display = 'none';
+              newImg.style.opacity        = '1';
+              newImg.style.animation      = 'none';
+              newImg.style.webkitAnimation = 'none';
+              newImg.style.maxWidth       = '100%';
+              imgWrap.appendChild(newImg);
+            };
+
+            newImg.onerror = function () {
+              spinner.style.display = 'none';
+              imgWrap.innerHTML = '<div style="color:rgba(255,255,255,0.6);font-size:13px;text-align:center;padding:20px;">⚠️ 이미지를 불러올 수 없습니다.</div>';
+            };
+
+            newImg.setAttribute('src', info.src);
+
+            if (newImg.complete && newImg.naturalWidth > 0) {
+              spinner.style.display       = 'none';
+              newImg.style.opacity        = '1';
+              newImg.style.animation      = 'none';
+              newImg.style.webkitAnimation = 'none';
+              newImg.style.maxWidth       = '100%';
+              imgWrap.appendChild(newImg);
+            }
+
+            lbCounter.textContent = (idx + 1) + ' / ' + imgSrcs.length;
+
+            var thumbEls = lbThumbs.querySelectorAll('.lb-thumb');
+            thumbEls.forEach(function (t, i) {
+              t.classList.toggle('is-active', i === idx);
+              t.style.opacity = (i === idx) ? '1' : '0.4';
+            });
+            if (thumbEls[idx]) {
+              thumbEls[idx].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+            }
+
+            lbPrev.style.opacity       = (idx === 0)                  ? '0.25' : '1';
+            lbPrev.style.pointerEvents = (idx === 0)                  ? 'none'  : 'auto';
+            lbNext.style.opacity       = (idx === imgSrcs.length - 1) ? '0.25' : '1';
+            lbNext.style.pointerEvents = (idx === imgSrcs.length - 1) ? 'none'  : 'auto';
+          }
+
+          function openLB(idx) {
+            isOpen = true; overlay.classList.add('is-open');
+            document.body.style.overflow = 'hidden'; document.documentElement.style.overflow = 'hidden';
+            showImg(idx);
+          }
+
+          function closeLB() {
+            isOpen = false; overlay.classList.remove('is-open');
+            document.body.style.overflow = ''; document.documentElement.style.overflow = '';
+            imgWrap.innerHTML = ''; spinner.style.display = 'none';
+          }
+
+          galItems.forEach(function (item, idx) {
+            item.addEventListener('click', function (e) {
+              e.preventDefault(); e.stopPropagation(); openLB(idx);
+            });
+          });
+
+          lbClose.addEventListener('click', function (e) { e.stopPropagation(); closeLB(); });
+          lbPrev.addEventListener('click', function (e) { e.stopPropagation(); if (currentIdx > 0) showImg(currentIdx - 1); });
+          lbNext.addEventListener('click', function (e) { e.stopPropagation(); if (currentIdx < imgSrcs.length - 1) showImg(currentIdx + 1); });
+          overlay.addEventListener('click', function (e) { if (e.target === overlay || e.target === lbBox || e.target === imgWrap) closeLB(); });
+          document.addEventListener('keydown', function (e) {
+            if (!isOpen) return;
+            if (e.key === 'Escape' || e.key === 'Esc') closeLB();
+            else if (e.key === 'ArrowLeft')  { if (currentIdx > 0) showImg(currentIdx - 1); }
+            else if (e.key === 'ArrowRight') { if (currentIdx < imgSrcs.length - 1) showImg(currentIdx + 1); }
+          });
+          
+          var txStart = 0, tyStart = 0;
+          overlay.addEventListener('touchstart', function (e) { txStart = e.touches[0].clientX; tyStart = e.touches[0].clientY; }, { passive: true });
+          overlay.addEventListener('touchend', function (e) {
+            var dx = txStart - e.changedTouches[0].clientX; var dy = tyStart - e.changedTouches[0].clientY;
+            if (Math.abs(dx) < 40 || Math.abs(dx) < Math.abs(dy)) return;
+            if (dx > 0 && currentIdx < imgSrcs.length - 1) showImg(currentIdx + 1);
+            else if (dx < 0 && currentIdx > 0)             showImg(currentIdx - 1);
+          }, { passive: true });
+        })();
+    </script>
+
+    <script src="./index.js"></script>
+</body>
+</html>

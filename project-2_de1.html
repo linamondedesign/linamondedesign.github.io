@@ -1,1052 +1,1696 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Sumin Portfolio</title>
-    <meta name="description" content="상세페이지 디자인 포트폴리오" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Sumin Portfolio</title>
+  <meta name="description" content="상세페이지 디자인 포트폴리오" />
 
-    <link rel="stylesheet" href="css/style.css" />
-    <link rel="stylesheet" as="style" crossorigin
-        href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="css/style.css" />
+  <link
+    rel="stylesheet"
+    as="style"
+    crossorigin
+    href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css"
+  />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
-    <style>
-        /* =========================================================
-           [트렌디 에디토리얼 와이어프레임 & 매슨리 테마]
-           ========================================================= */
-        :root {
-            --primary:     #6079FF;
-            --primary-dk:  #3a4fd0;
-            --primary-lt:  #7b92ff;
-            --primary-bg:  rgba(96, 121, 255, 0.08);
-            --primary-bd:  rgba(96, 121, 255, 0.2);
-            --txt-dark:    #0F172A;
-            --txt-mid:     #444;
-            --txt-light:   #888;
-            --bg-gray:     #f4f5f7;
-            --bg-dark:     #111;
-            --white:       #fff;
-            --border-line: rgba(0, 0, 0, 0.1);
-            --radius-lg:   24px;
-            --radius-md:   16px;
-            --glass: rgba(255, 255, 255, 0.85);
-        }
+  <style>
+    /* =========================================================
+       [트렌디 에디토리얼 와이어프레임 & 매슨리 테마]
+       ========================================================= */
+    :root {
+      --primary:     #6079FF;
+      --primary-dk:  #3a4fd0;
+      --primary-lt:  #7b92ff;
+      --primary-bg:  rgba(96, 121, 255, 0.08);
+      --primary-bd:  rgba(96, 121, 255, 0.2);
+      --txt-dark:    #0F172A;
+      --txt-mid:     #444;
+      --txt-light:   #888;
+      --bg-gray:     #f4f5f7;
+      --bg-dark:     #111;
+      --white:       #fff;
+      --border-line: rgba(0, 0, 0, 0.1);
+      --radius-lg:   24px;
+      --radius-md:   16px;
+      --glass:       rgba(255, 255, 255, 0.85);
+    }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        
-        body {
-            font-family: 'Pretendard', sans-serif;
-            color: var(--txt-dark);
-            background-color: var(--bg-gray);
-            line-height: 1.6;
-            animation: fadeInPage 0.8s ease;
-            overflow-x: hidden; /* 가로 확장 시 발생하는 스크롤 방지 */
-        }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-        @keyframes fadeInPage {
-            from { opacity: 0; transform: translateY(20px); }
-            to   { opacity: 1; transform: translateY(0); }
-        }
+    body {
+      font-family: 'Pretendard', sans-serif;
+      color: var(--txt-dark);
+      background-color: var(--bg-gray);
+      line-height: 1.6;
+      animation: fadeInPage 0.8s ease;
+      overflow-x: hidden; /* 가로 확장 시 발생하는 스크롤 방지 */
+    }
 
-        /* === 추가된 클래스: 화면 가로 100% 꽉 채우기 (외부 래퍼 무시) === */
-        .full-width-breakout {
-            width: 100vw !important;
-            max-width: 100vw !important;
-            margin-left: calc(50% - 50vw) !important;
-            border-left: none !important;
-            border-right: none !important;
-            box-sizing: border-box !important;
-        }
+    @keyframes fadeInPage {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
 
-        /* 공통 레이아웃 설정 */
-        .layout-wrapper {
-            max-width: 1400px;
-            margin: 0 auto;
-            background: var(--white);
-            border-left: 1px solid var(--border-line);
-            border-right: 1px solid var(--border-line);
-        }
-        
-        .section-border {
-            border-bottom: 1px solid var(--border-line);
-        }
+    /* === 추가된 클래스: 화면 가로 100% 꽉 채우기 (외부 래퍼 무시) === */
+    .full-width-breakout {
+      width: 100vw !important;
+      max-width: 100vw !important;
+      margin-left: calc(50% - 50vw) !important;
+      border-left: none !important;
+      border-right: none !important;
+      box-sizing: border-box !important;
+    }
 
-        /* 에디토리얼 스타일의 좌우 분할 구조 */
-        .editorial-split {
-            display: grid;
-            grid-template-columns: 350px 1fr;
-        }
-        @media (max-width: 1024px) {
-            .editorial-split { grid-template-columns: 1fr; }
-        }
+    /* 공통 레이아웃 설정 */
+    .layout-wrapper {
+      max-width: 1400px;
+      margin: 0 auto;
+      background: var(--white);
+      border-left: 1px solid var(--border-line);
+      border-right: 1px solid var(--border-line);
+    }
 
-        /* 좌측 Sticky 타이틀 영역 */
-        .sticky-title-wrap {
-            padding: 8rem 4rem;
-            border-right: 1px solid var(--border-line);
-            background: #fafafa;
-        }
-        .sticky-title {
-            position: sticky;
-            top: 120px;
-        }
-        .section-label-title {
-        display: inline-block;
-        background: rgba(96, 121, 255, 0.08);
-        border: 1.5px solid rgba(96, 121, 255, 0.25);
-        color: #6079FF;
-        font-size: 1.6rem;
-        font-weight: 700;
-        letter-spacing: 2px;
-        text-transform: uppercase;
-        padding: 0.7rem 2rem;
-        border-radius: 50px;
-        margin-bottom: 3rem;
-        margin-top: 14rem;
-        }
+    .section-border {
+      border-bottom: 1px solid var(--border-line);
+    }
 
+    /* 에디토리얼 스타일의 좌우 분할 구조 */
+    .editorial-split {
+      display: grid;
+      grid-template-columns: 350px 1fr;
+    }
 
+    @media (max-width: 1024px) {
+      .editorial-split {
+        grid-template-columns: 1fr;
+      }
+    }
 
+    /* 좌측 Sticky 타이틀 영역 */
+    .sticky-title-wrap {
+      padding: 8rem 4rem;
+      border-right: 1px solid var(--border-line);
+      background: #fafafa;
+    }
 
-        .section-label {
-            display: inline-block;
-            font-size: 1.1rem;
-            font-weight: 700;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            color: var(--primary);
-            margin-bottom: 1.5rem;
-            /* border: 1px solid var(--primary-bd); */
-            /* padding: 0.5rem 1.2rem; */
-            /* border-radius: 50px; */
-        }
-        
-        .section-title {
-            font-size: 3.2rem;
-            font-weight: 800;
-            color: var(--txt-dark);
-            line-height: 1.2;
-            letter-spacing: -1px;
-        }
-        @media (max-width: 1024px) {
-            .sticky-title-wrap { padding: 5rem 2rem 2rem; border-right: none; border-bottom: 1px solid var(--border-line); }
-            .section-title { font-size: 2.5rem; }
-        }
+    .sticky-title {
+      position: sticky;
+      top: 120px;
+    }
 
-        /* 우측 콘텐츠 영역 */
-        .content-wrap { padding: 8rem 4rem; }
-        @media (max-width: 1024px) { .content-wrap { padding: 4rem 2rem; } }
+    .section-label-title {
+      display: inline-block;
+      background: rgba(96, 121, 255, 0.08);
+      border: 1.5px solid rgba(96, 121, 255, 0.25);
+      color: #6079FF;
+      font-size: 1.6rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 0.7rem 2rem;
+      border-radius: 50px;
+      margin-bottom: 3rem;
+      margin-top: 14rem;
+    }
 
-        .desc-text { font-size: 1.6rem; color: var(--txt-mid); line-height: 1.8; margin-bottom: 2rem; word-break: keep-all; }
-        
-        .tags-container { display: flex; flex-wrap: wrap; gap: 0.8rem; margin-top: 3rem; }
-        .tag-badge { background: var(--bg-gray); padding: 0.6rem 1.6rem; border-radius: 50px; font-size: 1.3rem; font-weight: 600; border: 1px solid var(--border-line); transition: 0.3s; }
-        .tag-badge:hover { background: var(--primary); color: var(--white); border-color: var(--primary); }
+    .section-label {
+      display: inline-block;
+      font-size: 1.1rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--primary);
+      margin-bottom: 1.5rem;
+    }
 
-        /* ① HERO SECTION */
-        .hero-section {
-            padding: 22rem 5% 15rem;
-            text-align: center;
-            border-bottom: 1px solid var(--border-line);
-            background: radial-gradient(circle at top, #fff 0%, var(--bg-gray) 100%);
-        }
-        .hero-title { font-size: clamp(4rem, 8vw, 9rem); font-weight: 800; letter-spacing: -3px; line-height: 1.1; margin-bottom: 3rem;  color: #111; }
-        .hero-desc { font-size: 2rem; color: var(--txt-mid); max-width: 800px; margin: 0 auto 5rem; }
-        .hero-stats { display: flex; justify-content: center; gap: 4rem; flex-wrap: wrap; }
-        .stat-box { text-align: center; }
-        .stat-num { display: block; font-size: 4rem; font-weight: 800; color: var(--primary); }
-        .stat-label { font-size: 1.4rem; font-weight: 600; color: var(--txt-light); }
+    .section-title {
+      font-size: 3.2rem;
+      font-weight: 800;
+      color: var(--txt-dark);
+      line-height: 1.2;
+      letter-spacing: -1px;
+    }
 
-        /* ② 역할 및 채널 박스 */
-        .role-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; }
-        .role-card { background: var(--white); border: 1px solid var(--border-line); border-radius: var(--radius-md); padding: 3rem; transition: 0.3s; box-shadow: 0 10px 30px rgba(0,0,0,0.02); }
-        .role-card:hover { transform: translateY(-5px); border-color: var(--primary-bd); box-shadow: 0 15px 40px rgba(96, 121, 255, 0.1); }
-        .role-card-title { font-size: 1.4rem; font-weight: 800; color: var(--primary); margin-bottom: 2rem; text-transform: uppercase; letter-spacing: 1px; }
-        .role-list { list-style: none; }
-        .role-list li { font-size: 1.5rem; color: var(--txt-mid); margin-bottom: 1.2rem; font-weight: 500; display: flex; gap: 10px; }
-        .role-list li::before { content: '✓'; color: var(--primary); font-weight: 800; }
+    @media (max-width: 1024px) {
+      .sticky-title-wrap {
+        padding: 5rem 2rem 2rem;
+        border-right: none;
+        border-bottom: 1px solid var(--border-line);
+      }
+      .section-title {
+        font-size: 2.5rem;
+      }
+    }
 
-        /* ③ 디자인 철학 그리드 */
-        .philo-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 3rem; }
-        @media (max-width: 768px) { .philo-grid { grid-template-columns: 1fr; } }
-        .philo-item { padding-bottom: 3rem; border-bottom: 1px solid var(--border-line); }
-        .philo-num { font-size: 3rem; font-weight: 800; color: var(--primary-bd); display: block; margin-bottom: 1rem; font-style: italic; }
-        .philo-title { font-size: 2.2rem; font-weight: 800; margin-bottom: 1.5rem; color: var(--txt-dark); }
-        .philo-desc { font-size: 1.5rem; color: var(--txt-light); line-height: 1.7; }
+    /* 우측 콘텐츠 영역 */
+    .content-wrap {
+      padding: 8rem 4rem;
+    }
 
-        /* ④ 브랜드 포트폴리오 */
-        .brand-list { display: flex; flex-direction: column; gap: 3rem; }
-        .brand-item { background: var(--bg-gray); border-radius: var(--radius-lg); padding: 4rem; display: flex; gap: 4rem; align-items: flex-start; transition: 0.3s; }
-        .brand-item:hover { background: var(--white); box-shadow: 0 20px 50px rgba(0,0,0,0.05); transform: scale(1.01); }
-        .brand-icon { font-size: 4rem; background: var(--white); width: 80px; height: 80px; display: flex; align-items: center; justify-content: center; border-radius: 20px; box-shadow: 0 10px 20px rgba(0,0,0,0.05); flex-shrink: 0; }
-        .brand-content h3 { font-size: 2.4rem; font-weight: 800; margin-bottom: 1rem; }
-        .brand-content p { font-size: 1.5rem; color: var(--txt-mid); margin-bottom: 2rem; }
-        @media (max-width: 768px) { .brand-item { flex-direction: column; gap: 2rem; padding: 3rem 2rem; } }
+    @media (max-width: 1024px) {
+      .content-wrap {
+        padding: 4rem 2rem;
+      }
+    }
 
-        /* ⑤ 스킬 바 */
-        .skill-list { display: grid; grid-template-columns: 1fr; gap: 2.5rem; }
-        .skill-item-header { display: flex; justify-content: space-between; margin-bottom: 1rem; font-size: 1.6rem; font-weight: 700; }
-        .skill-item-pct { color: var(--primary); }
-        .skill-bar { width: 100%; height: 8px; background: var(--bg-gray); border-radius: 10px; overflow: hidden; }
-        .skill-fill { height: 100%; background: var(--primary); border-radius: 10px; transform-origin: left; animation: fillBar 1.5s ease forwards; }
-        @keyframes fillBar { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+    .desc-text {
+      font-size: 1.6rem;
+      color: var(--txt-mid);
+      line-height: 1.8;
+      margin-bottom: 2rem;
+      word-break: keep-all;
+    }
 
-        /* ⑥ 오가닉 매슨리 폭포수 갤러리 (Organic Masonry) */
-        .masonry-gallery {
-            column-count: 3;
-            column-gap: 3rem;
-            padding: 4rem 0;
-        }
-        @media (max-width: 1024px) { .masonry-gallery { column-count: 2; column-gap: 2rem; } }
-        @media (max-width: 600px)  { .masonry-gallery { column-count: 1; } }
+    .tags-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      margin-top: 3rem;
+    }
 
-        /* 라이트박스 작동을 위해 기존 클래스명(.de-gal-item) 유지 */
-        .de-gal-item {
-            break-inside: avoid;
-            margin-bottom: 3rem;
-            position: relative;
-            background: var(--bg-dark);
-            border-radius: var(--radius-lg);
-            overflow: hidden;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.05);
-            cursor: pointer;
-            border: 1px solid var(--border-line);
-        }
+    .tag-badge {
+      background: var(--bg-gray);
+      padding: 0.6rem 1.6rem;
+      border-radius: 50px;
+      font-size: 1.3rem;
+      font-weight: 600;
+      border: 1px solid var(--border-line);
+      transition: 0.3s;
+    }
 
-        /* 이미지의 높이를 불규칙하게 설정하여 완벽한 매슨리 연출 */
-        .de-gal-item:nth-child(3n+1) .masonry-frame { height: 450px; }
-        .de-gal-item:nth-child(3n+2) .masonry-frame { height: 600px; }
-        .de-gal-item:nth-child(3n+3) .masonry-frame { height: 750px; }
+    .tag-badge:hover {
+      background: var(--primary);
+      color: var(--white);
+      border-color: var(--primary);
+    }
 
-        /* 마우스 호버 자동 스크롤 매직 (Auto-Scroll) */
-        .masonry-frame {
-            width: 100%;
-            height: 100%; /* 부모 높이를 상속받아 마스크 역할 */
-            position: relative;
-            overflow: hidden;
-            background: #fff;
-        }
-        
-        .screen-content { 
-            width: 100%; 
-            display: flex; 
-            flex-direction: column; /* 여러 이미지가 세로로 나열되도록 설정 */
-            position: absolute; /* 스크롤 애니메이션을 위해 절대 위치 설정 */
-            top: 0; left: 0;
-            transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
-        }
-        
-        .screen-content img {
-            width: 100%; 
-            height: auto; /* 이미지 원본 비율 유지 */
-            display: block; 
-        }
-        
-        .gal-info {
-            padding: 2rem;
-            background: var(--white);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-top: 1px solid var(--border-line);
-        }
-        .gal-info h3 { font-size: 1.5rem; font-weight: 800; color: var(--txt-dark); }
-        .gal-icon { width: 40px; height: 40px; border-radius: 50%; background: var(--bg-gray); display: flex; align-items: center; justify-content: center; color: var(--primary); font-size: 1.2rem; transition: 0.3s; }
-        .de-gal-item:hover .gal-icon { background: var(--primary); color: #fff; transform: rotate(-45deg); }
+    /* ① HERO SECTION */
+    .hero-section {
+      padding: 22rem 5% 15rem;
+      text-align: center;
+      border-bottom: 1px solid var(--border-line);
+      background: radial-gradient(circle at top, #fff 0%, var(--bg-gray) 100%);
+    }
 
-        /* ⑦ CTA Section */
-        .cta-section {
-            background: var(--txt-dark);
-            color: var(--white);
-            text-align: center;
-            padding: 15rem 5%;
-        }
-        .cta-title { font-size: clamp(3rem, 6vw, 6rem); font-weight: 800; margin-bottom: 2rem; letter-spacing: -2px; }
-        .cta-desc { font-size: 1.8rem; color: #888; margin-bottom: 5rem; }
-        .cta-btn {
-            display: inline-block; background: var(--primary); color: var(--white); padding: 2rem 5rem;
-            border-radius: 50px; font-size: 1.6rem; font-weight: 800; text-decoration: none; transition: 0.3s;
-        }
-        .cta-btn:hover { background: var(--white); color: var(--bg-dark); transform: translateY(-5px); }
+    .hero-title {
+      font-size: clamp(4rem, 8vw, 9rem);
+      font-weight: 800;
+      letter-spacing: -3px;
+      line-height: 1.1;
+      margin-bottom: 3rem;
+      color: #111;
+    }
 
-        /* 헤더 원본 스타일 유지용 필수 설정 */
-        .header { background: var(--glass) !important; backdrop-filter: blur(10px); border-bottom: 1px solid rgba(0,0,0,0.05); }
-        
-        /* 라이트박스 코드는 건드리지 않습니다 (기존 코드 그대로 유지) */
-        #lbOverlay { display: none; position: fixed !important; top: 0 !important; left: 0 !important; width: 100% !important; height: 100% !important; background: rgba(0, 0, 0, 0.93) !important; z-index: 2147483647 !important; box-sizing: border-box; overflow: hidden; }
-        #lbOverlay.is-open { display: flex !important; align-items: center; justify-content: center; }
-        #lbBox { position: absolute; top: 0; left: 0; right: 0; bottom: 140px; display: flex; align-items: center; justify-content: center; padding: 80px 16px 20px; box-sizing: border-box; overflow: hidden; }
-        #lbImgWrap { max-width: 100%; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
-        #lbClose { position: fixed !important; top: 16px; right: 20px; width: 44px; height: 44px; background: rgba(255,255,255,0.15); border: 1.5px solid rgba(255,255,255,0.35); border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 2147483647 !important; color: #fff; font-size: 18px; outline: none; }
-        .lb-arrow { position: fixed !important; top: 50%; transform: translateY(-50%); width: 52px; height: 52px; background: rgba(255,255,255,0.12); border: 1.5px solid rgba(255,255,255,0.28); border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 2147483647 !important; color: #fff; font-size: 22px; outline: none; }
-        #lbPrev { left: 16px !important; } #lbNext { right: 16px !important; }
-        #lbCounter { position: fixed !important; bottom: 18px; left: 50%; transform: translateX(-50%); color: rgba(255,255,255,0.9); font-size: 13px; font-weight: 600; letter-spacing: 2px; z-index: 2147483647 !important; background: rgba(0,0,0,0.55); padding: 5px 20px; border-radius: 50px; }
-        #lbThumbs { position: fixed !important; bottom: 52px; left: 50%; transform: translateX(-50%); display: flex; gap: 7px; z-index: 2147483647 !important; max-width: 86vw; overflow-x: auto; padding: 4px 2px; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
-        #lbThumbs::-webkit-scrollbar { display: none; }
-        .lb-thumb { width: 56px; height: 38px; object-fit: cover; border-radius: 4px; opacity: 0.4; border: 2px solid transparent; cursor: pointer; flex-shrink: 0; }
-        .lb-thumb.is-active { opacity: 1; border-color: #6079FF; transform: scale(1.11); }
-        #lbSpinner { display: none; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 40px; height: 40px; border: 3px solid rgba(255,255,255,0.2); border-top-color: #6079FF; border-radius: 50%; animation: spin 0.7s linear infinite !important; z-index: 2; }
-        @keyframes spin { to { transform: translate(-50%, -50%) rotate(360deg); } }
-        @media (max-width: 600px) { #lbBox { padding: 56px 8px 16px; bottom: 110px; } .lb-arrow { width: 44px !important; height: 44px !important; font-size: 18px; background: rgba(0,0,0,0.45) !important; border-color: rgba(255,255,255,0.4) !important; } #lbPrev { left: 4px !important; } #lbNext { right: 4px !important; } #lbClose { top: 8px; right: 8px; width: 40px; height: 40px; font-size: 16px; } #lbThumbs { bottom: 42px; gap: 5px; } .lb-thumb { width: 40px; height: 27px; } #lbCounter { font-size: 11px; padding: 4px 14px; bottom: 14px; } }
-    </style>
+    .hero-desc {
+      font-size: 2rem;
+      color: var(--txt-mid);
+      max-width: 800px;
+      margin: 0 auto 5rem;
+    }
+
+    .hero-stats {
+      display: flex;
+      justify-content: center;
+      gap: 4rem;
+      flex-wrap: wrap;
+    }
+
+    .stat-box {
+      text-align: center;
+    }
+
+    .stat-num {
+      display: block;
+      font-size: 4rem;
+      font-weight: 800;
+      color: var(--primary);
+    }
+
+    .stat-label {
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: var(--txt-light);
+    }
+
+    /* ② 역할 및 채널 박스 */
+    .role-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+
+    .role-card {
+      background: var(--white);
+      border: 1px solid var(--border-line);
+      border-radius: var(--radius-md);
+      padding: 3rem;
+      transition: 0.3s;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.02);
+    }
+
+    .role-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--primary-bd);
+      box-shadow: 0 15px 40px rgba(96, 121, 255, 0.1);
+    }
+
+    .role-card-title {
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: var(--primary);
+      margin-bottom: 2rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .role-list {
+      list-style: none;
+    }
+
+    .role-list li {
+      font-size: 1.5rem;
+      color: var(--txt-mid);
+      margin-bottom: 1.2rem;
+      font-weight: 500;
+      display: flex;
+      gap: 10px;
+    }
+
+    .role-list li::before {
+      content: '✓';
+      color: var(--primary);
+      font-weight: 800;
+    }
+
+    /* ③ 디자인 철학 그리드 */
+    .philo-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 3rem;
+    }
+
+    @media (max-width: 768px) {
+      .philo-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .philo-item {
+      padding-bottom: 3rem;
+      border-bottom: 1px solid var(--border-line);
+    }
+
+    .philo-num {
+      font-size: 3rem;
+      font-weight: 800;
+      color: var(--primary-bd);
+      display: block;
+      margin-bottom: 1rem;
+      font-style: italic;
+    }
+
+    .philo-title {
+      font-size: 2.2rem;
+      font-weight: 800;
+      margin-bottom: 1.5rem;
+      color: var(--txt-dark);
+    }
+
+    .philo-desc {
+      font-size: 1.5rem;
+      color: var(--txt-light);
+      line-height: 1.7;
+    }
+
+    /* ④ 브랜드 포트폴리오 */
+    .brand-list {
+      display: flex;
+      flex-direction: column;
+      gap: 3rem;
+    }
+
+    .brand-item {
+      background: var(--bg-gray);
+      border-radius: var(--radius-lg);
+      padding: 4rem;
+      display: flex;
+      gap: 4rem;
+      align-items: flex-start;
+      transition: 0.3s;
+    }
+
+    .brand-item:hover {
+      background: var(--white);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.05);
+      transform: scale(1.01);
+    }
+
+    .brand-icon {
+      font-size: 4rem;
+      background: var(--white);
+      width: 80px;
+      height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 20px;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+      flex-shrink: 0;
+    }
+
+    .brand-content h3 {
+      font-size: 2.4rem;
+      font-weight: 800;
+      margin-bottom: 1rem;
+    }
+
+    .brand-content p {
+      font-size: 1.5rem;
+      color: var(--txt-mid);
+      margin-bottom: 2rem;
+    }
+
+    @media (max-width: 768px) {
+      .brand-item {
+        flex-direction: column;
+        gap: 2rem;
+        padding: 3rem 2rem;
+      }
+    }
+
+    /* ⑤ 스킬 바 */
+    .skill-list {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
+
+    .skill-item-header {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 1rem;
+      font-size: 1.6rem;
+      font-weight: 700;
+    }
+
+    .skill-item-pct {
+      color: var(--primary);
+    }
+
+    .skill-bar {
+      width: 100%;
+      height: 8px;
+      background: var(--bg-gray);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .skill-fill {
+      height: 100%;
+      background: var(--primary);
+      border-radius: 10px;
+      transform-origin: left;
+      animation: fillBar 1.5s ease forwards;
+    }
+
+    @keyframes fillBar {
+      from { transform: scaleX(0); }
+      to   { transform: scaleX(1); }
+    }
+
+    /* ⑥ 오가닉 매슨리 폭포수 갤러리 (Organic Masonry) */
+    .masonry-gallery {
+      column-count: 3;
+      column-gap: 3rem;
+      padding: 4rem 0;
+    }
+
+    @media (max-width: 1024px) {
+      .masonry-gallery {
+        column-count: 2;
+        column-gap: 2rem;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .masonry-gallery {
+        column-count: 1;
+      }
+    }
+
+    /* 라이트박스 작동을 위해 기존 클래스명(.de-gal-item) 유지 */
+    .de-gal-item {
+      break-inside: avoid;
+      margin-bottom: 3rem;
+      position: relative;
+      background: var(--bg-dark);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.05);
+      cursor: pointer;
+      border: 1px solid var(--border-line);
+    }
+
+    /* 이미지의 높이를 불규칙하게 설정하여 완벽한 매슨리 연출 */
+    .de-gal-item:nth-child(3n+1) .masonry-frame { height: 450px; }
+    .de-gal-item:nth-child(3n+2) .masonry-frame { height: 600px; }
+    .de-gal-item:nth-child(3n+3) .masonry-frame { height: 750px; }
+
+    /* 마우스 호버 자동 스크롤 매직 (Auto-Scroll) */
+    .masonry-frame {
+      width: 100%;
+      height: 100%; /* 부모 높이를 상속받아 마스크 역할 */
+      position: relative;
+      overflow: hidden;
+      background: #fff;
+    }
+
+    .screen-content {
+      width: 100%;
+      display: flex;
+      flex-direction: column; /* 여러 이미지가 세로로 나열되도록 설정 */
+      position: absolute; /* 스크롤 애니메이션을 위해 절대 위치 설정 */
+      top: 0;
+      left: 0;
+      transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+
+    .screen-content img {
+      width: 100%;
+      height: auto; /* 이미지 원본 비율 유지 */
+      display: block;
+    }
+
+    .gal-info {
+      padding: 2rem;
+      background: var(--white);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid var(--border-line);
+    }
+
+    .gal-info h3 {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--txt-dark);
+    }
+
+    .gal-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--bg-gray);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--primary);
+      font-size: 1.2rem;
+      transition: 0.3s;
+    }
+
+    .de-gal-item:hover .gal-icon {
+      background: var(--primary);
+      color: #fff;
+      transform: rotate(-45deg);
+    }
+
+    /* ⑦ CTA Section */
+    .cta-section {
+      background: var(--txt-dark);
+      color: var(--white);
+      text-align: center;
+      padding: 15rem 5%;
+    }
+
+    .cta-title {
+      font-size: clamp(3rem, 6vw, 6rem);
+      font-weight: 800;
+      margin-bottom: 2rem;
+      letter-spacing: -2px;
+    }
+
+    .cta-desc {
+      font-size: 1.8rem;
+      color: #888;
+      margin-bottom: 5rem;
+    }
+
+    .cta-btn {
+      display: inline-block;
+      background: var(--primary);
+      color: var(--white);
+      padding: 2rem 5rem;
+      border-radius: 50px;
+      font-size: 1.6rem;
+      font-weight: 800;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    .cta-btn:hover {
+      background: var(--white);
+      color: var(--bg-dark);
+      transform: translateY(-5px);
+    }
+
+    /* 헤더 원본 스타일 유지용 필수 설정 */
+    .header {
+      background: var(--glass) !important;
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(0,0,0,0.05);
+    }
+
+    /* 라이트박스 코드는 건드리지 않습니다 (기존 코드 그대로 유지하되 정렬만 적용) */
+    #lbOverlay {
+      display: none;
+      position: fixed !important;
+      top: 0 !important;
+      left: 0 !important;
+      width: 100% !important;
+      height: 100% !important;
+      background: rgba(0, 0, 0, 0.93) !important;
+      z-index: 2147483647 !important;
+      box-sizing: border-box;
+      overflow: hidden;
+    }
+
+    #lbOverlay.is-open {
+      display: flex !important;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #lbBox {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 140px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 80px 16px 20px;
+      box-sizing: border-box;
+      overflow: hidden;
+    }
+
+    #lbImgWrap {
+      max-width: 100%;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    #lbClose {
+      position: fixed !important;
+      top: 16px;
+      right: 20px;
+      width: 44px;
+      height: 44px;
+      background: rgba(255,255,255,0.15);
+      border: 1.5px solid rgba(255,255,255,0.35);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 2147483647 !important;
+      color: #fff;
+      font-size: 18px;
+      outline: none;
+    }
+
+    .lb-arrow {
+      position: fixed !important;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 52px;
+      height: 52px;
+      background: rgba(255,255,255,0.12);
+      border: 1.5px solid rgba(255,255,255,0.28);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 2147483647 !important;
+      color: #fff;
+      font-size: 22px;
+      outline: none;
+    }
+
+    #lbPrev { left: 16px !important; }
+    #lbNext { right: 16px !important; }
+
+    #lbCounter {
+      position: fixed !important;
+      bottom: 18px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: rgba(255,255,255,0.9);
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      z-index: 2147483647 !important;
+      background: rgba(0,0,0,0.55);
+      padding: 5px 20px;
+      border-radius: 50px;
+    }
+
+    #lbThumbs {
+      position: fixed !important;
+      bottom: 52px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 7px;
+      z-index: 2147483647 !important;
+      max-width: 86vw;
+      overflow-x: auto;
+      padding: 4px 2px;
+      scrollbar-width: none;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    #lbThumbs::-webkit-scrollbar {
+      display: none;
+    }
+
+    .lb-thumb {
+      width: 56px;
+      height: 38px;
+      object-fit: cover;
+      border-radius: 4px;
+      opacity: 0.4;
+      border: 2px solid transparent;
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+
+    .lb-thumb.is-active {
+      opacity: 1;
+      border-color: #6079FF;
+      transform: scale(1.11);
+    }
+
+    #lbSpinner {
+      display: none;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 40px;
+      height: 40px;
+      border: 3px solid rgba(255,255,255,0.2);
+      border-top-color: #6079FF;
+      border-radius: 50%;
+      animation: spin 0.7s linear infinite !important;
+      z-index: 2;
+    }
+
+    @keyframes spin {
+      to { transform: translate(-50%, -50%) rotate(360deg); }
+    }
+
+    @media (max-width: 600px) {
+      #lbBox {
+        padding: 56px 8px 16px;
+        bottom: 110px;
+      }
+      .lb-arrow {
+        width: 44px !important;
+        height: 44px !important;
+        font-size: 18px;
+        background: rgba(0,0,0,0.45) !important;
+        border-color: rgba(255,255,255,0.4) !important;
+      }
+      #lbPrev { left: 4px !important; }
+      #lbNext { right: 4px !important; }
+      #lbClose {
+        top: 8px;
+        right: 8px;
+        width: 40px;
+        height: 40px;
+        font-size: 16px;
+      }
+      #lbThumbs {
+        bottom: 42px;
+        gap: 5px;
+      }
+      .lb-thumb {
+        width: 40px;
+        height: 27px;
+      }
+      #lbCounter {
+        font-size: 11px;
+        padding: 4px 14px;
+        bottom: 14px;
+      }
+    }
+  </style>
 </head>
 <body>
 
-    <header class="header">
-      <div class="header__content">
-        <div class="header__logo-container">
-          <div class="header__logo-img-cont">
-            <img src="./assets/png/logo_sumin.png" alt="Logo Image" class="header__logo-img" />
-          </div>
-          <span class="header__logo-sub">Sumin</span>
+  <header class="header">
+    <div class="header__content">
+      <div class="header__logo-container">
+        <div class="header__logo-img-cont">
+          <img src="./assets/png/logo_sumin.png" alt="Logo Image" class="header__logo-img" />
         </div>
-        <div class="header__main">
-          <ul class="header__links">
-            <li class="header__link-wrapper"><a href="./index.html" class="header__link">Home</a></li>
-            <li class="header__link-wrapper"><a href="./index.html#about" class="header__link">About</a></li>
-            <li class="header__link-wrapper"><a href="./index.html#projects" class="header__link">Projects</a></li>
-            <li class="header__link-wrapper"><a href="./index.html#contact" class="header__link">Contact</a></li>
-          </ul>
-          <div class="header__main-ham-menu-cont">
-            <img src="./assets/svg/ham-menu.svg" alt="hamburger menu" class="header__main-ham-menu" />
-            <img src="./assets/svg/ham-menu-close.svg" alt="hamburger menu close" class="header__main-ham-menu-close d-none" />
-          </div>
+        <span class="header__logo-sub">Sumin</span>
+      </div>
+      <div class="header__main">
+        <ul class="header__links">
+          <li class="header__link-wrapper"><a href="./index.html" class="header__link">Home</a></li>
+          <li class="header__link-wrapper"><a href="./index.html#about" class="header__link">About</a></li>
+          <li class="header__link-wrapper"><a href="./index.html#projects" class="header__link">Projects</a></li>
+          <li class="header__link-wrapper"><a href="./index.html#contact" class="header__link">Contact</a></li>
+        </ul>
+        <div class="header__main-ham-menu-cont">
+          <img src="./assets/svg/ham-menu.svg" alt="hamburger menu" class="header__main-ham-menu" />
+          <img src="./assets/svg/ham-menu-close.svg" alt="hamburger menu close" class="header__main-ham-menu-close d-none" />
         </div>
       </div>
-      <div class="header__sm-menu">
-        <div class="header__sm-menu-content">
-          <ul class="header__sm-menu-links">
-            <li class="header__sm-menu-link"><a href="./index.html">Home</a></li>
-            <li class="header__sm-menu-link"><a href="./index.html#about">About</a></li>
-            <li class="header__sm-menu-link"><a href="./index.html#projects">Projects</a></li>
-            <li class="header__sm-menu-link"><a href="./index.html#contact">Contact</a></li>
-          </ul>
-        </div>
+    </div>
+    <div class="header__sm-menu">
+      <div class="header__sm-menu-content">
+        <ul class="header__sm-menu-links">
+          <li class="header__sm-menu-link"><a href="./index.html">Home</a></li>
+          <li class="header__sm-menu-link"><a href="./index.html#about">About</a></li>
+          <li class="header__sm-menu-link"><a href="./index.html#projects">Projects</a></li>
+          <li class="header__sm-menu-link"><a href="./index.html#contact">Contact</a></li>
+        </ul>
       </div>
-    </header>
+    </div>
+  </header>
 
-    <main>
-        <section class="hero-section full-width-breakout">
-            <span class="section-label-title" style="background: var(--white);">Content Design</span>
-            <h1 class="hero-title">상세페이지<br>디자인</h1>
-            <p class="hero-desc">
-                단 하나의 페이지가 구매를 결정합니다.<br>
-                브랜드의 본질을 꿰뚫고, 소비자의 감정선을 자극하는 전략적 상세페이지 디자인의 모든 것.
-            </p>
-            <div class="hero-stats">
-                <div class="stat-box"><span class="stat-num">100+</span><span class="stat-label">상세페이지 디자인</span></div>
-                <div class="stat-box"><span class="stat-num">20+</span><span class="stat-label">운영 브랜드</span></div>
-                <div class="stat-box"><span class="stat-num">5+</span><span class="stat-label">온/오프라인 채널</span></div>
+  <main>
+    <section class="hero-section full-width-breakout">
+      <span class="section-label-title" style="background: var(--white);">Content Design</span>
+      <h1 class="hero-title">상세페이지<br>디자인</h1>
+      <p class="hero-desc">
+        단 하나의 페이지가 구매를 결정합니다.<br>
+        브랜드의 본질을 꿰뚫고, 소비자의 감정선을 자극하는 전략적 상세페이지 디자인의 모든 것.
+      </p>
+      <div class="hero-stats">
+        <div class="stat-box">
+          <span class="stat-num">100+</span>
+          <span class="stat-label">상세페이지 디자인</span>
+        </div>
+        <div class="stat-box">
+          <span class="stat-num">20+</span>
+          <span class="stat-label">운영 브랜드</span>
+        </div>
+        <div class="stat-box">
+          <span class="stat-num">5+</span>
+          <span class="stat-label">온/오프라인 채널</span>
+        </div>
+      </div>
+    </section>
+
+    <div class="layout-wrapper">
+      
+      <section class="editorial-split section-border">
+        <div class="sticky-title-wrap">
+          <div class="sticky-title">
+            <span class="section-label">Project Overview</span>
+            <h2 class="section-title">팔리는 페이지를<br>설계하다</h2>
+          </div>
+        </div>
+        <div class="content-wrap">
+          <p class="desc-text">
+            상세페이지는 단순한 제품 소개가 아닙니다.<br>
+            브랜드의 첫인상이자, 소비자의 구매 결정이 이뤄지는 <strong style="color:var(--primary);">단 하나의 접점</strong>입니다.
+          </p>
+          <p class="desc-text">
+            동국제약 센텔리안24, 마데카21을 비롯해 원더브라, AK MALL, 유플러스콕, 세이브에어 등 20개 이상의 브랜드를 대상으로 종합몰·오픈마켓·자사몰·홈쇼핑 채널별 맞춤 상세페이지를 100건 이상 기획·설계·디자인했습니다.
+          </p>
+          <p class="desc-text">
+            제품의 핵심 강점을 시각 언어로 번역하고, 스크롤 흐름 안에서 소비자가 자연스럽게 구매 버튼으로 향하도록 설득력 있는 정보 위계와 비주얼 스토리텔링을 설계합니다.
+          </p>
+          <div class="tags-container">
+            <span class="tag-badge">#상세페이지</span>
+            <span class="tag-badge">#커머스디자인</span>
+            <span class="tag-badge">#비주얼스토리텔링</span>
+            <span class="tag-badge">#전환율최적화</span>
+            <span class="tag-badge">#멀티채널</span>
+            <span class="tag-badge">#브랜드디자인</span>
+            <span class="tag-badge">#홈쇼핑VMD</span>
+            <span class="tag-badge">#MD·마케팅</span>
+          </div>
+
+          <div class="role-grid" style="margin-top: 6rem;">
+            <div class="role-card">
+              <div class="role-card-title">담당 역할</div>
+              <ul class="role-list">
+                <li>상세페이지 기획 · 콘텐츠 설계</li>
+                <li>멀티채널 상세페이지 UI 디자인</li>
+                <li>홈쇼핑 VMD 운영 및 디자인</li>
+                <li>온라인 광고 · 마케팅 소재 제작</li>
+                <li>브랜드 런칭 총괄 · 시즌 이벤트 기획</li>
+              </ul>
             </div>
-        </section>
-
-        <div class="layout-wrapper">
-            
-            <section class="editorial-split section-border">
-                <div class="sticky-title-wrap">
-                    <div class="sticky-title">
-                        <span class="section-label">Project Overview</span>
-                        <h2 class="section-title">팔리는 페이지를<br>설계하다</h2>
-                    </div>
-                </div>
-                <div class="content-wrap">
-                    <p class="desc-text">상세페이지는 단순한 제품 소개가 아닙니다.<br>브랜드의 첫인상이자, 소비자의 구매 결정이 이뤄지는 <strong style="color:var(--primary);">단 하나의 접점</strong>입니다.</p>
-                    <p class="desc-text">동국제약 센텔리안24, 마데카21을 비롯해 원더브라, AK MALL, 유플러스콕, 세이브에어 등 20개 이상의 브랜드를 대상으로 종합몰·오픈마켓·자사몰·홈쇼핑 채널별 맞춤 상세페이지를 100건 이상 기획·설계·디자인했습니다.</p>
-                    <p class="desc-text">제품의 핵심 강점을 시각 언어로 번역하고, 스크롤 흐름 안에서 소비자가 자연스럽게 구매 버튼으로 향하도록 설득력 있는 정보 위계와 비주얼 스토리텔링을 설계합니다.</p>
-                    <div class="tags-container">
-                        <span class="tag-badge">#상세페이지</span><span class="tag-badge">#커머스디자인</span><span class="tag-badge">#비주얼스토리텔링</span><span class="tag-badge">#전환율최적화</span><span class="tag-badge">#멀티채널</span><span class="tag-badge">#브랜드디자인</span><span class="tag-badge">#홈쇼핑VMD</span><span class="tag-badge">#MD·마케팅</span>
-                    </div>
-
-                    <div class="role-grid" style="margin-top: 6rem;">
-                        <div class="role-card">
-                            <div class="role-card-title">담당 역할</div>
-                            <ul class="role-list">
-                                <li>상세페이지 기획 · 콘텐츠 설계</li><li>멀티채널 상세페이지 UI 디자인</li><li>홈쇼핑 VMD 운영 및 디자인</li><li>온라인 광고 · 마케팅 소재 제작</li><li>브랜드 런칭 총괄 · 시즌 이벤트 기획</li>
-                            </ul>
-                        </div>
-                        <div class="role-card">
-                            <div class="role-card-title">운영 채널</div>
-                            <ul class="role-list">
-                                <li>자사몰 · 종합몰 · 백화점몰</li><li>오픈마켓 (쿠팡·11번가·G마켓·옥션)</li><li>소셜커머스 · 폐쇄몰 · 복지몰</li><li>홈쇼핑 (CJ·GS·현대·롯데)</li><li>SNS · 인플루언서 채널</li>
-                            </ul>
-                        </div>
-                        <div class="role-card">
-                            <div class="role-card-title">사용 툴</div>
-                            <ul class="role-list">
-                                <li>Figma</li><li>Adobe Photoshop · Illustrator</li><li>Adobe XD</li><li>Notion</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section class="editorial-split section-border">
-                <div class="sticky-title-wrap">
-                    <div class="sticky-title">
-                        <span class="section-label">Design Philosophy</span>
-                        <h2 class="section-title">팔리는 상세페이지의<br>4가지 법칙</h2>
-                        <p style="margin-top: 2rem; font-size: 1.4rem; color: var(--txt-light);">100개 이상의 상세페이지를 직접 기획·설계하며 체득한 핵심 원칙입니다.</p>
-                    </div>
-                </div>
-                <div class="content-wrap">
-                    <div class="philo-grid">
-                        <div class="philo-item">
-                            <span class="philo-num">01</span>
-                            <h3 class="philo-title">Pain → Solution</h3>
-                            <p class="philo-desc">소비자가 느끼는 불편함을 첫 화면에서 짚고, 제품이 해결책임을 3초 안에 납득시킵니다.</p>
-                        </div>
-                        <div class="philo-item">
-                            <span class="philo-num">02</span>
-                            <h3 class="philo-title">스크롤 스토리</h3>
-                            <p class="philo-desc">정보를 단순히 나열하지 않고, 기승전결이 있는 하나의 이야기로 엮어 끝까지 읽히는 흐름을 설계합니다.</p>
-                        </div>
-                        <div class="philo-item">
-                            <span class="philo-num">03</span>
-                            <h3 class="philo-title">채널 최적화</h3>
-                            <p class="philo-desc">자사몰·오픈마켓·홈쇼핑·SNS — 채널마다 다른 소비자 심리와 규격에 맞춰 동일 브랜드를 다르게 표현합니다.</p>
-                        </div>
-                        <div class="philo-item">
-                            <span class="philo-num">04</span>
-                            <h3 class="philo-title">전환 유도 설계</h3>
-                            <p class="philo-desc">CTA 버튼·후기·사회적 증거 배치까지 데이터와 직관을 결합해 구매를 자연스럽게 이끌어 냅니다.</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section class="editorial-split section-border">
-                <div class="sticky-title-wrap">
-                    <div class="sticky-title">
-                        <span class="section-label">Brand Portfolio</span>
-                        <h2 class="section-title">함께한<br>브랜드들</h2>
-                        <p style="margin-top: 2rem; font-size: 1.4rem; color: var(--txt-light);">화장품·헬스케어·패션·항공·커머스까지 — 카테고리를 넘나드는 브랜드 경험이 설계의 깊이를 만듭니다.</p>
-                    </div>
-                </div>
-                <div class="content-wrap">
-                    <div class="brand-list">
-                        <div class="brand-item">
-                            <div class="brand-icon">💄</div>
-                            <div class="brand-content">
-                                <h3>동국제약 뷰티 브랜드</h3>
-                                <p>센텔리안24, 마데카21, 센시안, 메이올웨이즈 등 대표 브랜드의 자사몰·오픈마켓·홈쇼핑 전 채널 상세페이지 기획·디자인 및 신규 브랜드 런칭 총괄 디자인을 담당했습니다.</p>
-                                <div class="tags-container" style="margin-top:0;"><span class="tag-badge">#화장품</span><span class="tag-badge">#커머스</span><span class="tag-badge">#홈쇼핑</span><span class="tag-badge">#런칭총괄</span><span class="tag-badge">#멀티채널</span></div>
-                            </div>
-                        </div>
-                        <div class="brand-item">
-                            <div class="brand-icon">👙</div>
-                            <div class="brand-content">
-                                <h3>원더브라 外 속옷 브랜드</h3>
-                                <p>원더브라, 플레이텍스, 헤인즈, 마릴린먼로 등 10개 이상의 속옷 브랜드를 대상으로 홈쇼핑 방송 MD·VMD와 오픈마켓·소셜커머스 채널별 온라인/오프라인 콘텐츠 디자인을 제작했습니다.</p>
-                                <div class="tags-container" style="margin-top:0;"><span class="tag-badge">#속옷</span><span class="tag-badge">#커머스</span><span class="tag-badge">#온라인디자인</span><span class="tag-badge">#오프라인디자인</span><span class="tag-badge">#홈쇼핑MD</span><span class="tag-badge">#SNS마케팅</span></div>
-                            </div>
-                        </div>
-                        <div class="brand-item">
-                            <div class="brand-icon">🛍️</div>
-                            <div class="brand-content">
-                                <h3>AK MALL · AK FAMILY</h3>
-                                <p>AK MALL, AK FAMILY(임직원몰), 타사 복지몰의 프로모션 이벤트·상세페이지·이메일·팝업 디자인을 담당했으며, 이메일·등급 개편 메인몰 리뉴얼 프로젝트를 총괄했습니다.</p>
-                                <div class="tags-container" style="margin-top:0;"><span class="tag-badge">#애경그룹</span><span class="tag-badge">#콘텐츠디자인</span><span class="tag-badge">#리뉴얼총괄</span><span class="tag-badge">#이메일디자인</span><span class="tag-badge">#우수사원수상</span></div>
-                            </div>
-                        </div>
-                        <div class="brand-item">
-                            <div class="brand-icon">📱</div>
-                            <div class="brand-content">
-                                <h3>U+콕 · K딜 · 오토카지</h3>
-                                <p>유플러스 통신 기반 커머스 플랫폼 U+콕의 모든 운영 소재·기획전·상세페이지를 전담 디자인했으며, K딜·오토카지 커머스몰 웹 디자인 및 운영 소재를 제작했습니다.</p>
-                                <div class="tags-container" style="margin-top:0;"><span class="tag-badge">#커머스</span><span class="tag-badge">#유플러스</span><span class="tag-badge">#커머스UI</span><span class="tag-badge">#기획전디자인</span><span class="tag-badge">#운영소재</span></div>
-                            </div>
-                        </div>
-                        <div class="brand-item">
-                            <div class="brand-icon">✈️</div>
-                            <div class="brand-content">
-                                <h3>세이브에어 항공몰</h3>
-                                <p>항공 탄소배출권 플랫폼 세이브에어의 런칭 UI를 설계했습니다. 복잡한 항공권 구매 플로우를 단순화하고, 타임딜·최저가 비교 모듈 등 핵심 기능의 상세 안내 페이지를 디자인했습니다.</p>
-                                <div class="tags-container" style="margin-top:0;"><span class="tag-badge">#항공</span><span class="tag-badge">#결제시스템</span><span class="tag-badge">#런칭UI</span><span class="tag-badge">#타임딜UX</span><span class="tag-badge">#플로우최적화</span></div>
-                            </div>
-                        </div>
-                        <div class="brand-item">
-                            <div class="brand-icon">🎯</div>
-                            <div class="brand-content">
-                                <h3>동국제약 건강 기능 식품</h3>
-                                <p>구강케어·건강기능식품·헬스케어 브랜드의 카테고리별 특성을 살린 상세페이지 디자인과 오프라인 판촉물·인쇄 광고물 편집 디자인을 함께 수행했습니다.</p>
-                                <div class="tags-container" style="margin-top:0;"><span class="tag-badge">#헬스케어</span><span class="tag-badge">#생활건강</span><span class="tag-badge">#편집디자인</span><span class="tag-badge">#온라인디자인</span><span class="tag-badge">#오프라인디자인</span><span class="tag-badge">#카테고리전략</span></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section class="editorial-split section-border">
-                <div class="sticky-title-wrap">
-                    <div class="sticky-title">
-                        <span class="section-label">Design Skills</span>
-                        <h2 class="section-title">도구와 역량</h2>
-                        <p style="margin-top: 2rem; font-size: 1.4rem; color: var(--txt-light);">디자인 툴부터 마케팅·MD 역량까지 — 상세페이지 하나를 완성하는 데 필요한 모든 무기를 갖추고 있습니다.</p>
-                    </div>
-                </div>
-                <div class="content-wrap">
-                    <div class="skill-list">
-                        <div><div class="skill-item-header"><span>Adobe Photoshop</span><span class="skill-item-pct">98%</span></div><div class="skill-bar"><div class="skill-fill" style="width:98%"></div></div></div>
-                        <div><div class="skill-item-header"><span>Adobe Illustrator</span><span class="skill-item-pct">92%</span></div><div class="skill-bar"><div class="skill-fill" style="width:92%"></div></div></div>
-                        <div><div class="skill-item-header"><span>Figma</span><span class="skill-item-pct">95%</span></div><div class="skill-bar"><div class="skill-fill" style="width:95%"></div></div></div>
-                        <div><div class="skill-item-header"><span>멀티채널 MD · 마케팅 기획</span><span class="skill-item-pct">95%</span></div><div class="skill-bar"><div class="skill-fill" style="width:95%"></div></div></div>
-                        <div><div class="skill-item-header"><span>홈쇼핑 VMD 기획</span><span class="skill-item-pct">93%</span></div><div class="skill-bar"><div class="skill-fill" style="width:93%"></div></div></div>
-                        <div><div class="skill-item-header"><span>HTML · CSS 퍼블리싱</span><span class="skill-item-pct">90%</span></div><div class="skill-bar"><div class="skill-fill" style="width:90%"></div></div></div>
-                    </div>
-                </div>
-            </section>
-
-            <section class="editorial-split section-border" style="background: var(--bg-gray);">
-                <div class="sticky-title-wrap" style="background: transparent; border-right: none;">
-                    <div class="sticky-title">
-                        <span class="section-label">Screen Gallery</span>
-                        <h2 class="section-title">디자인 결과물</h2>
-                        <p style="margin-top: 2rem; font-size: 1.4rem; color: var(--txt-light);">마우스를 올리면 긴 상세페이지의 전체 흐름을 스크롤 없이 부드럽게 감상하실 수 있습니다.</p>
-                    </div>
-                </div>
-                <div class="content-wrap" style="padding-top: 2rem;">
-                    <div class="masonry-gallery">
-                        
-                        <div class="de-gal-item">
-                            <div class="masonry-frame">
-                                <div class="screen-content">
-                                    <img src="./assets/jpeg/project-2_de1_gallery_bn01_01.jpg" alt="마데카크림 파트 1">
-                                    <img src="./assets/jpeg/project-2_de1_gallery_bn01_02.jpg" alt="마데카크림 파트 2">
-                                    <img src="./assets/jpeg/project-2_de1_gallery_bn01_03.jpg" alt="마데카크림 파트 3">
-                                    <img src="./assets/jpeg/project-2_de1_gallery_bn01_04.jpg" alt="마데카크림 파트 4">
-                                </div>
-                            </div>
-                            <div class="gal-info"><h3>마데카크림</h3><div class="gal-icon">➔</div></div>
-                        </div>
-
-                        <div class="de-gal-item">
-                            <div class="masonry-frame">
-                                <div class="screen-content">
-                                    <img src="./assets/jpeg/project-2_de1_gallery_bn02_01.jpg" alt="바이탈 캡슐 세럼 파트 1">
-                                    <img src="./assets/jpeg/project-2_de1_gallery_bn02_02.jpg" alt="바이탈 캡슐 세럼 파트 2">
-                                    <img src="./assets/jpeg/project-2_de1_gallery_bn02_03.jpg" alt="바이탈 캡슐 세럼 파트 3">
-                                    <img src="./assets/jpeg/project-2_de1_gallery_bn02_04.jpg" alt="바이탈 캡슐 세럼 파트 4">
-                                </div>
-                            </div>
-                            <div class="gal-info"><h3>바이탈 캡슐 세럼</h3><div class="gal-icon">➔</div></div>
-                        </div>
-
-                        <div class="de-gal-item">
-                            <div class="masonry-frame">
-                                <div class="screen-content">
-                                    <img src="./assets/jpeg/project-2_de1_gallery_bn03_01.jpg" alt="리페어 밤 크림 파트 1">
-                                    <img src="./assets/jpeg/project-2_de1_gallery_bn03_02.jpg" alt="리페어 밤 크림 파트 2">
-                                    <img src="./assets/jpeg/project-2_de1_gallery_bn03_03.jpg" alt="리페어 밤 크림 파트 3">
-                                    <img src="./assets/jpeg/project-2_de1_gallery_bn03_04.jpg" alt="리페어 밤 크림 파트 4">
-                                </div>
-                            </div>
-                            <div class="gal-info"><h3>리페어 밤 크림</h3><div class="gal-icon">➔</div></div>
-                        </div>
-
-                        <div class="de-gal-item">
-                            <div class="masonry-frame">
-                                <div class="screen-content">
-                                    <img src="./assets/jpeg/project-2_de1_gallery_bn04_01.jpg" alt="랩핑 마스크 파트 1">
-                                    <img src="./assets/jpeg/project-2_de1_gallery_bn04_02.jpg" alt="랩핑 마스크 파트 2">
-                                    <img src="./assets/jpeg/project-2_de1_gallery_bn04_03.jpg" alt="랩핑 마스크 파트 3">
-                                    <img src="./assets/jpeg/project-2_de1_gallery_bn04_04.jpg" alt="랩핑 마스크 파트 4">
-                                </div>
-                            </div>
-                            <div class="gal-info"><h3>랩핑 마스크</h3><div class="gal-icon">➔</div></div>
-                        </div>
-
-                        <div class="de-gal-item">
-                            <div class="masonry-frame">
-                                <div class="screen-content">
-                                    <img src="./assets/jpeg/project-2_de1_gallery_bn05_01.jpg" alt="페이셜 톤업 크림 파트 1">
-                                    <img src="./assets/jpeg/project-2_de1_gallery_bn05_02.jpg" alt="페이셜 톤업 크림 파트 2">
-                                    <img src="./assets/jpeg/project-2_de1_gallery_bn05_03.jpg" alt="페이셜 톤업 크림 파트 3">
-                                    <img src="./assets/jpeg/project-2_de1_gallery_bn05_04.jpg" alt="페이셜 톤업 크림 파트 4">
-                                </div>
-                            </div>
-                            <div class="gal-info"><h3>페이셜 톤업 크림</h3><div class="gal-icon">➔</div></div>
-                        </div>
-
-                        <div class="de-gal-item">
-                            <div class="masonry-frame">
-                                <div class="screen-content">
-                                    <img src="./assets/jpeg/project-2_de1_gallery_bn06_01.jpg" alt="스타톡 아쿠아 세럼 파트 1">
-                                    <img src="./assets/jpeg/project-2_de1_gallery_bn06_02.jpg" alt="스타톡 아쿠아 세럼 파트 2">
-                                    <img src="./assets/jpeg/project-2_de1_gallery_bn06_03.jpg" alt="스타톡 아쿠아 세럼 파트 3">
-                                    <img src="./assets/jpeg/project-2_de1_gallery_bn06_04.jpg" alt="스타톡 아쿠아 세럼 파트 4">
-                                </div>
-                            </div>
-                            <div class="gal-info"><h3>스타톡 아쿠아 세럼</h3><div class="gal-icon">➔</div></div>
-                        </div>
-
-                        <div class="de-gal-item">
-                            <div class="masonry-frame">
-                                <div class="screen-content">
-                                    <img src="./assets/jpeg/project-2_de1_gallery_bn07_01.jpg" alt="마이크로 스타톡 세럼 파트 1">
-                                    <img src="./assets/jpeg/project-2_de1_gallery_bn07_02.jpg" alt="마이크로 스타톡 세럼 파트 2">
-                                    <img src="./assets/jpeg/project-2_de1_gallery_bn07_03.jpg" alt="마이크로 스타톡 세럼 파트 3">
-                                    <img src="./assets/jpeg/project-2_de1_gallery_bn07_04.jpg" alt="마이크로 스타톡 세럼 파트 4">
-                                </div>
-                            </div>
-                            <div class="gal-info"><h3>마이크로 스타톡 세럼</h3><div class="gal-icon">➔</div></div>
-                        </div>
-
-                        <div class="de-gal-item">
-                            <div class="masonry-frame">
-                                <div class="screen-content">
-                                    <img src="./assets/jpeg/project-2_de1_gallery_bn08_01.jpg" alt="타임 에너지 파트 1">
-                                    <img src="./assets/jpeg/project-2_de1_gallery_bn08_02.jpg" alt="타임 에너지 파트 2">
-                                    <img src="./assets/jpeg/project-2_de1_gallery_bn08_03.jpg" alt="타임 에너지 파트 3">
-                                    <img src="./assets/jpeg/project-2_de1_gallery_bn08_04.jpg" alt="타임 에너지 파트 4">
-                                </div>
-                            </div>
-                            <div class="gal-info"><h3>타임 에너지</h3><div class="gal-icon">➔</div></div>
-                        </div>
-
-                        <div class="de-gal-item">
-                            <div class="masonry-frame">
-                                <div class="screen-content">
-                                    <img src="./assets/jpeg/project-2_de1_gallery_bn09_01.jpg" alt="인텐시브 포뮬러 파트 1">
-                                    <img src="./assets/jpeg/project-2_de1_gallery_bn09_02.jpg" alt="인텐시브 포뮬러 파트 2">
-                                    <img src="./assets/jpeg/project-2_de1_gallery_bn09_03.jpg" alt="인텐시브 포뮬러 파트 3">
-                                    <img src="./assets/jpeg/project-2_de1_gallery_bn09_04.jpg" alt="인텐시브 포뮬러 파트 4">
-                                </div>
-                            </div>
-                            <div class="gal-info"><h3>인텐시브 포뮬러</h3><div class="gal-icon">➔</div></div>
-                        </div>
-
-                        <div class="de-gal-item">
-                            <div class="masonry-frame">
-                                <div class="screen-content">
-                                    <img src="./assets/jpeg/project-2_de1_gallery_bn10_01.jpg" alt="인텐시브 바이탈 올인원 파트 1">
-                                    <img src="./assets/jpeg/project-2_de1_gallery_bn10_02.jpg" alt="인텐시브 바이탈 올인원 파트 2">
-                                    <img src="./assets/jpeg/project-2_de1_gallery_bn10_03.jpg" alt="인텐시브 바이탈 올인원 파트 3">
-                                    <img src="./assets/jpeg/project-2_de1_gallery_bn10_04.jpg" alt="인텐시브 바이탈 올인원 파트 4">
-                                </div>
-                            </div>
-                            <div class="gal-info"><h3>인텐시브 바이탈 올인원</h3><div class="gal-icon">➔</div></div>
-                        </div>
-
-                        <div class="de-gal-item">
-                            <div class="masonry-frame">
-                                <div class="screen-content">
-                                    <img src="./assets/jpeg/project-2_de1_gallery_bn11_01.jpg" alt="래디언트 앰플 에센스 파트 1">
-                                    <img src="./assets/jpeg/project-2_de1_gallery_bn11_02.jpg" alt="래디언트 앰플 에센스 파트 2">
-                                    <img src="./assets/jpeg/project-2_de1_gallery_bn11_03.jpg" alt="래디언트 앰플 에센스 파트 3">
-                                    <img src="./assets/jpeg/project-2_de1_gallery_bn11_04.jpg" alt="래디언트 앰플 에센스 파트 4">
-                                </div>
-                            </div>
-                            <div class="gal-info"><h3>래디언트 앰플 에센스</h3><div class="gal-icon">➔</div></div>
-                        </div>
-
-                        <div class="de-gal-item">
-                            <div class="masonry-frame">
-                                <div class="screen-content">
-                                    <img src="./assets/jpeg/project-2_de1_gallery_bn12_01.jpg" alt="UV 프로텍션 선스틱 파트 1">
-                                    <img src="./assets/jpeg/project-2_de1_gallery_bn12_02.jpg" alt="UV 프로텍션 선스틱 파트 2">
-                                    <img src="./assets/jpeg/project-2_de1_gallery_bn12_03.jpg" alt="UV 프로텍션 선스틱 파트 3">
-                                    <img src="./assets/jpeg/project-2_de1_gallery_bn12_04.jpg" alt="UV 프로텍션 선스틱 파트 4">
-                                </div>
-                            </div>
-                            <div class="gal-info"><h3>UV 프로텍션 선스틱</h3><div class="gal-icon">➔</div></div>
-                        </div>
-
-                        <div class="de-gal-item">
-                            <div class="masonry-frame">
-                                <div class="screen-content">
-                                    <img src="./assets/jpeg/project-2_de1_gallery_bn13_01.jpg" alt="블레미쉬 커버 크림 파트 1">
-                                    <img src="./assets/jpeg/project-2_de1_gallery_bn13_02.jpg" alt="블레미쉬 커버 크림 파트 2">
-                                    <img src="./assets/jpeg/project-2_de1_gallery_bn13_03.jpg" alt="블레미쉬 커버 크림 파트 3">
-                                    <img src="./assets/jpeg/project-2_de1_gallery_bn13_04.jpg" alt="블레미쉬 커버 크림 파트 4">
-                                </div>
-                            </div>
-                            <div class="gal-info"><h3>블레미쉬 커버 크림</h3><div class="gal-icon">➔</div></div>
-                        </div>
-
-                        <div class="de-gal-item">
-                            <div class="masonry-frame">
-                                <div class="screen-content">
-                                    <img src="./assets/jpeg/project-2_de1_gallery_bn14_01.jpg" alt="더마 마스크 파트 1">
-                                    <img src="./assets/jpeg/project-2_de1_gallery_bn14_02.jpg" alt="더마 마스크 파트 2">
-                                    <img src="./assets/jpeg/project-2_de1_gallery_bn14_03.jpg" alt="더마 마스크 파트 3">
-                                    <img src="./assets/jpeg/project-2_de1_gallery_bn14_04.jpg" alt="더마 마스크 파트 4">
-                                </div>
-                            </div>
-                            <div class="gal-info"><h3>더마 마스크</h3><div class="gal-icon">➔</div></div>
-                        </div>
-
-                        <div class="de-gal-item">
-                            <div class="masonry-frame">
-                                <div class="screen-content">
-                                    <img src="./assets/jpeg/project-2_de1_gallery_bn15_01.jpg" alt="테카솔 마스크 시트 파트 1">
-                                    <img src="./assets/jpeg/project-2_de1_gallery_bn15_02.jpg" alt="테카솔 마스크 시트 파트 2">
-                                    <img src="./assets/jpeg/project-2_de1_gallery_bn15_03.jpg" alt="테카솔 마스크 시트 파트 3">
-                                    <img src="./assets/jpeg/project-2_de1_gallery_bn15_04.jpg" alt="테카솔 마스크 시트 파트 4">
-                                </div>
-                            </div>
-                            <div class="gal-info"><h3>테카솔 마스크 시트</h3><div class="gal-icon">➔</div></div>
-                        </div>
-
-                        <div class="de-gal-item">
-                            <div class="masonry-frame">
-                                <div class="screen-content">
-                                    <img src="./assets/jpeg/project-2_de1_gallery_bn16_01.jpg" alt="모이스처 밀크 바디로션 파트 1">
-                                    <img src="./assets/jpeg/project-2_de1_gallery_bn16_02.jpg" alt="모이스처 밀크 바디로션 파트 2">
-                                    <img src="./assets/jpeg/project-2_de1_gallery_bn16_03.jpg" alt="모이스처 밀크 바디로션 파트 3">
-                                    <img src="./assets/jpeg/project-2_de1_gallery_bn16_04.jpg" alt="모이스처 밀크 바디로션 파트 4">
-                                </div>
-                            </div>
-                            <div class="gal-info"><h3>모이스처 밀크 바디로션</h3><div class="gal-icon">➔</div></div>
-                        </div>
-
-                        <div class="de-gal-item">
-                            <div class="masonry-frame">
-                                <div class="screen-content">
-                                    <img src="./assets/jpeg/project-2_de1_gallery_bn17_01.jpg" alt="밀크씨슬 옥타 플러스 파트 1">
-                                    <img src="./assets/jpeg/project-2_de1_gallery_bn17_02.jpg" alt="밀크씨슬 옥타 플러스 파트 2">
-                                    <img src="./assets/jpeg/project-2_de1_gallery_bn17_03.jpg" alt="밀크씨슬 옥타 플러스 파트 3">
-                                    <img src="./assets/jpeg/project-2_de1_gallery_bn17_04.jpg" alt="밀크씨슬 옥타 플러스 파트 4">
-                                </div>
-                            </div>
-                            <div class="gal-info"><h3>밀크씨슬 옥타 플러스</h3><div class="gal-icon">➔</div></div>
-                        </div>
-
-                        <div class="de-gal-item">
-                            <div class="masonry-frame">
-                                <div class="screen-content">
-                                    <img src="./assets/jpeg/project-2_de1_gallery_bn18_01.jpg" alt="바이칼 허브 차가버섯 파트 1">
-                                    <img src="./assets/jpeg/project-2_de1_gallery_bn18_02.jpg" alt="바이칼 허브 차가버섯 파트 2">
-                                    <img src="./assets/jpeg/project-2_de1_gallery_bn18_03.jpg" alt="바이칼 허브 차가버섯 파트 3">
-                                    <img src="./assets/jpeg/project-2_de1_gallery_bn18_04.jpg" alt="바이칼 허브 차가버섯 파트 4">
-                                </div>
-                            </div>
-                            <div class="gal-info"><h3>바이칼 허브 차가버섯</h3><div class="gal-icon">➔</div></div>
-                        </div>
-
-                        <div class="de-gal-item">
-                            <div class="masonry-frame">
-                                <div class="screen-content">
-                                    <img src="./assets/jpeg/project-2_de1_gallery_bn19_01.jpg" alt="프로비마게 파트 1">
-                                    <img src="./assets/jpeg/project-2_de1_gallery_bn19_02.jpg" alt="프로비마게 파트 2">
-                                    <img src="./assets/jpeg/project-2_de1_gallery_bn19_03.jpg" alt="프로비마게 파트 3">
-                                    <img src="./assets/jpeg/project-2_de1_gallery_bn19_04.jpg" alt="프로비마게 파트 4">
-                                </div>
-                            </div>
-                            <div class="gal-info"><h3>프로비마게</h3><div class="gal-icon">➔</div></div>
-                        </div>
-
-                        <div class="de-gal-item">
-                            <div class="masonry-frame">
-                                <div class="screen-content">
-                                    <img src="./assets/jpeg/project-2_de1_gallery_bn20_01.jpg" alt="피크노제놀 파트 1">
-                                    <img src="./assets/jpeg/project-2_de1_gallery_bn20_02.jpg" alt="피크노제놀 파트 2">
-                                    <img src="./assets/jpeg/project-2_de1_gallery_bn20_03.jpg" alt="피크노제놀 파트 3">
-                                    <img src="./assets/jpeg/project-2_de1_gallery_bn20_04.jpg" alt="피크노제놀 파트 4">
-                                </div>
-                            </div>
-                            <div class="gal-info"><h3>피크노제놀</h3><div class="gal-icon">➔</div></div>
-                        </div>
-
-                        <div class="de-gal-item">
-                            <div class="masonry-frame">
-                                <div class="screen-content">
-                                    <img src="./assets/jpeg/project-2_de1_gallery_bn21_01.jpg" alt="스포테라팜 파트 1">
-                                    <img src="./assets/jpeg/project-2_de1_gallery_bn21_02.jpg" alt="스포테라팜 파트 2">
-                                    <img src="./assets/jpeg/project-2_de1_gallery_bn21_03.jpg" alt="스포테라팜 파트 3">
-                                    <img src="./assets/jpeg/project-2_de1_gallery_bn21_04.jpg" alt="스포테라팜 파트 4">
-                                </div>
-                            </div>
-                            <div class="gal-info"><h3>스포테라팜</h3><div class="gal-icon">➔</div></div>
-                        </div>
-
-                    </div>
-                </div>
-            </section>
-
-            <section class="hero-section" style="padding: 10rem 5%; background: var(--white); border-bottom: none;">
-                <span class="section-label">Key Results</span>
-                <h2 class="section-title" style="margin-bottom: 5rem;">숫자로 증명하는 경험</h2>
-                <div class="hero-stats">
-                    <div class="stat-box"><span class="stat-num">12년</span><span class="stat-label">온·오프라인·홈쇼핑 통합 경력</span></div>
-                    <div class="stat-box"><span class="stat-num">100+</span><span class="stat-label">상세페이지 누적 건수</span></div>
-                    <div class="stat-box"><span class="stat-num">20+</span><span class="stat-label">직접 운영 및 디자인 브랜드</span></div>
-                    <div class="stat-box"><span class="stat-num">5+</span><span class="stat-label">운영 채널</span></div>
-                </div>
-            </section>
-
-        </div>
-
-        <section class="cta-section full-width-breakout">
-            <span class="section-label" style="border-color: rgba(255,255,255,0.3); color: #fff;">Detail Page Design</span>
-            <h2 class="cta-title">스크롤을 멈추게 하는<br>페이지를 만듭니다.</h2>
-            <p class="cta-desc">브랜드의 강점을 가장 설득력 있게 표현하는 방법,<br>12년의 경험이 담긴 상세페이지 디자인을 직접 확인하세요.</p>
-            </section>
-        
-    </main>
-
-    <footer class="main-footer">
-      <div class="main-container">
-        <div class="main-footer__upper">
-          <div class="main-footer__row main-footer__row-1"></div>
-          <div class="main-footer__row main-footer__row-2">
-            <h4 class="heading heading-sm text-lt">Sumin</h4>
-            <p class="main-footer__short-desc">작은 디테일이 모여 큰 감동을 만든다는 믿음으로 픽셀 하나하나에 브랜드의 진심을 담아냅니다.</p>
+            <div class="role-card">
+              <div class="role-card-title">운영 채널</div>
+              <ul class="role-list">
+                <li>자사몰 · 종합몰 · 백화점몰</li>
+                <li>오픈마켓 (쿠팡·11번가·G마켓·옥션)</li>
+                <li>소셜커머스 · 폐쇄몰 · 복지몰</li>
+                <li>홈쇼핑 (CJ·GS·현대·롯데)</li>
+                <li>SNS · 인플루언서 채널</li>
+              </ul>
+            </div>
+            <div class="role-card">
+              <div class="role-card-title">사용 툴</div>
+              <ul class="role-list">
+                <li>Figma</li>
+                <li>Adobe Photoshop · Illustrator</li>
+                <li>Adobe XD</li>
+                <li>Notion</li>
+              </ul>
+            </div>
           </div>
         </div>
-        <div class="main-footer__lower">&copy; Copyright 2026. Made by Sumin</div>
-      </div>
-    </footer>
+      </section>
 
-    <div id="lbOverlay">
-      <div id="lbBox">
-        <div id="lbImgWrap"></div>
-        <div id="lbSpinner"></div>
-      </div>
-      <button id="lbClose" title="닫기">&#10005;</button>
-      <button class="lb-arrow" id="lbPrev" title="이전">&#8592;</button>
-      <button class="lb-arrow" id="lbNext" title="다음">&#8594;</button>
-      <div id="lbCounter">1 / 21</div>
-      <div id="lbThumbs"></div>
+      <section class="editorial-split section-border">
+        <div class="sticky-title-wrap">
+          <div class="sticky-title">
+            <span class="section-label">Design Philosophy</span>
+            <h2 class="section-title">팔리는 상세페이지의<br>4가지 법칙</h2>
+            <p style="margin-top: 2rem; font-size: 1.4rem; color: var(--txt-light);">100개 이상의 상세페이지를 직접 기획·설계하며 체득한 핵심 원칙입니다.</p>
+          </div>
+        </div>
+        <div class="content-wrap">
+          <div class="philo-grid">
+            <div class="philo-item">
+              <span class="philo-num">01</span>
+              <h3 class="philo-title">Pain → Solution</h3>
+              <p class="philo-desc">소비자가 느끼는 불편함을 첫 화면에서 짚고, 제품이 해결책임을 3초 안에 납득시킵니다.</p>
+            </div>
+            <div class="philo-item">
+              <span class="philo-num">02</span>
+              <h3 class="philo-title">스크롤 스토리</h3>
+              <p class="philo-desc">정보를 단순히 나열하지 않고, 기승전결이 있는 하나의 이야기로 엮어 끝까지 읽히는 흐름을 설계합니다.</p>
+            </div>
+            <div class="philo-item">
+              <span class="philo-num">03</span>
+              <h3 class="philo-title">채널 최적화</h3>
+              <p class="philo-desc">자사몰·오픈마켓·홈쇼핑·SNS — 채널마다 다른 소비자 심리와 규격에 맞춰 동일 브랜드를 다르게 표현합니다.</p>
+            </div>
+            <div class="philo-item">
+              <span class="philo-num">04</span>
+              <h3 class="philo-title">전환 유도 설계</h3>
+              <p class="philo-desc">CTA 버튼·후기·사회적 증거 배치까지 데이터와 직관을 결합해 구매를 자연스럽게 이끌어 냅니다.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="editorial-split section-border">
+        <div class="sticky-title-wrap">
+          <div class="sticky-title">
+            <span class="section-label">Brand Portfolio</span>
+            <h2 class="section-title">함께한<br>브랜드들</h2>
+            <p style="margin-top: 2rem; font-size: 1.4rem; color: var(--txt-light);">화장품·헬스케어·패션·항공·커머스까지 — 카테고리를 넘나드는 브랜드 경험이 설계의 깊이를 만듭니다.</p>
+          </div>
+        </div>
+        <div class="content-wrap">
+          <div class="brand-list">
+            
+            <div class="brand-item">
+              <div class="brand-icon">💄</div>
+              <div class="brand-content">
+                <h3>동국제약 뷰티 브랜드</h3>
+                <p>센텔리안24, 마데카21, 센시안, 메이올웨이즈 등 대표 브랜드의 자사몰·오픈마켓·홈쇼핑 전 채널 상세페이지 기획·디자인 및 신규 브랜드 런칭 총괄 디자인을 담당했습니다.</p>
+                <div class="tags-container" style="margin-top:0;">
+                  <span class="tag-badge">#화장품</span>
+                  <span class="tag-badge">#커머스</span>
+                  <span class="tag-badge">#홈쇼핑</span>
+                  <span class="tag-badge">#런칭총괄</span>
+                  <span class="tag-badge">#멀티채널</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="brand-item">
+              <div class="brand-icon">👙</div>
+              <div class="brand-content">
+                <h3>원더브라 外 속옷 브랜드</h3>
+                <p>원더브라, 플레이텍스, 헤인즈, 마릴린먼로 등 10개 이상의 속옷 브랜드를 대상으로 홈쇼핑 방송 MD·VMD와 오픈마켓·소셜커머스 채널별 온라인/오프라인 콘텐츠 디자인을 제작했습니다.</p>
+                <div class="tags-container" style="margin-top:0;">
+                  <span class="tag-badge">#속옷</span>
+                  <span class="tag-badge">#커머스</span>
+                  <span class="tag-badge">#온라인디자인</span>
+                  <span class="tag-badge">#오프라인디자인</span>
+                  <span class="tag-badge">#홈쇼핑MD</span>
+                  <span class="tag-badge">#SNS마케팅</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="brand-item">
+              <div class="brand-icon">🛍️</div>
+              <div class="brand-content">
+                <h3>AK MALL · AK FAMILY</h3>
+                <p>AK MALL, AK FAMILY(임직원몰), 타사 복지몰의 프로모션 이벤트·상세페이지·이메일·팝업 디자인을 담당했으며, 이메일·등급 개편 메인몰 리뉴얼 프로젝트를 총괄했습니다.</p>
+                <div class="tags-container" style="margin-top:0;">
+                  <span class="tag-badge">#애경그룹</span>
+                  <span class="tag-badge">#콘텐츠디자인</span>
+                  <span class="tag-badge">#리뉴얼총괄</span>
+                  <span class="tag-badge">#이메일디자인</span>
+                  <span class="tag-badge">#우수사원수상</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="brand-item">
+              <div class="brand-icon">📱</div>
+              <div class="brand-content">
+                <h3>U+콕 · K딜 · 오토카지</h3>
+                <p>유플러스 통신 기반 커머스 플랫폼 U+콕의 모든 운영 소재·기획전·상세페이지를 전담 디자인했으며, K딜·오토카지 커머스몰 웹 디자인 및 운영 소재를 제작했습니다.</p>
+                <div class="tags-container" style="margin-top:0;">
+                  <span class="tag-badge">#커머스</span>
+                  <span class="tag-badge">#유플러스</span>
+                  <span class="tag-badge">#커머스UI</span>
+                  <span class="tag-badge">#기획전디자인</span>
+                  <span class="tag-badge">#운영소재</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="brand-item">
+              <div class="brand-icon">✈️</div>
+              <div class="brand-content">
+                <h3>세이브에어 항공몰</h3>
+                <p>항공 탄소배출권 플랫폼 세이브에어의 런칭 UI를 설계했습니다. 복잡한 항공권 구매 플로우를 단순화하고, 타임딜·최저가 비교 모듈 등 핵심 기능의 상세 안내 페이지를 디자인했습니다.</p>
+                <div class="tags-container" style="margin-top:0;">
+                  <span class="tag-badge">#항공</span>
+                  <span class="tag-badge">#결제시스템</span>
+                  <span class="tag-badge">#런칭UI</span>
+                  <span class="tag-badge">#타임딜UX</span>
+                  <span class="tag-badge">#플로우최적화</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="brand-item">
+              <div class="brand-icon">🎯</div>
+              <div class="brand-content">
+                <h3>동국제약 건강 기능 식품</h3>
+                <p>구강케어·건강기능식품·헬스케어 브랜드의 카테고리별 특성을 살린 상세페이지 디자인과 오프라인 판촉물·인쇄 광고물 편집 디자인을 함께 수행했습니다.</p>
+                <div class="tags-container" style="margin-top:0;">
+                  <span class="tag-badge">#헬스케어</span>
+                  <span class="tag-badge">#생활건강</span>
+                  <span class="tag-badge">#편집디자인</span>
+                  <span class="tag-badge">#온라인디자인</span>
+                  <span class="tag-badge">#오프라인디자인</span>
+                  <span class="tag-badge">#카테고리전략</span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <section class="editorial-split section-border">
+        <div class="sticky-title-wrap">
+          <div class="sticky-title">
+            <span class="section-label">Design Skills</span>
+            <h2 class="section-title">도구와 역량</h2>
+            <p style="margin-top: 2rem; font-size: 1.4rem; color: var(--txt-light);">디자인 툴부터 마케팅·MD 역량까지 — 상세페이지 하나를 완성하는 데 필요한 모든 무기를 갖추고 있습니다.</p>
+          </div>
+        </div>
+        <div class="content-wrap">
+          <div class="skill-list">
+            <div>
+              <div class="skill-item-header"><span>Adobe Photoshop</span><span class="skill-item-pct">98%</span></div>
+              <div class="skill-bar"><div class="skill-fill" style="width:98%"></div></div>
+            </div>
+            <div>
+              <div class="skill-item-header"><span>Adobe Illustrator</span><span class="skill-item-pct">92%</span></div>
+              <div class="skill-bar"><div class="skill-fill" style="width:92%"></div></div>
+            </div>
+            <div>
+              <div class="skill-item-header"><span>Figma</span><span class="skill-item-pct">95%</span></div>
+              <div class="skill-bar"><div class="skill-fill" style="width:95%"></div></div>
+            </div>
+            <div>
+              <div class="skill-item-header"><span>멀티채널 MD · 마케팅 기획</span><span class="skill-item-pct">95%</span></div>
+              <div class="skill-bar"><div class="skill-fill" style="width:95%"></div></div>
+            </div>
+            <div>
+              <div class="skill-item-header"><span>홈쇼핑 VMD 기획</span><span class="skill-item-pct">93%</span></div>
+              <div class="skill-bar"><div class="skill-fill" style="width:93%"></div></div>
+            </div>
+            <div>
+              <div class="skill-item-header"><span>HTML · CSS 퍼블리싱</span><span class="skill-item-pct">90%</span></div>
+              <div class="skill-bar"><div class="skill-fill" style="width:90%"></div></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="editorial-split section-border" style="background: var(--bg-gray);">
+        <div class="sticky-title-wrap" style="background: transparent; border-right: none;">
+          <div class="sticky-title">
+            <span class="section-label">Screen Gallery</span>
+            <h2 class="section-title">디자인 결과물</h2>
+            <p style="margin-top: 2rem; font-size: 1.4rem; color: var(--txt-light);">마우스를 올리면 긴 상세페이지의 전체 흐름을 스크롤 없이 부드럽게 감상하실 수 있습니다.</p>
+          </div>
+        </div>
+        <div class="content-wrap" style="padding-top: 2rem;">
+          <div class="masonry-gallery">
+            
+            <div class="de-gal-item">
+              <div class="masonry-frame">
+                <div class="screen-content">
+                  <img src="./assets/jpeg/project-2_de1_gallery_bn01_01.jpg" alt="마데카크림 파트 1">
+                  <img src="./assets/jpeg/project-2_de1_gallery_bn01_02.jpg" alt="마데카크림 파트 2">
+                  <img src="./assets/jpeg/project-2_de1_gallery_bn01_03.jpg" alt="마데카크림 파트 3">
+                  <img src="./assets/jpeg/project-2_de1_gallery_bn01_04.jpg" alt="마데카크림 파트 4">
+                </div>
+              </div>
+              <div class="gal-info">
+                <h3>마데카크림</h3>
+                <div class="gal-icon">➔</div>
+              </div>
+            </div>
+
+            <div class="de-gal-item">
+              <div class="masonry-frame">
+                <div class="screen-content">
+                  <img src="./assets/jpeg/project-2_de1_gallery_bn02_01.jpg" alt="바이탈 캡슐 세럼 파트 1">
+                  <img src="./assets/jpeg/project-2_de1_gallery_bn02_02.jpg" alt="바이탈 캡슐 세럼 파트 2">
+                  <img src="./assets/jpeg/project-2_de1_gallery_bn02_03.jpg" alt="바이탈 캡슐 세럼 파트 3">
+                  <img src="./assets/jpeg/project-2_de1_gallery_bn02_04.jpg" alt="바이탈 캡슐 세럼 파트 4">
+                </div>
+              </div>
+              <div class="gal-info">
+                <h3>바이탈 캡슐 세럼</h3>
+                <div class="gal-icon">➔</div>
+              </div>
+            </div>
+
+            <div class="de-gal-item">
+              <div class="masonry-frame">
+                <div class="screen-content">
+                  <img src="./assets/jpeg/project-2_de1_gallery_bn03_01.jpg" alt="리페어 밤 크림 파트 1">
+                  <img src="./assets/jpeg/project-2_de1_gallery_bn03_02.jpg" alt="리페어 밤 크림 파트 2">
+                  <img src="./assets/jpeg/project-2_de1_gallery_bn03_03.jpg" alt="리페어 밤 크림 파트 3">
+                  <img src="./assets/jpeg/project-2_de1_gallery_bn03_04.jpg" alt="리페어 밤 크림 파트 4">
+                </div>
+              </div>
+              <div class="gal-info">
+                <h3>리페어 밤 크림</h3>
+                <div class="gal-icon">➔</div>
+              </div>
+            </div>
+
+            <div class="de-gal-item">
+              <div class="masonry-frame">
+                <div class="screen-content">
+                  <img src="./assets/jpeg/project-2_de1_gallery_bn04_01.jpg" alt="랩핑 마스크 파트 1">
+                  <img src="./assets/jpeg/project-2_de1_gallery_bn04_02.jpg" alt="랩핑 마스크 파트 2">
+                  <img src="./assets/jpeg/project-2_de1_gallery_bn04_03.jpg" alt="랩핑 마스크 파트 3">
+                  <img src="./assets/jpeg/project-2_de1_gallery_bn04_04.jpg" alt="랩핑 마스크 파트 4">
+                </div>
+              </div>
+              <div class="gal-info">
+                <h3>랩핑 마스크</h3>
+                <div class="gal-icon">➔</div>
+              </div>
+            </div>
+
+            <div class="de-gal-item">
+              <div class="masonry-frame">
+                <div class="screen-content">
+                  <img src="./assets/jpeg/project-2_de1_gallery_bn05_01.jpg" alt="페이셜 톤업 크림 파트 1">
+                  <img src="./assets/jpeg/project-2_de1_gallery_bn05_02.jpg" alt="페이셜 톤업 크림 파트 2">
+                  <img src="./assets/jpeg/project-2_de1_gallery_bn05_03.jpg" alt="페이셜 톤업 크림 파트 3">
+                  <img src="./assets/jpeg/project-2_de1_gallery_bn05_04.jpg" alt="페이셜 톤업 크림 파트 4">
+                </div>
+              </div>
+              <div class="gal-info">
+                <h3>페이셜 톤업 크림</h3>
+                <div class="gal-icon">➔</div>
+              </div>
+            </div>
+
+            <div class="de-gal-item">
+              <div class="masonry-frame">
+                <div class="screen-content">
+                  <img src="./assets/jpeg/project-2_de1_gallery_bn06_01.jpg" alt="스타톡 아쿠아 세럼 파트 1">
+                  <img src="./assets/jpeg/project-2_de1_gallery_bn06_02.jpg" alt="스타톡 아쿠아 세럼 파트 2">
+                  <img src="./assets/jpeg/project-2_de1_gallery_bn06_03.jpg" alt="스타톡 아쿠아 세럼 파트 3">
+                  <img src="./assets/jpeg/project-2_de1_gallery_bn06_04.jpg" alt="스타톡 아쿠아 세럼 파트 4">
+                </div>
+              </div>
+              <div class="gal-info">
+                <h3>스타톡 아쿠아 세럼</h3>
+                <div class="gal-icon">➔</div>
+              </div>
+            </div>
+
+            <div class="de-gal-item">
+              <div class="masonry-frame">
+                <div class="screen-content">
+                  <img src="./assets/jpeg/project-2_de1_gallery_bn07_01.jpg" alt="마이크로 스타톡 세럼 파트 1">
+                  <img src="./assets/jpeg/project-2_de1_gallery_bn07_02.jpg" alt="마이크로 스타톡 세럼 파트 2">
+                  <img src="./assets/jpeg/project-2_de1_gallery_bn07_03.jpg" alt="마이크로 스타톡 세럼 파트 3">
+                  <img src="./assets/jpeg/project-2_de1_gallery_bn07_04.jpg" alt="마이크로 스타톡 세럼 파트 4">
+                </div>
+              </div>
+              <div class="gal-info">
+                <h3>마이크로 스타톡 세럼</h3>
+                <div class="gal-icon">➔</div>
+              </div>
+            </div>
+
+            <div class="de-gal-item">
+              <div class="masonry-frame">
+                <div class="screen-content">
+                  <img src="./assets/jpeg/project-2_de1_gallery_bn08_01.jpg" alt="타임 에너지 파트 1">
+                  <img src="./assets/jpeg/project-2_de1_gallery_bn08_02.jpg" alt="타임 에너지 파트 2">
+                  <img src="./assets/jpeg/project-2_de1_gallery_bn08_03.jpg" alt="타임 에너지 파트 3">
+                  <img src="./assets/jpeg/project-2_de1_gallery_bn08_04.jpg" alt="타임 에너지 파트 4">
+                </div>
+              </div>
+              <div class="gal-info">
+                <h3>타임 에너지</h3>
+                <div class="gal-icon">➔</div>
+              </div>
+            </div>
+
+            <div class="de-gal-item">
+              <div class="masonry-frame">
+                <div class="screen-content">
+                  <img src="./assets/jpeg/project-2_de1_gallery_bn09_01.jpg" alt="인텐시브 포뮬러 파트 1">
+                  <img src="./assets/jpeg/project-2_de1_gallery_bn09_02.jpg" alt="인텐시브 포뮬러 파트 2">
+                  <img src="./assets/jpeg/project-2_de1_gallery_bn09_03.jpg" alt="인텐시브 포뮬러 파트 3">
+                  <img src="./assets/jpeg/project-2_de1_gallery_bn09_04.jpg" alt="인텐시브 포뮬러 파트 4">
+                </div>
+              </div>
+              <div class="gal-info">
+                <h3>인텐시브 포뮬러</h3>
+                <div class="gal-icon">➔</div>
+              </div>
+            </div>
+
+            <div class="de-gal-item">
+              <div class="masonry-frame">
+                <div class="screen-content">
+                  <img src="./assets/jpeg/project-2_de1_gallery_bn10_01.jpg" alt="인텐시브 바이탈 올인원 파트 1">
+                  <img src="./assets/jpeg/project-2_de1_gallery_bn10_02.jpg" alt="인텐시브 바이탈 올인원 파트 2">
+                  <img src="./assets/jpeg/project-2_de1_gallery_bn10_03.jpg" alt="인텐시브 바이탈 올인원 파트 3">
+                  <img src="./assets/jpeg/project-2_de1_gallery_bn10_04.jpg" alt="인텐시브 바이탈 올인원 파트 4">
+                </div>
+              </div>
+              <div class="gal-info">
+                <h3>인텐시브 바이탈 올인원</h3>
+                <div class="gal-icon">➔</div>
+              </div>
+            </div>
+
+            <div class="de-gal-item">
+              <div class="masonry-frame">
+                <div class="screen-content">
+                  <img src="./assets/jpeg/project-2_de1_gallery_bn11_01.jpg" alt="래디언트 앰플 에센스 파트 1">
+                  <img src="./assets/jpeg/project-2_de1_gallery_bn11_02.jpg" alt="래디언트 앰플 에센스 파트 2">
+                  <img src="./assets/jpeg/project-2_de1_gallery_bn11_03.jpg" alt="래디언트 앰플 에센스 파트 3">
+                  <img src="./assets/jpeg/project-2_de1_gallery_bn11_04.jpg" alt="래디언트 앰플 에센스 파트 4">
+                </div>
+              </div>
+              <div class="gal-info">
+                <h3>래디언트 앰플 에센스</h3>
+                <div class="gal-icon">➔</div>
+              </div>
+            </div>
+
+            <div class="de-gal-item">
+              <div class="masonry-frame">
+                <div class="screen-content">
+                  <img src="./assets/jpeg/project-2_de1_gallery_bn12_01.jpg" alt="UV 프로텍션 선스틱 파트 1">
+                  <img src="./assets/jpeg/project-2_de1_gallery_bn12_02.jpg" alt="UV 프로텍션 선스틱 파트 2">
+                  <img src="./assets/jpeg/project-2_de1_gallery_bn12_03.jpg" alt="UV 프로텍션 선스틱 파트 3">
+                  <img src="./assets/jpeg/project-2_de1_gallery_bn12_04.jpg" alt="UV 프로텍션 선스틱 파트 4">
+                </div>
+              </div>
+              <div class="gal-info">
+                <h3>UV 프로텍션 선스틱</h3>
+                <div class="gal-icon">➔</div>
+              </div>
+            </div>
+
+            <div class="de-gal-item">
+              <div class="masonry-frame">
+                <div class="screen-content">
+                  <img src="./assets/jpeg/project-2_de1_gallery_bn13_01.jpg" alt="블레미쉬 커버 크림 파트 1">
+                  <img src="./assets/jpeg/project-2_de1_gallery_bn13_02.jpg" alt="블레미쉬 커버 크림 파트 2">
+                  <img src="./assets/jpeg/project-2_de1_gallery_bn13_03.jpg" alt="블레미쉬 커버 크림 파트 3">
+                  <img src="./assets/jpeg/project-2_de1_gallery_bn13_04.jpg" alt="블레미쉬 커버 크림 파트 4">
+                </div>
+              </div>
+              <div class="gal-info">
+                <h3>블레미쉬 커버 크림</h3>
+                <div class="gal-icon">➔</div>
+              </div>
+            </div>
+
+            <div class="de-gal-item">
+              <div class="masonry-frame">
+                <div class="screen-content">
+                  <img src="./assets/jpeg/project-2_de1_gallery_bn14_01.jpg" alt="더마 마스크 파트 1">
+                  <img src="./assets/jpeg/project-2_de1_gallery_bn14_02.jpg" alt="더마 마스크 파트 2">
+                  <img src="./assets/jpeg/project-2_de1_gallery_bn14_03.jpg" alt="더마 마스크 파트 3">
+                  <img src="./assets/jpeg/project-2_de1_gallery_bn14_04.jpg" alt="더마 마스크 파트 4">
+                </div>
+              </div>
+              <div class="gal-info">
+                <h3>더마 마스크</h3>
+                <div class="gal-icon">➔</div>
+              </div>
+            </div>
+
+            <div class="de-gal-item">
+              <div class="masonry-frame">
+                <div class="screen-content">
+                  <img src="./assets/jpeg/project-2_de1_gallery_bn15_01.jpg" alt="테카솔 마스크 시트 파트 1">
+                  <img src="./assets/jpeg/project-2_de1_gallery_bn15_02.jpg" alt="테카솔 마스크 시트 파트 2">
+                  <img src="./assets/jpeg/project-2_de1_gallery_bn15_03.jpg" alt="테카솔 마스크 시트 파트 3">
+                  <img src="./assets/jpeg/project-2_de1_gallery_bn15_04.jpg" alt="테카솔 마스크 시트 파트 4">
+                </div>
+              </div>
+              <div class="gal-info">
+                <h3>테카솔 마스크 시트</h3>
+                <div class="gal-icon">➔</div>
+              </div>
+            </div>
+
+            <div class="de-gal-item">
+              <div class="masonry-frame">
+                <div class="screen-content">
+                  <img src="./assets/jpeg/project-2_de1_gallery_bn16_01.jpg" alt="모이스처 밀크 바디로션 파트 1">
+                  <img src="./assets/jpeg/project-2_de1_gallery_bn16_02.jpg" alt="모이스처 밀크 바디로션 파트 2">
+                  <img src="./assets/jpeg/project-2_de1_gallery_bn16_03.jpg" alt="모이스처 밀크 바디로션 파트 3">
+                  <img src="./assets/jpeg/project-2_de1_gallery_bn16_04.jpg" alt="모이스처 밀크 바디로션 파트 4">
+                </div>
+              </div>
+              <div class="gal-info">
+                <h3>모이스처 밀크 바디로션</h3>
+                <div class="gal-icon">➔</div>
+              </div>
+            </div>
+
+            <div class="de-gal-item">
+              <div class="masonry-frame">
+                <div class="screen-content">
+                  <img src="./assets/jpeg/project-2_de1_gallery_bn17_01.jpg" alt="밀크씨슬 옥타 플러스 파트 1">
+                  <img src="./assets/jpeg/project-2_de1_gallery_bn17_02.jpg" alt="밀크씨슬 옥타 플러스 파트 2">
+                  <img src="./assets/jpeg/project-2_de1_gallery_bn17_03.jpg" alt="밀크씨슬 옥타 플러스 파트 3">
+                  <img src="./assets/jpeg/project-2_de1_gallery_bn17_04.jpg" alt="밀크씨슬 옥타 플러스 파트 4">
+                </div>
+              </div>
+              <div class="gal-info">
+                <h3>밀크씨슬 옥타 플러스</h3>
+                <div class="gal-icon">➔</div>
+              </div>
+            </div>
+
+            <div class="de-gal-item">
+              <div class="masonry-frame">
+                <div class="screen-content">
+                  <img src="./assets/jpeg/project-2_de1_gallery_bn18_01.jpg" alt="바이칼 허브 차가버섯 파트 1">
+                  <img src="./assets/jpeg/project-2_de1_gallery_bn18_02.jpg" alt="바이칼 허브 차가버섯 파트 2">
+                  <img src="./assets/jpeg/project-2_de1_gallery_bn18_03.jpg" alt="바이칼 허브 차가버섯 파트 3">
+                  <img src="./assets/jpeg/project-2_de1_gallery_bn18_04.jpg" alt="바이칼 허브 차가버섯 파트 4">
+                </div>
+              </div>
+              <div class="gal-info">
+                <h3>바이칼 허브 차가버섯</h3>
+                <div class="gal-icon">➔</div>
+              </div>
+            </div>
+
+            <div class="de-gal-item">
+              <div class="masonry-frame">
+                <div class="screen-content">
+                  <img src="./assets/jpeg/project-2_de1_gallery_bn19_01.jpg" alt="프로비마게 파트 1">
+                  <img src="./assets/jpeg/project-2_de1_gallery_bn19_02.jpg" alt="프로비마게 파트 2">
+                  <img src="./assets/jpeg/project-2_de1_gallery_bn19_03.jpg" alt="프로비마게 파트 3">
+                  <img src="./assets/jpeg/project-2_de1_gallery_bn19_04.jpg" alt="프로비마게 파트 4">
+                </div>
+              </div>
+              <div class="gal-info">
+                <h3>프로비마게</h3>
+                <div class="gal-icon">➔</div>
+              </div>
+            </div>
+
+            <div class="de-gal-item">
+              <div class="masonry-frame">
+                <div class="screen-content">
+                  <img src="./assets/jpeg/project-2_de1_gallery_bn20_01.jpg" alt="피크노제놀 파트 1">
+                  <img src="./assets/jpeg/project-2_de1_gallery_bn20_02.jpg" alt="피크노제놀 파트 2">
+                  <img src="./assets/jpeg/project-2_de1_gallery_bn20_03.jpg" alt="피크노제놀 파트 3">
+                  <img src="./assets/jpeg/project-2_de1_gallery_bn20_04.jpg" alt="피크노제놀 파트 4">
+                </div>
+              </div>
+              <div class="gal-info">
+                <h3>피크노제놀</h3>
+                <div class="gal-icon">➔</div>
+              </div>
+            </div>
+
+            <div class="de-gal-item">
+              <div class="masonry-frame">
+                <div class="screen-content">
+                  <img src="./assets/jpeg/project-2_de1_gallery_bn21_01.jpg" alt="스포테라팜 파트 1">
+                  <img src="./assets/jpeg/project-2_de1_gallery_bn21_02.jpg" alt="스포테라팜 파트 2">
+                  <img src="./assets/jpeg/project-2_de1_gallery_bn21_03.jpg" alt="스포테라팜 파트 3">
+                  <img src="./assets/jpeg/project-2_de1_gallery_bn21_04.jpg" alt="스포테라팜 파트 4">
+                </div>
+              </div>
+              <div class="gal-info">
+                <h3>스포테라팜</h3>
+                <div class="gal-icon">➔</div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <section class="hero-section" style="padding: 10rem 5%; background: var(--white); border-bottom: none;">
+        <span class="section-label">Key Results</span>
+        <h2 class="section-title" style="margin-bottom: 5rem;">숫자로 증명하는 경험</h2>
+        <div class="hero-stats">
+          <div class="stat-box">
+            <span class="stat-num">12년</span>
+            <span class="stat-label">온·오프라인·홈쇼핑 통합 경력</span>
+          </div>
+          <div class="stat-box">
+            <span class="stat-num">100+</span>
+            <span class="stat-label">상세페이지 누적 건수</span>
+          </div>
+          <div class="stat-box">
+            <span class="stat-num">20+</span>
+            <span class="stat-label">직접 운영 및 디자인 브랜드</span>
+          </div>
+          <div class="stat-box">
+            <span class="stat-num">5+</span>
+            <span class="stat-label">운영 채널</span>
+          </div>
+        </div>
+      </section>
+
     </div>
 
-    <script>
-        // 1. 스크롤 등장 애니메이션 
-        const observerOptions = { threshold: 0.1, rootMargin: "0px 0px -50px 0px" };
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('active');
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, observerOptions);
+    <section class="cta-section full-width-breakout">
+      <span class="section-label" style="border-color: rgba(255,255,255,0.3); color: #fff;">Detail Page Design</span>
+      <h2 class="cta-title">스크롤을 멈추게 하는<br>페이지를 만듭니다.</h2>
+      <p class="cta-desc">
+        브랜드의 강점을 가장 설득력 있게 표현하는 방법,<br>
+        12년의 경험이 담긴 상세페이지 디자인을 직접 확인하세요.
+      </p>
+    </section>
 
-        document.querySelectorAll('.reveal').forEach((el) => {
-            observer.observe(el);
+  </main>
+
+  <footer class="main-footer">
+    <div class="main-container">
+      <div class="main-footer__upper">
+        <div class="main-footer__row main-footer__row-1"></div>
+        <div class="main-footer__row main-footer__row-2">
+          <h4 class="heading heading-sm text-lt">Sumin</h4>
+          <p class="main-footer__short-desc">작은 디테일이 모여 큰 감동을 만든다는 믿음으로 픽셀 하나하나에 브랜드의 진심을 담아냅니다.</p>
+        </div>
+      </div>
+      <div class="main-footer__lower">&copy; Copyright 2026. Made by Sumin</div>
+    </div>
+  </footer>
+
+  <div id="lbOverlay">
+    <div id="lbBox">
+      <div id="lbImgWrap"></div>
+      <div id="lbSpinner"></div>
+    </div>
+    <button id="lbClose" title="닫기">&#10005;</button>
+    <button class="lb-arrow" id="lbPrev" title="이전">&#8592;</button>
+    <button class="lb-arrow" id="lbNext" title="다음">&#8594;</button>
+    <div id="lbCounter">1 / 21</div>
+    <div id="lbThumbs"></div>
+  </div>
+
+  <script>
+    // 1. 스크롤 등장 애니메이션 
+    const observerOptions = { threshold: 0.1, rootMargin: "0px 0px -50px 0px" };
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.reveal').forEach((el) => {
+      observer.observe(el);
+    });
+
+    // 2. 기발한 오토스크롤: 컨텐츠(.screen-content)의 실제 길이를 계산하여 스크롤
+    document.querySelectorAll('.de-gal-item').forEach(item => {
+      const screenContent = item.querySelector('.screen-content');
+      const frame = item.querySelector('.masonry-frame');
+      
+      item.addEventListener('mouseenter', () => {
+        if (!screenContent || !frame) return;
+        
+        // .screen-content 내부의 전체 높이 계산 (여러 이미지의 높이 합)
+        const contentHeight = screenContent.scrollHeight;
+        const frameHeight = frame.offsetHeight;
+        
+        if (contentHeight > frameHeight + 5) {
+          const scrollDistance = contentHeight - frameHeight;
+          // 길이가 길수록 천천히 스크롤되도록 속도 계산 (최소 3초)
+          const duration = Math.max(3, (contentHeight / 800)); 
+          screenContent.style.transition = `transform ${duration}s linear`;
+          screenContent.style.transform = `translateY(-${scrollDistance}px)`;
+        }
+      });
+      
+      item.addEventListener('mouseleave', () => {
+        if (!screenContent) return;
+        screenContent.style.transition = `transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1)`;
+        screenContent.style.transform = `translateY(0)`;
+      });
+    });
+
+    // 3. [완벽 수정] 라이트박스 로직: 4개 이미지를 세로로 스크롤하여 보여주도록 변경
+    (function () {
+      var galItems = document.querySelectorAll('.de-gal-item');
+      var imgSrcs  = []; // 배열 안에 각 항목의 이미지 객체 배열이 들어감
+
+      galItems.forEach(function (item) {
+        // 해당 아이템 안의 모든 4개 이미지를 찾아서 배열로 만듦
+        var imgs = item.querySelectorAll('.screen-content img');
+        if (imgs.length > 0) {
+          var itemImgs = [];
+          imgs.forEach(function(img) {
+            itemImgs.push({
+              src: img.getAttribute('src'),
+              alt: img.getAttribute('alt') || '갤러리 이미지'
+            });
+          });
+          imgSrcs.push(itemImgs);
+        }
+      });
+
+      if (imgSrcs.length === 0) return;
+
+      var overlay   = document.getElementById('lbOverlay');
+      var lbBox     = document.getElementById('lbBox');
+      var imgWrap   = document.getElementById('lbImgWrap');
+      var spinner   = document.getElementById('lbSpinner');
+      var lbClose   = document.getElementById('lbClose');
+      var lbPrev    = document.getElementById('lbPrev');
+      var lbNext    = document.getElementById('lbNext');
+      var lbCounter = document.getElementById('lbCounter');
+      var lbThumbs  = document.getElementById('lbThumbs');
+
+      if (!overlay || !imgWrap) return;
+
+      var currentIdx = 0;
+      var isOpen     = false;
+
+      /* ── 썸네일 생성 ── */
+      imgSrcs.forEach(function (infoGroup, i) {
+        var firstInfo = infoGroup[0]; // 대표 썸네일은 그룹의 첫 번째 이미지로 설정
+        var th = document.createElement('img');
+        th.setAttribute('src', firstInfo.src);
+        th.setAttribute('alt', firstInfo.alt);
+        th.className = 'lb-thumb';
+        th.style.cssText = 'animation:none!important;opacity:0.4;';
+        th.addEventListener('click', function (e) {
+          e.stopPropagation();
+          showImg(i);
+        });
+        lbThumbs.appendChild(th);
+      });
+
+      function showImg(idx) {
+        currentIdx = idx;
+        var infoGroup = imgSrcs[idx]; // 선택된 항목의 이미지 4장 배열
+
+        spinner.style.display = 'block';
+        imgWrap.innerHTML = '';
+
+        // 4장의 이미지가 담길 스크롤 가능한 컨테이너 생성
+        var scrollContainer = document.createElement('div');
+        scrollContainer.className = 'lb-scroll-container';
+        scrollContainer.style.cssText = 'width: 100%; height: 100%; overflow-y: auto; overflow-x: hidden; text-align: center; -webkit-overflow-scrolling: touch;';
+        
+        // 이미지가 가운데 정렬되도록 감싸는 내부 래퍼
+        var innerWrap = document.createElement('div');
+        innerWrap.style.cssText = 'display: inline-flex; flex-direction: column; width: 100%; max-width: 900px; margin: 0 auto; background: #fff; box-shadow: 0 20px 60px rgba(0,0,0,0.7); border-radius: 8px; overflow: hidden;';
+
+        var loadedCount = 0;
+
+        // 4장의 이미지를 각각 생성하여 래퍼에 추가
+        infoGroup.forEach(function(info) {
+          var newImg = document.createElement('img');
+          var styleArr = [
+            'display:block',
+            'width:100%',
+            'height:auto',
+            'margin:0',
+            'padding:0',
+            'vertical-align:top',
+            'border:none'
+          ];
+          newImg.setAttribute('style', styleArr.join(';'));
+          newImg.setAttribute('alt', info.alt);
+
+          newImg.onload = function () {
+            loadedCount++;
+            if (loadedCount === infoGroup.length) spinner.style.display = 'none';
+          };
+
+          newImg.onerror = function () {
+            loadedCount++;
+            if (loadedCount === infoGroup.length) spinner.style.display = 'none';
+          };
+
+          newImg.setAttribute('src', info.src);
+          innerWrap.appendChild(newImg);
         });
 
-        // 2. 기발한 오토스크롤: 컨텐츠(.screen-content)의 실제 길이를 계산하여 스크롤
-        document.querySelectorAll('.de-gal-item').forEach(item => {
-            const screenContent = item.querySelector('.screen-content');
-            const frame = item.querySelector('.masonry-frame');
-            
-            item.addEventListener('mouseenter', () => {
-                if (!screenContent || !frame) return;
-                
-                // .screen-content 내부의 전체 높이 계산 (여러 이미지의 높이 합)
-                const contentHeight = screenContent.scrollHeight;
-                const frameHeight = frame.offsetHeight;
-                
-                if(contentHeight > frameHeight + 5) {
-                    const scrollDistance = contentHeight - frameHeight;
-                    // 길이가 길수록 천천히 스크롤되도록 속도 계산 (최소 3초)
-                    const duration = Math.max(3, (contentHeight / 800)); 
-                    screenContent.style.transition = `transform ${duration}s linear`;
-                    screenContent.style.transform = `translateY(-${scrollDistance}px)`;
-                }
-            });
-            
-            item.addEventListener('mouseleave', () => {
-                if (!screenContent) return;
-                screenContent.style.transition = `transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1)`;
-                screenContent.style.transform = `translateY(0)`;
-            });
+        scrollContainer.appendChild(innerWrap);
+        imgWrap.appendChild(scrollContainer);
+
+        // 다른 프로젝트 클릭 시 항상 최상단부터 보이도록 스크롤 0으로 초기화
+        setTimeout(function() {
+          scrollContainer.scrollTop = 0;
+        }, 10);
+
+        lbCounter.textContent = (idx + 1) + ' / ' + imgSrcs.length;
+
+        var thumbEls = lbThumbs.querySelectorAll('.lb-thumb');
+        thumbEls.forEach(function (t, i) {
+          t.classList.toggle('is-active', i === idx);
+          t.style.opacity = (i === idx) ? '1' : '0.4';
         });
+        if (thumbEls[idx]) {
+          thumbEls[idx].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+        }
 
-        // 3. [완벽 수정] 라이트박스 로직: 4개 이미지를 세로로 스크롤하여 보여주도록 변경
-        (function () {
-          var galItems = document.querySelectorAll('.de-gal-item');
-          var imgSrcs  = []; // 배열 안에 각 항목의 이미지 객체 배열이 들어감
+        lbPrev.style.opacity       = (idx === 0)                  ? '0.25' : '1';
+        lbPrev.style.pointerEvents = (idx === 0)                  ? 'none' : 'auto';
+        lbNext.style.opacity       = (idx === imgSrcs.length - 1) ? '0.25' : '1';
+        lbNext.style.pointerEvents = (idx === imgSrcs.length - 1) ? 'none' : 'auto';
+      }
 
-          galItems.forEach(function (item) {
-            // 해당 아이템 안의 모든 4개 이미지를 찾아서 배열로 만듦
-            var imgs = item.querySelectorAll('.screen-content img');
-            if (imgs.length > 0) {
-              var itemImgs = [];
-              imgs.forEach(function(img) {
-                itemImgs.push({
-                  src: img.getAttribute('src'),
-                  alt: img.getAttribute('alt') || '갤러리 이미지'
-                });
-              });
-              imgSrcs.push(itemImgs);
-            }
-          });
+      function openLB(idx) {
+        isOpen = true;
+        overlay.classList.add('is-open');
+        document.body.style.overflow = 'hidden';
+        document.documentElement.style.overflow = 'hidden';
+        showImg(idx);
+      }
 
-          if (imgSrcs.length === 0) return;
+      function closeLB() {
+        isOpen = false;
+        overlay.classList.remove('is-open');
+        document.body.style.overflow = '';
+        document.documentElement.style.overflow = '';
+        imgWrap.innerHTML = '';
+        spinner.style.display = 'none';
+      }
 
-          var overlay   = document.getElementById('lbOverlay');
-          var lbBox     = document.getElementById('lbBox');
-          var imgWrap   = document.getElementById('lbImgWrap');
-          var spinner   = document.getElementById('lbSpinner');
-          var lbClose   = document.getElementById('lbClose');
-          var lbPrev    = document.getElementById('lbPrev');
-          var lbNext    = document.getElementById('lbNext');
-          var lbCounter = document.getElementById('lbCounter');
-          var lbThumbs  = document.getElementById('lbThumbs');
+      galItems.forEach(function (item, idx) {
+        item.addEventListener('click', function (e) {
+          e.preventDefault();
+          e.stopPropagation();
+          openLB(idx);
+        });
+      });
 
-          if (!overlay || !imgWrap) return;
+      lbClose.addEventListener('click', function (e) { e.stopPropagation(); closeLB(); });
 
-          var currentIdx = 0;
-          var isOpen     = false;
+      lbPrev.addEventListener('click', function (e) {
+        e.stopPropagation();
+        if (currentIdx > 0) showImg(currentIdx - 1);
+      });
+      lbNext.addEventListener('click', function (e) {
+        e.stopPropagation();
+        if (currentIdx < imgSrcs.length - 1) showImg(currentIdx + 1);
+      });
 
-          /* ── 썸네일 생성 ── */
-          imgSrcs.forEach(function (infoGroup, i) {
-            var firstInfo = infoGroup[0]; // 대표 썸네일은 그룹의 첫 번째 이미지로 설정
-            var th = document.createElement('img');
-            th.setAttribute('src', firstInfo.src);
-            th.setAttribute('alt', firstInfo.alt);
-            th.className = 'lb-thumb';
-            th.style.cssText = 'animation:none!important;opacity:0.4;';
-            th.addEventListener('click', function (e) {
-              e.stopPropagation();
-              showImg(i);
-            });
-            lbThumbs.appendChild(th);
-          });
+      overlay.addEventListener('click', function (e) {
+        // 이미지가 담긴 스크롤 컨테이너나 배경 클릭 시 닫기 (이미지 자체 클릭 시엔 안 닫힘)
+        if (e.target === overlay || e.target === lbBox || e.target === imgWrap || e.target.classList.contains('lb-scroll-container')) {
+          closeLB();
+        }
+      });
 
-          function showImg(idx) {
-            currentIdx = idx;
-            var infoGroup = imgSrcs[idx]; // 선택된 항목의 이미지 4장 배열
+      document.addEventListener('keydown', function (e) {
+        if (!isOpen) return;
+        if (e.key === 'Escape' || e.key === 'Esc') { closeLB(); }
+        else if (e.key === 'ArrowLeft')  { if (currentIdx > 0) showImg(currentIdx - 1); }
+        else if (e.key === 'ArrowRight') { if (currentIdx < imgSrcs.length - 1) showImg(currentIdx + 1); }
+      });
 
-            spinner.style.display = 'block';
-            imgWrap.innerHTML = '';
+      var txStart = 0, tyStart = 0;
+      overlay.addEventListener('touchstart', function (e) {
+        txStart = e.touches[0].clientX;
+        tyStart = e.touches[0].clientY;
+      }, { passive: true });
+      overlay.addEventListener('touchend', function (e) {
+        var dx = txStart - e.changedTouches[0].clientX;
+        var dy = tyStart - e.changedTouches[0].clientY;
+        // 세로 스크롤할 때는 좌우 넘김을 방지
+        if (Math.abs(dx) < 40 || Math.abs(dx) < Math.abs(dy)) return;
+        if (dx > 0 && currentIdx < imgSrcs.length - 1) showImg(currentIdx + 1);
+        else if (dx < 0 && currentIdx > 0)             showImg(currentIdx - 1);
+      }, { passive: true });
 
-            // 4장의 이미지가 담길 스크롤 가능한 컨테이너 생성
-            var scrollContainer = document.createElement('div');
-            scrollContainer.className = 'lb-scroll-container';
-            scrollContainer.style.cssText = 'width: 100%; height: 100%; overflow-y: auto; overflow-x: hidden; text-align: center; -webkit-overflow-scrolling: touch;';
-            
-            // 이미지가 가운데 정렬되도록 감싸는 내부 래퍼
-            var innerWrap = document.createElement('div');
-            innerWrap.style.cssText = 'display: inline-flex; flex-direction: column; width: 100%; max-width: 900px; margin: 0 auto; background: #fff; box-shadow: 0 20px 60px rgba(0,0,0,0.7); border-radius: 8px; overflow: hidden;';
+    })();
+  </script>
 
-            var loadedCount = 0;
-
-            // 4장의 이미지를 각각 생성하여 래퍼에 추가
-            infoGroup.forEach(function(info) {
-              var newImg = document.createElement('img');
-              var styleArr = [
-                'display:block',
-                'width:100%',
-                'height:auto',
-                'margin:0',
-                'padding:0',
-                'vertical-align:top',
-                'border:none'
-              ];
-              newImg.setAttribute('style', styleArr.join(';'));
-              newImg.setAttribute('alt', info.alt);
-
-              newImg.onload = function () {
-                loadedCount++;
-                if (loadedCount === infoGroup.length) spinner.style.display = 'none';
-              };
-
-              newImg.onerror = function () {
-                loadedCount++;
-                if (loadedCount === infoGroup.length) spinner.style.display = 'none';
-              };
-
-              newImg.setAttribute('src', info.src);
-              innerWrap.appendChild(newImg);
-            });
-
-            scrollContainer.appendChild(innerWrap);
-            imgWrap.appendChild(scrollContainer);
-
-            // 다른 프로젝트 클릭 시 항상 최상단부터 보이도록 스크롤 0으로 초기화
-            setTimeout(function() {
-                scrollContainer.scrollTop = 0;
-            }, 10);
-
-            lbCounter.textContent = (idx + 1) + ' / ' + imgSrcs.length;
-
-            var thumbEls = lbThumbs.querySelectorAll('.lb-thumb');
-            thumbEls.forEach(function (t, i) {
-              t.classList.toggle('is-active', i === idx);
-              t.style.opacity = (i === idx) ? '1' : '0.4';
-            });
-            if (thumbEls[idx]) {
-              thumbEls[idx].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
-            }
-
-            lbPrev.style.opacity       = (idx === 0)                  ? '0.25' : '1';
-            lbPrev.style.pointerEvents = (idx === 0)                  ? 'none'  : 'auto';
-            lbNext.style.opacity       = (idx === imgSrcs.length - 1) ? '0.25' : '1';
-            lbNext.style.pointerEvents = (idx === imgSrcs.length - 1) ? 'none'  : 'auto';
-          }
-
-          function openLB(idx) {
-            isOpen = true;
-            overlay.classList.add('is-open');
-            document.body.style.overflow = 'hidden';
-            document.documentElement.style.overflow = 'hidden';
-            showImg(idx);
-          }
-
-          function closeLB() {
-            isOpen = false;
-            overlay.classList.remove('is-open');
-            document.body.style.overflow = '';
-            document.documentElement.style.overflow = '';
-            imgWrap.innerHTML = '';
-            spinner.style.display = 'none';
-          }
-
-          galItems.forEach(function (item, idx) {
-            item.addEventListener('click', function (e) {
-              e.preventDefault();
-              e.stopPropagation();
-              openLB(idx);
-            });
-          });
-
-          lbClose.addEventListener('click', function (e) { e.stopPropagation(); closeLB(); });
-
-          lbPrev.addEventListener('click', function (e) {
-            e.stopPropagation();
-            if (currentIdx > 0) showImg(currentIdx - 1);
-          });
-          lbNext.addEventListener('click', function (e) {
-            e.stopPropagation();
-            if (currentIdx < imgSrcs.length - 1) showImg(currentIdx + 1);
-          });
-
-          overlay.addEventListener('click', function (e) {
-            // 이미지가 담긴 스크롤 컨테이너나 배경 클릭 시 닫기 (이미지 자체 클릭 시엔 안 닫힘)
-            if (e.target === overlay || e.target === lbBox || e.target === imgWrap || e.target.classList.contains('lb-scroll-container')) {
-              closeLB();
-            }
-          });
-
-          document.addEventListener('keydown', function (e) {
-            if (!isOpen) return;
-            if (e.key === 'Escape' || e.key === 'Esc') { closeLB(); }
-            else if (e.key === 'ArrowLeft')  { if (currentIdx > 0) showImg(currentIdx - 1); }
-            else if (e.key === 'ArrowRight') { if (currentIdx < imgSrcs.length - 1) showImg(currentIdx + 1); }
-          });
-
-          var txStart = 0, tyStart = 0;
-          overlay.addEventListener('touchstart', function (e) {
-            txStart = e.touches[0].clientX;
-            tyStart = e.touches[0].clientY;
-          }, { passive: true });
-          overlay.addEventListener('touchend', function (e) {
-            var dx = txStart - e.changedTouches[0].clientX;
-            var dy = tyStart - e.changedTouches[0].clientY;
-            // 세로 스크롤할 때는 좌우 넘김을 방지
-            if (Math.abs(dx) < 40 || Math.abs(dx) < Math.abs(dy)) return;
-            if (dx > 0 && currentIdx < imgSrcs.length - 1) showImg(currentIdx + 1);
-            else if (dx < 0 && currentIdx > 0)             showImg(currentIdx - 1);
-          }, { passive: true });
-
-        })();
-    </script>
-
-    <script src="./index.js"></script>
+  <script src="./index.js"></script>
 </body>
 </html>
